@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function ShimmerCard() {
   return (
-      <div className='flex flex-wrap justify-center'>
+      <div className=''>
         {
       Array(10).fill('').map(()=>{
         return<section className='w-[300px]  m-[20px] '>

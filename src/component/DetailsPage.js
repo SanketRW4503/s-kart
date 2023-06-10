@@ -94,7 +94,8 @@ export default function DetailsPage() {
                     </ul>
                     <p className='text-[15px] max-[800px]:p-0 mt-4'>Hurry {details[0]?.rating?.count} left only...!</p>
                     <p className='mt-8 max-[800px]:p-0 text-justify '>{details[0]?.description}</p>
-                    <button onClick={() => setdata_tocart()} className='bg-black px-[10px] py-[5px] text-white mt-4 '>Add to Cart</button>
+                 <a href='#nav' className='scroll-smooth'>  <button onClick={() => setdata_tocart()} className='bg-black px-[10px] py-[5px] text-white mt-4 '>Add to Cart</button>
+                   </a> 
                     <ToastContainer
                         position="bottom-right"
                         autoClose={5000}

@@ -2,6 +2,7 @@ import React from 'react'
 import twitter from '..//../assets/images/twitter.png'
 import instagram from '..//../assets/images/instagram.png'
 import facebook from '..//../assets/images/facebook.png'
+import { Link } from 'react-router-dom'
 
 
 
@@ -15,9 +16,9 @@ export default function Footer() {
                          <li><a href='https://www.linkedin.com/in/sanket-r-waghmare-a07711208/'><img src={facebook} width={50} className='rounded-[10px]  mx-4 cursor-pointer' /> </a></li>
                     </ul>
                     <ul className='flex  justify-center pt-8'>
-                        <li className='mx-[10px] underline text-[12px] cursor-pointer ' >About</li>
+                    <Link to={'/about'}><li className='mx-[10px]  underline text-[12px] cursor-pointer'>About us</li></Link> 
+            <Link to={'/contact'} ><li className='mx-[10px]  underline text-[12px] cursor-pointer'>Contact us</li></Link>
                         <li className='mx-[10px]  underline text-[12px] cursor-pointer ' >Privacy Policy</li>
-                        <li className='mx-[10px]  underline text-[12px] cursor-pointer ' >Contact Us</li>
 
                     </ul>
                     <p className='flex justify-center pt-4 text-[15px] text-gray-400'> &#169; Copyrights Reserved 2023 </p>
