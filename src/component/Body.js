@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { All_PRODUCTS, GET_ALL_CATEGORY } from '../utility/constants';
 import ShowCard from './ShowCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeData } from '../utility/dataSlice';
 import store from '../utility/store';
 import ShimmerCard from './ShimmerCard';
-import { Link } from 'react-router-dom';
 import { dollertoinr, shuffleArray } from '../utility/utility';
 import filtericon from '..//../assets/images/filter.png'
 export default function Body() {
@@ -19,6 +18,7 @@ export default function Body() {
     const [minPrice, setMinPrice] = useState(100000)
     const [filterStatus, setFilterStatus] = useState(false)
     const [preLi, setPreLi] = useState('');
+
     const dispatch = useDispatch()
     const stored_data = useSelector(store => store?.products?.items);
 
@@ -41,7 +41,7 @@ export default function Body() {
 
 
 
-    // fetching all category
+    // fetching all category from api
     async function getAllCategory() {
 
         try {
@@ -71,7 +71,7 @@ export default function Body() {
     }
 
 
-    // set-perticular category
+    // set-perticular category (when user selects category)
     function setcat(category_name, index) {
         if (category_name === 'all') {
             if (preLi.length > 1) {
@@ -91,6 +91,8 @@ export default function Body() {
         }
     }
 
+
+    //for filter price range change
     useEffect(() => {
         if (minPrice != 100000) {
             let data = product.filter((p) => dollertoinr(p.price) < minPrice)
@@ -100,6 +102,7 @@ export default function Body() {
     }, [minPrice])
 
 
+    // filter rating
     function setRating() {
         setFilterStatus(true)
 
@@ -127,22 +130,8 @@ export default function Body() {
 
     }
 
-    function clearFilter() {
-        setMinPrice(100000)
 
-        setProducts(stored_data)
-        document.getElementById('check1').checked = false;
-        document.getElementById('check2').checked = false;
-
-        document.getElementById('randomly').selected = 'selected'
-        setFilterStatus(false)
-        setFilterTab(false)
-        document.getElementById('filter_tag').style.fontWeight='400'
-
-
-    }
-
-
+    // filter sortby
     function ApplySort(e) {
         setFilterStatus(true)
 
@@ -163,30 +152,49 @@ export default function Body() {
         }
     }
 
+    // clear filter changes that are made by user
+    function clearFilter() {
+        setMinPrice(100000)
+
+        setProducts(stored_data)
+        document.getElementById('check1').checked = false;
+        document.getElementById('check2').checked = false;
+
+        document.getElementById('randomly').selected = 'selected'
+        setFilterStatus(false)
+        setFilterTab(false)
+        document.getElementById('filter_tag').style.fontWeight = '400'
+
+
+    }
+
+
+   
+
     // it changes filter text color onclick
-    function filterColor(){
-        if(filtertab){
-            document.getElementById('filter_tag').style.fontWeight='400'
-        }else{
-            document.getElementById('filter_tag').style.fontWeight='600'
+    function filterColor() {
+        if (filtertab) {
+            document.getElementById('filter_tag').style.fontWeight = '400'
+        } else {
+            document.getElementById('filter_tag').style.fontWeight = '600'
 
         }
     }
 
-
-    if (loading==true) { return <ShimmerCard /> }
+    // shows shimmer UI
+    if (loading == true) { return <ShimmerCard /> }
     else {
-
+        // if not loading shows  this content
         return (
 
             <section>
                 <section className='px-[10%] mt-6 mb-5 '>
-               
+
                     <ul className='flex overflow-auto items-center py-[8px]'>
-                        
-                    <span onClick={() => setFilterTab(!filtertab)} className='cursor-pointer flex items-center   '>
-                            <img src={filtericon} className='w-[18px] h-[18px]'/>
-                            <span onClick={()=>filterColor()} id='filter_tag'>Filter</span>
+
+                        <span onClick={() => setFilterTab(!filtertab)} className='cursor-pointer flex items-center   '>
+                            <img src={filtericon} className='w-[18px] h-[18px]' />
+                            <span onClick={() => filterColor()} id='filter_tag'>Filter</span>
                         </span>
 
                         <li onClick={() => setcat('all')} className='px-4 cursor-pointer max-[764px]:text-[12px] font-semibold whitespace-nowrap ml-4'
@@ -198,7 +206,8 @@ export default function Body() {
 
 
                     <hr />
-
+                    
+                    {/* filter component: */}
                     {
                         filtertab == true ? <section className='flex items-center flex-wrap justify-evenly bg-slate-100 rounded-b-xl 
                           transition-all duration-[2s] p-[20px] '>
@@ -231,13 +240,15 @@ export default function Body() {
 
                                 </section>
                             </div>
-                            {filterStatus == true ? <button className='bg-blue-400 px-[10px] py-1 text-white rounded-lg' 
-                            onClick={() => clearFilter()}>
+                            {filterStatus == true ? <button className='bg-blue-400 px-[10px] py-1 text-white rounded-lg'
+                                onClick={() => clearFilter()}>
                                 Clear Filter</button> : null}
                         </section> : null
                     }
                 </section>
+                
 
+                {/* items card :*/}
 
                 <section className='flex flex-wrap justify-center items-center mb-[60px] transition-all duration-[1s]'>
 

@@ -348,10 +348,6 @@ img, video {
   margin-left: 2rem;
 }
 
-.ml-\[-145px\] {
-  margin-left: -145px;
-}
-
 .ml-\[30px\] {
   margin-left: 30px;
 }
@@ -394,10 +390,6 @@ img, video {
 
 .mt-\[50px\] {
   margin-top: 50px;
-}
-
-.mt-\[80px\] {
-  margin-top: 80px;
 }
 
 .block {
@@ -696,10 +688,6 @@ img, video {
   text-align: justify;
 }
 
-.text-\[120px\] {
-  font-size: 120px;
-}
-
 .text-\[12px\] {
   font-size: 12px;
 }
@@ -726,10 +714,6 @@ img, video {
 
 .text-\[40px\] {
   font-size: 40px;
-}
-
-.text-\[10px\] {
-  font-size: 10px;
 }
 
 .font-semibold {
@@ -812,8 +796,8 @@ img, video {
 }
 
 @media (width <= 1000px) {
-  .max-\[1000px\]\:mt-6 {
-    margin-top: 1.5rem;
+  .max-\[1000px\]\:flex-col {
+    flex-direction: column;
   }
 }
 
@@ -882,29 +866,43 @@ img, video {
   }
 }
 
-@media (width <= 800px) {
-  .max-\[800px\]\:ml-0, .max-\[800px\]\:ml-\[0px\] {
+@media (width <= 900px) {
+  .max-\[900px\]\:m-1 {
+    margin: .25rem;
+  }
+
+  .max-\[900px\]\:ml-0 {
     margin-left: 0;
   }
 
-  .max-\[800px\]\:mt-\[20px\] {
-    margin-top: 20px;
+  .max-\[900px\]\:w-\[100\%\] {
+    width: 100%;
+  }
+
+  .max-\[900px\]\:flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  .max-\[900px\]\:border {
+    border-width: 1px;
+  }
+
+  .max-\[900px\]\:p-4 {
+    padding: 1rem;
+  }
+}
+
+@media (width <= 800px) {
+  .max-\[800px\]\:ml-0 {
+    margin-left: 0;
   }
 
   .max-\[800px\]\:w-\[300px\] {
     width: 300px;
   }
 
-  .max-\[800px\]\:w-\[max-content\] {
-    width: max-content;
-  }
-
   .max-\[800px\]\:flex-col {
     flex-direction: column;
-  }
-
-  .max-\[800px\]\:justify-center {
-    justify-content: center;
   }
 
   .max-\[800px\]\:p-0 {
@@ -921,6 +919,39 @@ img, video {
 @media (width <= 650px) {
   .max-\[650px\]\:block {
     display: block;
+  }
+}
+
+@media (width <= 567px) {
+  .max-\[567px\]\:ml-\[5px\] {
+    margin-left: 5px;
+  }
+
+  .max-\[567px\]\:mt-\[20px\] {
+    margin-top: 20px;
+  }
+
+  .max-\[567px\]\:flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  .max-\[567px\]\:py-\[8px\] {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+@media (width <= 500px) {
+  .max-\[500px\]\:w-\[200px\] {
+    width: 200px;
+  }
+
+  .max-\[500px\]\:w-\[max-content\] {
+    width: max-content;
+  }
+
+  .max-\[500px\]\:text-\[20px\] {
+    font-size: 20px;
   }
 }
 

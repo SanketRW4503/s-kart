@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {   useParams } from 'react-router-dom'
 import store from '../utility/store'
@@ -15,13 +15,15 @@ export default function DetailsPage() {
 
     const [details, setDetails] = useState([])
     const [product, setProduct] = useState([])
-    const stored_data = useSelector(store => store?.products?.items);
-    const cart_data = useSelector(store => store?.cart?.items);
 
+
+
+    const stored_data = useSelector(store => store?.products?.items);
     const dispatch = useDispatch();
 
 
     useEffect(() => {
+        // if data is present in cart it will show that data ,if not then it will fetch all data from api
         if (stored_data.length > 0) {
 
             let s = stored_data.filter((p) => p?.id == param.id)
@@ -32,6 +34,22 @@ export default function DetailsPage() {
 
     }, [param.id, stored_data])
 
+    // fetching Data from Api
+    async function getAllProduct() {
+
+        try {
+            const res = await fetch(All_PRODUCTS);
+            const json = await res.json()
+            dispatch(storeData(json))
+        } catch (error) {
+            console.log('s' + error);
+        }
+
+
+    }
+
+
+    // adds item to the cart
     function setdata_tocart() {
 
         dispatch(addItem(details[0]))
@@ -48,30 +66,20 @@ export default function DetailsPage() {
 
     }
 
-    async function getAllProduct() {
-
-        try {
-            const res = await fetch(All_PRODUCTS);
-            const json = await res.json()
-            dispatch(storeData(json))
-        } catch (error) {
-            console.log('s' + error);
-        }
-
-
-    }
-
-    useEffect(() => {
-        setCategory();
-    }, [details])
-
-
+  
     
+
+
+    //  to show the similar product to the user is will store all similar category items to the state
     function setCategory() {
         let s = stored_data?.filter((p) => p?.category.includes(details[0]?.category));
         setProduct(s);
 
     }
+    
+    useEffect(() => {
+        setCategory();
+    }, [details])
 
 
 
@@ -113,6 +121,8 @@ export default function DetailsPage() {
 
 
             </div>
+          
+        {/* similar product Component */}
             {
                 <section >
                     <div className='mx-[10%]'>

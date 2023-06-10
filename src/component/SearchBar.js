@@ -8,7 +8,12 @@ export default function SearchBar() {
   const[searchtext,setSearchText]= useState('')
   const navigate = useNavigate()
 
+
+
+
   function handleSearch(){
+      /*when user clicks on clear search btn it get invoked and
+        it lands user to that page where he was when he clicked on search btn*/
     setSearchText('');
     navigate(-1);
   }

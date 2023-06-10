@@ -1,21 +1,22 @@
 import shopicon from '../../assets/images/shop-icon.png'
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux';
 import store from '../utility/store';
 import cartbag from '..//../assets/images/cart-bag.png'
 
 export default function Header() {
 
+  const [menucss, setMenuCSS] = useState({});
+  const [menustatus, setMenuStatus] = useState(false);
+
 
   const cartData = useSelector(store => store.cart.totalItems);
-  const [menucss, setMenuCSS] = useState({})
-  const [menustatus, setMenuStatus] = useState(false)
-
- 
 
 
-  function menuFunction(){
+
+  //Hamburger Logic : it helps to hide and show menu 
+  function menuFunction() {
     setMenuStatus(!menustatus);
     if (menustatus == true) {
       setMenuCSS({
@@ -33,7 +34,7 @@ export default function Header() {
       <div className='flex justify-between  max-[650px]:block '>
         <div className='flex items-center'>
           <img src={shopicon} width={50} height={50} className='w-[50px] h-[50px]' />
-          <Link to={'/'}><h1 className='font-semibold text-[40px] max-[1100px]:text-[30px] italic'>S-Kart.IN</h1></Link> 
+          <Link to={'/'}><h1 className='font-semibold text-[40px] max-[1100px]:text-[30px] italic'>S-Kart.IN</h1></Link>
         </div>
 
       </div>
@@ -43,9 +44,9 @@ export default function Header() {
               ' style={menucss} >
         <span className='text-[20px] font-semibold min-[940px]:hidden' onClick={() => menuFunction()}>&#10005;</span>
         <Link to='/'><li className='px-4 max-[940px]:mt-[50px] text-[20px] '>Home</li></Link>
-       
+
         <li className='px-4 max-[940px]:mt-[50px] text-[20px]'>Offers</li>
-    
+
 
         <Link to={'/cart'}><img src={cartbag} className='w-[40px] mr-[10px] z-4 max-[940px]:hidden' /></Link>
         <Link to={'/cart'}>  <span className='relative left-[-34px] top-[5px] text-[15px]  z-[20] cursor-pointer max-[940px]:hidden'>{cartData}</span></Link>
@@ -54,7 +55,7 @@ export default function Header() {
       <div className=' hidden max-[940px]:flex max-[940px]:items-center'>
         <Link to={'/cart'}><img src={cartbag} className='w-[40px] mr-[10px] z-4' /></Link>
         <Link to={'/cart'}>  <span className='relative left-[-34px] top-[5px] text-[15px]  z-[20]  cursor-pointer'>{cartData}</span></Link>
-        <span onClick={() => menuFunction() } className='text-[25px] cursor-pointer'>&#9776;</span>
+        <span onClick={() => menuFunction()} className='text-[25px] cursor-pointer'>&#9776;</span>
       </div>
     </nav>
   )
