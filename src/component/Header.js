@@ -11,6 +11,8 @@ import { setUser } from '../utility/userSlice';
 import { addItem } from '../utility/cartSlice';
 import { get_data_from_cart } from '../utility/constants';
 
+import { All_PRODUCTS } from '../utility/constants';
+import { storeData } from '../utility/dataSlice';
 
 export default function Header() {
 
@@ -20,6 +22,39 @@ export default function Header() {
   const loginStatus = useSelector(store => store.login.status);
 
   const dispatch = useDispatch()
+
+  const stored_data = useSelector(store => store?.products?.items);
+
+
+  // fetching data from api
+  async function getAllProduct() {
+
+    try {
+      const res = await fetch(All_PRODUCTS, {
+
+        method: 'GET', withCredntials: true,
+        credentials: 'include'
+      });
+      const json = await res.json()
+
+      dispatch(storeData(json.items))
+
+    } catch (error) {
+
+      console.log('s' + error);
+    }
+
+
+  }
+
+  useEffect(() => {
+    if (stored_data.length == 0) {
+      getAllProduct()
+
+    }
+
+
+  }, [stored_data]);
 
 
   // check user login or not if login save his info to store

@@ -2,8 +2,6 @@ import { useEffect, useState } from "react"
 import { useSelector, useStore } from "react-redux"
 import store from "../utility/store"
 import { toast } from "react-toastify"
-import { validate } from "email-validator"
-import { useNavigate } from "react-router-dom"
 
 export default function EditProfileForm(props) {
 
@@ -16,7 +14,6 @@ export default function EditProfileForm(props) {
     
     const userStore = useSelector(store => store.user.userdata)
 
-    const navigate = useNavigate()
 
     function validateData(e) {
 

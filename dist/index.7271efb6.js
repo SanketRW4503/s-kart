@@ -27331,6 +27331,7 @@ var _loginSlice = require("../utility/loginSlice");
 var _userSlice = require("../utility/userSlice");
 var _cartSlice = require("../utility/cartSlice");
 var _constants = require("../utility/constants");
+var _dataSlice = require("../utility/dataSlice");
 var _s = $RefreshSig$();
 function Header() {
     _s();
@@ -27339,6 +27340,26 @@ function Header() {
     const cartData = (0, _reactRedux.useSelector)((store)=>store.cart.totalItems);
     const loginStatus = (0, _reactRedux.useSelector)((store)=>store.login.status);
     const dispatch = (0, _reactRedux.useDispatch)();
+    const stored_data = (0, _reactRedux.useSelector)((store)=>store?.products?.items);
+    // fetching data from api
+    async function getAllProduct() {
+        try {
+            const res = await fetch((0, _constants.All_PRODUCTS), {
+                method: "GET",
+                withCredntials: true,
+                credentials: "include"
+            });
+            const json = await res.json();
+            dispatch((0, _dataSlice.storeData)(json.items));
+        } catch (error) {
+            console.log("s" + error);
+        }
+    }
+    (0, _react.useEffect)(()=>{
+        if (stored_data.length == 0) getAllProduct();
+    }, [
+        stored_data
+    ]);
     // check user login or not if login save his info to store
     const userStore = (0, _reactRedux.useSelector)((store)=>store.user.userdata);
     async function getCurrentUserInfo() {
@@ -27412,7 +27433,7 @@ function Header() {
                                     className: "w-[50px] h-[50px]"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 102,
+                                    lineNumber: 137,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27422,23 +27443,23 @@ function Header() {
                                         children: "S-Kart.IN"
                                     }, void 0, false, {
                                         fileName: "src/component/Header.js",
-                                        lineNumber: 103,
+                                        lineNumber: 138,
                                         columnNumber: 28
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 103,
+                                    lineNumber: 138,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/component/Header.js",
-                            lineNumber: 101,
+                            lineNumber: 136,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "src/component/Header.js",
-                        lineNumber: 100,
+                        lineNumber: 135,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -27451,7 +27472,7 @@ function Header() {
                                 children: "✕"
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 111,
+                                lineNumber: 146,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27461,12 +27482,12 @@ function Header() {
                                     children: "Home"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 112,
+                                    lineNumber: 147,
                                     columnNumber: 24
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 112,
+                                lineNumber: 147,
                                 columnNumber: 11
                             }, this),
                             loginStatus == false ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27476,12 +27497,12 @@ function Header() {
                                     children: "Login"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 115,
+                                    lineNumber: 150,
                                     columnNumber: 36
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 115,
+                                lineNumber: 150,
                                 columnNumber: 15
                             }, this) : null,
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27491,12 +27512,12 @@ function Header() {
                                     className: "w-[40px] mr-[10px] z-4 max-[940px]:hidden"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 119,
+                                    lineNumber: 154,
                                     columnNumber: 30
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 119,
+                                lineNumber: 154,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27508,13 +27529,13 @@ function Header() {
                                         children: cartData
                                     }, void 0, false, {
                                         fileName: "src/component/Header.js",
-                                        lineNumber: 120,
+                                        lineNumber: 155,
                                         columnNumber: 32
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 120,
+                                lineNumber: 155,
                                 columnNumber: 11
                             }, this),
                             loginStatus != false ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27526,20 +27547,20 @@ function Header() {
                                         className: "w-[30px] mr-[10px] z-4 max-[940px]:hidden"
                                     }, void 0, false, {
                                         fileName: "src/component/Header.js",
-                                        lineNumber: 124,
+                                        lineNumber: 159,
                                         columnNumber: 40
                                     }, this),
                                     " "
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 124,
+                                lineNumber: 159,
                                 columnNumber: 15
                             }, this) : null
                         ]
                     }, void 0, true, {
                         fileName: "src/component/Header.js",
-                        lineNumber: 108,
+                        lineNumber: 143,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27552,12 +27573,12 @@ function Header() {
                                     className: "w-[40px] mr-[10px] z-4"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 131,
+                                    lineNumber: 166,
                                     columnNumber: 30
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 131,
+                                lineNumber: 166,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27569,13 +27590,13 @@ function Header() {
                                         children: cartData
                                     }, void 0, false, {
                                         fileName: "src/component/Header.js",
-                                        lineNumber: 133,
+                                        lineNumber: 168,
                                         columnNumber: 32
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 133,
+                                lineNumber: 168,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -27584,38 +27605,39 @@ function Header() {
                                 children: "☰"
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 134,
+                                lineNumber: 169,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/component/Header.js",
-                        lineNumber: 130,
+                        lineNumber: 165,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/component/Header.js",
-                lineNumber: 99,
+                lineNumber: 134,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactToastify.ToastContainer), {}, void 0, false, {
                 fileName: "src/component/Header.js",
-                lineNumber: 138,
+                lineNumber: 173,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/Header.js",
-        lineNumber: 98,
+        lineNumber: 133,
         columnNumber: 5
     }, this);
 }
-_s(Header, "og8ZG1brXZ56KOZjN4gF0PnYBBM=", false, function() {
+_s(Header, "jgVrJc9VSJaAGZjJPUFkoDdf5EM=", false, function() {
     return [
         (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector),
         (0, _reactRedux.useDispatch),
+        (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector)
     ];
 });
@@ -27628,7 +27650,7 @@ $RefreshReg$(_c, "Header");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","../../assets/images/shop-icon.png":"fJWos","react-router-dom":"9xmpe","react":"21dqq","react-redux":"bdVon","../utility/store":"7oLTM","..//../assets/images/cart-bag.png":"8KtYF","react-toastify":"kSvyQ","../../assets/images/profile-icon.png":"kdSYZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utility/loginSlice":"cVjx3","../utility/userSlice":"8k0fy","../utility/cartSlice":"3gn92","../utility/constants":"aPfSC"}],"fJWos":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","../../assets/images/shop-icon.png":"fJWos","react-router-dom":"9xmpe","react":"21dqq","react-redux":"bdVon","../utility/store":"7oLTM","..//../assets/images/cart-bag.png":"8KtYF","react-toastify":"kSvyQ","../../assets/images/profile-icon.png":"kdSYZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utility/loginSlice":"cVjx3","../utility/userSlice":"8k0fy","../utility/cartSlice":"3gn92","../utility/constants":"aPfSC","../utility/dataSlice":"fcCWu"}],"fJWos":[function(require,module,exports) {
 module.exports = require("7cf8ba8bc0062ef8").getBundleURL("aXMci") + "shop-icon.97666c27.png" + "?" + Date.now();
 
 },{"7cf8ba8bc0062ef8":"lgJ39"}],"lgJ39":[function(require,module,exports) {
@@ -39522,15 +39544,13 @@ function Body() {
     const [minPrice, setMinPrice] = (0, _react.useState)(100000);
     const [filterStatus, setFilterStatus] = (0, _react.useState)(false);
     const [preLi, setPreLi] = (0, _react.useState)("");
-    let dispatch = (0, _reactRedux.useDispatch)();
     const stored_data = (0, _reactRedux.useSelector)((store)=>store?.products?.items);
     (0, _react.useEffect)(()=>{
-        if (stored_data.length > 0) {
+        if (stored_data?.length > 0) {
             setProducts(stored_data);
             getAllCategory();
             setLoading(false);
         } else {
-            getAllProduct();
             getAllCategory();
             setLoading(false);
         }
@@ -39547,21 +39567,6 @@ function Body() {
             });
             const json = await res.json();
             setCategory(json.allcollection);
-        } catch (error) {
-            console.log("s" + error);
-        }
-    }
-    // fetching data from api
-    async function getAllProduct() {
-        try {
-            const res = await fetch((0, _constants.All_PRODUCTS), {
-                method: "GET",
-                withCredntials: true,
-                credentials: "include"
-            });
-            const json = await res.json();
-            dispatch((0, _dataSlice.storeData)(json.items));
-            setProducts(json);
         } catch (error) {
             console.log("s" + error);
         }
@@ -39639,7 +39644,7 @@ function Body() {
     // shows shimmer UI
     if (loading == true) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerCardDefault.default), {}, void 0, false, {
         fileName: "src/component/Body.js",
-        lineNumber: 197,
+        lineNumber: 176,
         columnNumber: 35
     }, this);
     else // if not loading shows  this content
@@ -39660,7 +39665,7 @@ function Body() {
                                         className: "w-[18px] h-[18px]"
                                     }, void 0, false, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 208,
+                                        lineNumber: 187,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -39669,13 +39674,13 @@ function Body() {
                                         children: "Filter"
                                     }, void 0, false, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 209,
+                                        lineNumber: 188,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Body.js",
-                                lineNumber: 207,
+                                lineNumber: 186,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -39685,7 +39690,7 @@ function Body() {
                                 children: "all products"
                             }, void 0, false, {
                                 fileName: "src/component/Body.js",
-                                lineNumber: 212,
+                                lineNumber: 191,
                                 columnNumber: 25
                             }, this),
                             category?.map((p, index)=>{
@@ -39696,19 +39701,19 @@ function Body() {
                                     children: p.category
                                 }, index, false, {
                                     fileName: "src/component/Body.js",
-                                    lineNumber: 215,
+                                    lineNumber: 194,
                                     columnNumber: 36
                                 }, this);
                             })
                         ]
                     }, void 0, true, {
                         fileName: "src/component/Body.js",
-                        lineNumber: 205,
+                        lineNumber: 184,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
                         fileName: "src/component/Body.js",
-                        lineNumber: 220,
+                        lineNumber: 199,
                         columnNumber: 21
                     }, this),
                     filtertab == true ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -39721,7 +39726,7 @@ function Body() {
                                         children: "Price Beetween"
                                     }, void 0, false, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 227,
+                                        lineNumber: 206,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -39736,7 +39741,7 @@ function Body() {
                                         }
                                     }, void 0, false, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 228,
+                                        lineNumber: 207,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("small", {
@@ -39747,13 +39752,13 @@ function Body() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 230,
+                                        lineNumber: 209,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Body.js",
-                                lineNumber: 226,
+                                lineNumber: 205,
                                 columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39764,7 +39769,7 @@ function Body() {
                                         children: "Sort By"
                                     }, void 0, false, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 235,
+                                        lineNumber: 214,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
@@ -39778,7 +39783,7 @@ function Body() {
                                                 children: "Randomly"
                                             }, void 0, false, {
                                                 fileName: "src/component/Body.js",
-                                                lineNumber: 237,
+                                                lineNumber: 216,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -39786,7 +39791,7 @@ function Body() {
                                                 children: "Low to high Price"
                                             }, void 0, false, {
                                                 fileName: "src/component/Body.js",
-                                                lineNumber: 238,
+                                                lineNumber: 217,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -39794,19 +39799,19 @@ function Body() {
                                                 children: "High to Low Price"
                                             }, void 0, false, {
                                                 fileName: "src/component/Body.js",
-                                                lineNumber: 239,
+                                                lineNumber: 218,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 236,
+                                        lineNumber: 215,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Body.js",
-                                lineNumber: 234,
+                                lineNumber: 213,
                                 columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39817,7 +39822,7 @@ function Body() {
                                         children: "Rating"
                                     }, void 0, false, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 243,
+                                        lineNumber: 222,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -39829,20 +39834,20 @@ function Body() {
                                                 onChange: ()=>setRating()
                                             }, void 0, false, {
                                                 fileName: "src/component/Body.js",
-                                                lineNumber: 245,
+                                                lineNumber: 224,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                                 children: "4.5 and Above"
                                             }, void 0, false, {
                                                 fileName: "src/component/Body.js",
-                                                lineNumber: 246,
+                                                lineNumber: 225,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 244,
+                                        lineNumber: 223,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -39854,26 +39859,26 @@ function Body() {
                                                 onChange: ()=>setRating()
                                             }, void 0, false, {
                                                 fileName: "src/component/Body.js",
-                                                lineNumber: 250,
+                                                lineNumber: 229,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                                 children: "3.5 and Above"
                                             }, void 0, false, {
                                                 fileName: "src/component/Body.js",
-                                                lineNumber: 251,
+                                                lineNumber: 230,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 249,
+                                        lineNumber: 228,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Body.js",
-                                lineNumber: 242,
+                                lineNumber: 221,
                                 columnNumber: 29
                             }, this),
                             filterStatus == true ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39882,19 +39887,19 @@ function Body() {
                                 children: "Clear Filter"
                             }, void 0, false, {
                                 fileName: "src/component/Body.js",
-                                lineNumber: 255,
+                                lineNumber: 234,
                                 columnNumber: 53
                             }, this) : null
                         ]
                     }, void 0, true, {
                         fileName: "src/component/Body.js",
-                        lineNumber: 224,
+                        lineNumber: 203,
                         columnNumber: 45
                     }, this) : null
                 ]
             }, void 0, true, {
                 fileName: "src/component/Body.js",
-                lineNumber: 203,
+                lineNumber: 182,
                 columnNumber: 17
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -39904,25 +39909,24 @@ function Body() {
                         info: p
                     }, p._id, false, {
                         fileName: "src/component/Body.js",
-                        lineNumber: 270,
+                        lineNumber: 249,
                         columnNumber: 36
                     }, this);
                 }) : null
             }, void 0, false, {
                 fileName: "src/component/Body.js",
-                lineNumber: 265,
+                lineNumber: 244,
                 columnNumber: 17
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/Body.js",
-        lineNumber: 202,
+        lineNumber: 181,
         columnNumber: 13
     }, this);
 }
-_s(Body, "QVlGQPv4LRGWJr8+o47+ezdfDjo=", false, function() {
+_s(Body, "FBrkq6GycvAUBKWmGyPqQ4/PlM8=", false, function() {
     return [
-        (0, _reactRedux.useDispatch),
         (0, _reactRedux.useSelector)
     ];
 });
@@ -40334,16 +40338,7 @@ function DetailsPage() {
     function setdata_tocart() {
         dispatch((0, _cartSlice.addItem)(details[0]));
         if (userdata.success == true) (0, _utility.add_mongoDb_cart)(details[0], userdata);
-        (0, _reactToastify.toast)("Item Added to Cart!", {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark"
-        });
+        (0, _reactToastify.toast).success("Item Added to Cart!");
     }
     //  to show the similar product to the user is will store all similar category items to the state
     function setCategory() {
@@ -40367,12 +40362,12 @@ function DetailsPage() {
                             className: "w-[450px]  h-[500] max-[800px]:w-[300px] "
                         }, void 0, false, {
                             fileName: "src/component/DetailsPage.js",
-                            lineNumber: 108,
+                            lineNumber: 99,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "src/component/DetailsPage.js",
-                        lineNumber: 107,
+                        lineNumber: 98,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -40383,7 +40378,7 @@ function DetailsPage() {
                                 children: details[0]?.title
                             }, void 0, false, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 111,
+                                lineNumber: 102,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -40397,7 +40392,7 @@ function DetailsPage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/DetailsPage.js",
-                                        lineNumber: 114,
+                                        lineNumber: 105,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -40408,13 +40403,13 @@ function DetailsPage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/DetailsPage.js",
-                                        lineNumber: 115,
+                                        lineNumber: 106,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 113,
+                                lineNumber: 104,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -40426,7 +40421,7 @@ function DetailsPage() {
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 117,
+                                lineNumber: 108,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -40434,7 +40429,7 @@ function DetailsPage() {
                                 children: details[0]?.description
                             }, void 0, false, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 118,
+                                lineNumber: 109,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -40448,41 +40443,25 @@ function DetailsPage() {
                                         children: "Add to Cart"
                                     }, void 0, false, {
                                         fileName: "src/component/DetailsPage.js",
-                                        lineNumber: 119,
+                                        lineNumber: 110,
                                         columnNumber: 64
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 119,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactToastify.ToastContainer), {
-                                position: "bottom-right",
-                                autoClose: 5000,
-                                hideProgressBar: false,
-                                newestOnTop: false,
-                                closeOnClick: true,
-                                rtl: false,
-                                pauseOnFocusLoss: true,
-                                draggable: true,
-                                pauseOnHover: true,
-                                theme: "light"
-                            }, void 0, false, {
-                                fileName: "src/component/DetailsPage.js",
-                                lineNumber: 122,
+                                lineNumber: 110,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/component/DetailsPage.js",
-                        lineNumber: 110,
+                        lineNumber: 101,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/component/DetailsPage.js",
-                lineNumber: 106,
+                lineNumber: 97,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -40492,7 +40471,7 @@ function DetailsPage() {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 144,
+                                lineNumber: 124,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -40500,13 +40479,13 @@ function DetailsPage() {
                                 children: "Similar Products"
                             }, void 0, false, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 145,
+                                lineNumber: 125,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/component/DetailsPage.js",
-                        lineNumber: 143,
+                        lineNumber: 123,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -40517,25 +40496,25 @@ function DetailsPage() {
                                 detailsPage: true
                             }, p.id, false, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 152,
+                                lineNumber: 132,
                                 columnNumber: 36
                             }, this);
                         }) : null
                     }, void 0, false, {
                         fileName: "src/component/DetailsPage.js",
-                        lineNumber: 148,
+                        lineNumber: 128,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/component/DetailsPage.js",
-                lineNumber: 142,
+                lineNumber: 122,
                 columnNumber: 17
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/DetailsPage.js",
-        lineNumber: 105,
+        lineNumber: 96,
         columnNumber: 9
     }, this);
 }
@@ -40907,16 +40886,7 @@ function CartPage() {
         if (item.quantity == 1) {
             // if the item quantity is 1 and user click Minus then is till delete/remove this item from cart
             dispatch((0, _cartSlice.deleteItem)(item));
-            (0, _reactToastify.toast)("removed from Cart!", {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light"
-            });
+            (0, _reactToastify.toast).success("removed from Cart!");
         } else {
             // on minus click it will remove one item only
             dispatch((0, _cartSlice.remove_one_item)(item));
@@ -40927,16 +40897,7 @@ function CartPage() {
     function remove_item(item) {
         if (userdata.success == true) (0, _utility.deleteitem_from_Mongodb)(item, userdata);
         dispatch((0, _cartSlice.deleteItem)(item));
-        (0, _reactToastify.toast)("removed from Cart!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light"
-        });
+        (0, _reactToastify.toast).success("removed from Cart!");
     }
     // handle login
     async function handleLogin() {
@@ -41021,7 +40982,7 @@ function CartPage() {
                     ]
                 }, void 0, true, {
                     fileName: "src/component/CartPage.js",
-                    lineNumber: 207,
+                    lineNumber: 189,
                     columnNumber: 21
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -41043,12 +41004,12 @@ function CartPage() {
                                                 className: "w-[200px] h-[200px]"
                                             }, void 0, false, {
                                                 fileName: "src/component/CartPage.js",
-                                                lineNumber: 221,
+                                                lineNumber: 203,
                                                 columnNumber: 49
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "src/component/CartPage.js",
-                                            lineNumber: 220,
+                                            lineNumber: 202,
                                             columnNumber: 45
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41059,14 +41020,14 @@ function CartPage() {
                                                     children: e.title
                                                 }, void 0, false, {
                                                     fileName: "src/component/CartPage.js",
-                                                    lineNumber: 225,
+                                                    lineNumber: 207,
                                                     columnNumber: 49
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                     children: e.description
                                                 }, void 0, false, {
                                                     fileName: "src/component/CartPage.js",
-                                                    lineNumber: 226,
+                                                    lineNumber: 208,
                                                     columnNumber: 49
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -41076,7 +41037,7 @@ function CartPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/component/CartPage.js",
-                                                    lineNumber: 227,
+                                                    lineNumber: 209,
                                                     columnNumber: 49
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41091,7 +41052,7 @@ function CartPage() {
                                                                     children: "-"
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 230,
+                                                                    lineNumber: 212,
                                                                     columnNumber: 57
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41099,7 +41060,7 @@ function CartPage() {
                                                                     children: e.quantity
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 231,
+                                                                    lineNumber: 213,
                                                                     columnNumber: 57
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -41108,13 +41069,13 @@ function CartPage() {
                                                                     children: "+"
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 232,
+                                                                    lineNumber: 214,
                                                                     columnNumber: 57
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/component/CartPage.js",
-                                                            lineNumber: 229,
+                                                            lineNumber: 211,
                                                             columnNumber: 53
                                                         }, this),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -41123,31 +41084,31 @@ function CartPage() {
                                                             children: "Remove From Cart"
                                                         }, void 0, false, {
                                                             fileName: "src/component/CartPage.js",
-                                                            lineNumber: 235,
+                                                            lineNumber: 217,
                                                             columnNumber: 53
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/component/CartPage.js",
-                                                    lineNumber: 228,
+                                                    lineNumber: 210,
                                                     columnNumber: 49
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/component/CartPage.js",
-                                            lineNumber: 224,
+                                            lineNumber: 206,
                                             columnNumber: 45
                                         }, this)
                                     ]
                                 }, index, true, {
                                     fileName: "src/component/CartPage.js",
-                                    lineNumber: 219,
+                                    lineNumber: 201,
                                     columnNumber: 48
                                 }, this);
                             }) : null
                         }, void 0, false, {
                             fileName: "src/component/CartPage.js",
-                            lineNumber: 211,
+                            lineNumber: 193,
                             columnNumber: 25
                         }, this),
                         cart_data.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41158,7 +41119,7 @@ function CartPage() {
                                     children: "Payment Summary"
                                 }, void 0, false, {
                                     fileName: "src/component/CartPage.js",
-                                    lineNumber: 253,
+                                    lineNumber: 235,
                                     columnNumber: 37
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41173,7 +41134,7 @@ function CartPage() {
                                                     placeholder: "Enter Here"
                                                 }, void 0, false, {
                                                     fileName: "src/component/CartPage.js",
-                                                    lineNumber: 257,
+                                                    lineNumber: 239,
                                                     columnNumber: 45
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -41181,20 +41142,20 @@ function CartPage() {
                                                     children: " Apply Coupan Code"
                                                 }, void 0, false, {
                                                     fileName: "src/component/CartPage.js",
-                                                    lineNumber: 258,
+                                                    lineNumber: 240,
                                                     columnNumber: 45
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/component/CartPage.js",
-                                            lineNumber: 255,
+                                            lineNumber: 237,
                                             columnNumber: 41
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("table", {
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("thead", {}, void 0, false, {
                                                     fileName: "src/component/CartPage.js",
-                                                    lineNumber: 262,
+                                                    lineNumber: 244,
                                                     columnNumber: 45
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tbody", {
@@ -41206,20 +41167,20 @@ function CartPage() {
                                                                     children: "Total Items"
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 267,
+                                                                    lineNumber: 249,
                                                                     columnNumber: 53
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                                                     children: totalItems
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 268,
+                                                                    lineNumber: 250,
                                                                     columnNumber: 53
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/component/CartPage.js",
-                                                            lineNumber: 266,
+                                                            lineNumber: 248,
                                                             columnNumber: 49
                                                         }, this),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
@@ -41229,20 +41190,20 @@ function CartPage() {
                                                                     children: "Delevary Charges"
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 271,
+                                                                    lineNumber: 253,
                                                                     columnNumber: 53
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                                                     children: "40Rs"
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 272,
+                                                                    lineNumber: 254,
                                                                     columnNumber: 53
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/component/CartPage.js",
-                                                            lineNumber: 270,
+                                                            lineNumber: 252,
                                                             columnNumber: 49
                                                         }, this),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
@@ -41252,20 +41213,20 @@ function CartPage() {
                                                                     children: "Tax & GST"
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 275,
+                                                                    lineNumber: 257,
                                                                     columnNumber: 53
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                                                     children: "10%"
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 276,
+                                                                    lineNumber: 258,
                                                                     columnNumber: 53
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/component/CartPage.js",
-                                                            lineNumber: 274,
+                                                            lineNumber: 256,
                                                             columnNumber: 49
                                                         }, this),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
@@ -41275,20 +41236,20 @@ function CartPage() {
                                                                     children: "Discount"
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 279,
+                                                                    lineNumber: 261,
                                                                     columnNumber: 53
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                                                     children: "0%"
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 280,
+                                                                    lineNumber: 262,
                                                                     columnNumber: 53
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/component/CartPage.js",
-                                                            lineNumber: 278,
+                                                            lineNumber: 260,
                                                             columnNumber: 49
                                                         }, this),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
@@ -41298,32 +41259,32 @@ function CartPage() {
                                                                     children: "Total"
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 284,
+                                                                    lineNumber: 266,
                                                                     columnNumber: 53
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                                                     children: totalPrice
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
-                                                                    lineNumber: 285,
+                                                                    lineNumber: 267,
                                                                     columnNumber: 53
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/component/CartPage.js",
-                                                            lineNumber: 283,
+                                                            lineNumber: 265,
                                                             columnNumber: 49
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/component/CartPage.js",
-                                                    lineNumber: 265,
+                                                    lineNumber: 247,
                                                     columnNumber: 45
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/component/CartPage.js",
-                                            lineNumber: 261,
+                                            lineNumber: 243,
                                             columnNumber: 41
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -41332,25 +41293,25 @@ function CartPage() {
                                             children: loginStatus == true ? "Place Order" : "Login To Place Order"
                                         }, void 0, false, {
                                             fileName: "src/component/CartPage.js",
-                                            lineNumber: 290,
+                                            lineNumber: 272,
                                             columnNumber: 41
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/component/CartPage.js",
-                                    lineNumber: 254,
+                                    lineNumber: 236,
                                     columnNumber: 37
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/component/CartPage.js",
-                            lineNumber: 252,
+                            lineNumber: 234,
                             columnNumber: 33
                         }, this) : null
                     ]
                 }, void 0, true, {
                     fileName: "src/component/CartPage.js",
-                    lineNumber: 209,
+                    lineNumber: 191,
                     columnNumber: 21
                 }, this),
                 cart_data.length == 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41363,31 +41324,31 @@ function CartPage() {
                                 width: 300
                             }, void 0, false, {
                                 fileName: "src/component/CartPage.js",
-                                lineNumber: 306,
+                                lineNumber: 288,
                                 columnNumber: 33
                             }, this)
                         }, void 0, false, {
                             fileName: "src/component/CartPage.js",
-                            lineNumber: 304,
+                            lineNumber: 286,
                             columnNumber: 29
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                             children: "Your Cart is Empaty"
                         }, void 0, false, {
                             fileName: "src/component/CartPage.js",
-                            lineNumber: 309,
+                            lineNumber: 291,
                             columnNumber: 29
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/component/CartPage.js",
-                    lineNumber: 302,
+                    lineNumber: 284,
                     columnNumber: 49
                 }, this) : null
             ]
         }, void 0, true, {
             fileName: "src/component/CartPage.js",
-            lineNumber: 205,
+            lineNumber: 187,
             columnNumber: 46
         }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "m-[20px]",
@@ -41397,17 +41358,17 @@ function CartPage() {
                 setAddress_Component: setAddress_Component
             }, void 0, false, {
                 fileName: "src/component/CartPage.js",
-                lineNumber: 318,
+                lineNumber: 300,
                 columnNumber: 21
             }, this)
         }, void 0, false, {
             fileName: "src/component/CartPage.js",
-            lineNumber: 316,
+            lineNumber: 298,
             columnNumber: 26
         }, this)
     }, void 0, false, {
         fileName: "src/component/CartPage.js",
-        lineNumber: 203,
+        lineNumber: 185,
         columnNumber: 9
     }, this);
 }
@@ -41514,7 +41475,7 @@ function AdressCom(props) {
         }
     }
     (0, _react.useEffect)(()=>{
-        if (userStore.profile.address !== "undefined") {
+        if (userStore?.profile?.address !== undefined) {
             const add = userStore.profile.address.replace("-", ",");
             let d = add.split(",");
             setAddress_line_1(d[0]);
@@ -41910,41 +41871,14 @@ function SignUpPage() {
             email: email,
             password: password
         };
-        if (confirmpassword !== password) (0, _reactToastify.toast)("Confirm Password & password Mismatch !", {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark"
-        });
+        if (confirmpassword !== password) (0, _reactToastify.toast).error("Confirm Password & password Mismatch !");
         else if (fname.length == 0) (0, _reactToastify.toast).error("Enter Your First Name !");
         else if (lname.length == 0) (0, _reactToastify.toast).error("Enter Your Last Name !");
         else if (gender.length == 0) (0, _reactToastify.toast).error("Select Your Gender");
         else if (number.length == 0) (0, _reactToastify.toast).error("Enter Your Mobile Number");
         else if (number.length > 10) (0, _reactToastify.toast).error("Enter Valid Mobile Number");
-        else if (password.length < 8) (0, _reactToastify.toast)("Password Length Should be greater than 8", {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark"
-        });
-        else if (!(0, _emailValidator.validate)(email)) (0, _reactToastify.toast)("INVALID EMAIL", {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark"
-        });
+        else if (password.length < 8) (0, _reactToastify.toast).error("Password Length Should be greater than 8");
+        else if (!(0, _emailValidator.validate)(email)) (0, _reactToastify.toast).error("INVALID EMAIL");
         else {
             userData = JSON.stringify(userData);
             createAC(userData);
@@ -41964,265 +41898,238 @@ function SignUpPage() {
         if (json.success) {
             dispatch((0, _loginSlice.setLoginStatus)(true));
             navigate("/");
-            (0, _reactToastify.toast)("Login Success !", {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark"
-            });
+            (0, _reactToastify.toast).success("Login Success !");
         } else dispatch((0, _loginSlice.setLoginStatus)(false));
     }
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "bg-grey-lighter min-h-screen flex flex-col",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "bg-slate-100 px-6 py-8 shadow-md text-black w-full rounded-md",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                                className: "mb-8 text-3xl text-center",
-                                children: "Sign up"
-                            }, void 0, false, {
-                                fileName: "src/component/SignUpPage.js",
-                                lineNumber: 121,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                value: fname,
-                                onChange: (e)=>{
-                                    setFname(e.target.value);
-                                },
-                                type: "text",
-                                className: "block border border-grey-light w-full p-3 rounded mb-4",
-                                name: "fname",
-                                placeholder: "First Name"
-                            }, void 0, false, {
-                                fileName: "src/component/SignUpPage.js",
-                                lineNumber: 122,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                value: lname,
-                                onChange: (e)=>{
-                                    setLname(e.target.value);
-                                },
-                                type: "text",
-                                className: "block border border-grey-light w-full p-3 rounded mb-4",
-                                name: "lname",
-                                placeholder: "Last Name"
-                            }, void 0, false, {
-                                fileName: "src/component/SignUpPage.js",
-                                lineNumber: 129,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "flex justify-center my-[10px] ",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                        className: "ml-[20px]",
-                                        value: "male",
-                                        type: "radio",
-                                        name: "gender",
-                                        onClick: (e)=>{
-                                            setGender(e.target.value);
-                                        }
-                                    }, void 0, false, {
-                                        fileName: "src/component/SignUpPage.js",
-                                        lineNumber: 138,
-                                        columnNumber: 25
-                                    }, this),
-                                    " Male",
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                        className: "ml-[20px]",
-                                        value: "female",
-                                        type: "radio",
-                                        name: "gender",
-                                        onClick: (e)=>{
-                                            setGender(e.target.value);
-                                        }
-                                    }, void 0, false, {
-                                        fileName: "src/component/SignUpPage.js",
-                                        lineNumber: 147,
-                                        columnNumber: 25
-                                    }, this),
-                                    "Female",
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                        className: "ml-[20px]",
-                                        value: "others",
-                                        type: "radio",
-                                        name: "gender",
-                                        onClick: (e)=>{
-                                            setGender(e.target.value);
-                                        }
-                                    }, void 0, false, {
-                                        fileName: "src/component/SignUpPage.js",
-                                        lineNumber: 156,
-                                        columnNumber: 25
-                                    }, this),
-                                    "Others"
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/component/SignUpPage.js",
-                                lineNumber: 137,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                value: number,
-                                onChange: (e)=>{
-                                    setNumber(e.target.value);
-                                },
-                                type: "number",
-                                className: "block border border-grey-light w-full p-3 rounded mb-4",
-                                name: "number",
-                                placeholder: "Mobile Number"
-                            }, void 0, false, {
-                                fileName: "src/component/SignUpPage.js",
-                                lineNumber: 167,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                value: email,
-                                onChange: (e)=>{
-                                    setEmail(e.target.value);
-                                },
-                                type: "text",
-                                className: "block border border-grey-light w-full p-3 rounded mb-4",
-                                name: "email",
-                                placeholder: "Email"
-                            }, void 0, false, {
-                                fileName: "src/component/SignUpPage.js",
-                                lineNumber: 175,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                value: password,
-                                onChange: (e)=>{
-                                    setPassword(e.target.value);
-                                },
-                                type: "password",
-                                className: "block border border-grey-light w-full p-3 rounded mb-4",
-                                name: "password",
-                                placeholder: "Password"
-                            }, void 0, false, {
-                                fileName: "src/component/SignUpPage.js",
-                                lineNumber: 183,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                value: confirmpassword,
-                                onChange: (e)=>{
-                                    setConfirmpassword(e.target.value);
-                                },
-                                type: "password",
-                                className: "block border border-grey-light w-full p-3 rounded mb-4",
-                                name: "confirm_password",
-                                placeholder: "Confirm Password"
-                            }, void 0, false, {
-                                fileName: "src/component/SignUpPage.js",
-                                lineNumber: 190,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                onClick: (e)=>validateData(e),
-                                type: "submit",
-                                className: "w-full text-center py-3 rounded bg-blue-400 text-white hover:bg-green-dark focus:outline-none my-1",
-                                children: "Create Account"
-                            }, void 0, false, {
-                                fileName: "src/component/SignUpPage.js",
-                                lineNumber: 198,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "text-center text-sm text-grey-dark mt-4",
-                                children: [
-                                    "By signing up, you agree to the",
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                        className: "no-underline border-b border-grey-dark text-grey-dark",
-                                        href: "#",
-                                        children: "Terms of Service"
-                                    }, void 0, false, {
-                                        fileName: "src/component/SignUpPage.js",
-                                        lineNumber: 206,
-                                        columnNumber: 25
-                                    }, this),
-                                    " and",
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                        className: "no-underline border-b border-grey-dark text-grey-dark",
-                                        href: "#",
-                                        children: "Privacy Policy"
-                                    }, void 0, false, {
-                                        fileName: "src/component/SignUpPage.js",
-                                        lineNumber: 209,
-                                        columnNumber: 25
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/component/SignUpPage.js",
-                                lineNumber: 204,
-                                columnNumber: 21
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/component/SignUpPage.js",
-                        lineNumber: 120,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "text-grey-dark mt-6",
-                        children: [
-                            "Already have an account?",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                className: "no-underline border-b border-blue text-blue",
-                                to: "/login",
-                                children: "Log in"
-                            }, void 0, false, {
-                                fileName: "src/component/SignUpPage.js",
-                                lineNumber: 217,
-                                columnNumber: 21
-                            }, this),
-                            "."
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/component/SignUpPage.js",
-                        lineNumber: 215,
-                        columnNumber: 17
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/component/SignUpPage.js",
-                lineNumber: 119,
-                columnNumber: 13
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactToastify.ToastContainer), {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                newestOnTop: false,
-                closeOnClick: true,
-                rtl: false,
-                pauseOnFocusLoss: true,
-                draggable: true,
-                pauseOnHover: true,
-                theme: "light"
-            }, void 0, false, {
-                fileName: "src/component/SignUpPage.js",
-                lineNumber: 224,
-                columnNumber: 13
-            }, this)
-        ]
-    }, void 0, true, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "bg-slate-100 px-6 py-8 shadow-md text-black w-full rounded-md",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                            className: "mb-8 text-3xl text-center",
+                            children: "Sign up"
+                        }, void 0, false, {
+                            fileName: "src/component/SignUpPage.js",
+                            lineNumber: 85,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            value: fname,
+                            onChange: (e)=>{
+                                setFname(e.target.value);
+                            },
+                            type: "text",
+                            className: "block border border-grey-light w-full p-3 rounded mb-4",
+                            name: "fname",
+                            placeholder: "First Name"
+                        }, void 0, false, {
+                            fileName: "src/component/SignUpPage.js",
+                            lineNumber: 86,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            value: lname,
+                            onChange: (e)=>{
+                                setLname(e.target.value);
+                            },
+                            type: "text",
+                            className: "block border border-grey-light w-full p-3 rounded mb-4",
+                            name: "lname",
+                            placeholder: "Last Name"
+                        }, void 0, false, {
+                            fileName: "src/component/SignUpPage.js",
+                            lineNumber: 93,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "flex justify-center my-[10px] ",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                    className: "ml-[20px]",
+                                    value: "male",
+                                    type: "radio",
+                                    name: "gender",
+                                    onClick: (e)=>{
+                                        setGender(e.target.value);
+                                    }
+                                }, void 0, false, {
+                                    fileName: "src/component/SignUpPage.js",
+                                    lineNumber: 102,
+                                    columnNumber: 25
+                                }, this),
+                                " Male",
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                    className: "ml-[20px]",
+                                    value: "female",
+                                    type: "radio",
+                                    name: "gender",
+                                    onClick: (e)=>{
+                                        setGender(e.target.value);
+                                    }
+                                }, void 0, false, {
+                                    fileName: "src/component/SignUpPage.js",
+                                    lineNumber: 111,
+                                    columnNumber: 25
+                                }, this),
+                                "Female",
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                    className: "ml-[20px]",
+                                    value: "others",
+                                    type: "radio",
+                                    name: "gender",
+                                    onClick: (e)=>{
+                                        setGender(e.target.value);
+                                    }
+                                }, void 0, false, {
+                                    fileName: "src/component/SignUpPage.js",
+                                    lineNumber: 120,
+                                    columnNumber: 25
+                                }, this),
+                                "Others"
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/component/SignUpPage.js",
+                            lineNumber: 101,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            value: number,
+                            onChange: (e)=>{
+                                setNumber(e.target.value);
+                            },
+                            type: "number",
+                            className: "block border border-grey-light w-full p-3 rounded mb-4",
+                            name: "number",
+                            placeholder: "Mobile Number"
+                        }, void 0, false, {
+                            fileName: "src/component/SignUpPage.js",
+                            lineNumber: 131,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            value: email,
+                            onChange: (e)=>{
+                                setEmail(e.target.value);
+                            },
+                            type: "text",
+                            className: "block border border-grey-light w-full p-3 rounded mb-4",
+                            name: "email",
+                            placeholder: "Email"
+                        }, void 0, false, {
+                            fileName: "src/component/SignUpPage.js",
+                            lineNumber: 139,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            value: password,
+                            onChange: (e)=>{
+                                setPassword(e.target.value);
+                            },
+                            type: "password",
+                            className: "block border border-grey-light w-full p-3 rounded mb-4",
+                            name: "password",
+                            placeholder: "Password"
+                        }, void 0, false, {
+                            fileName: "src/component/SignUpPage.js",
+                            lineNumber: 147,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                            value: confirmpassword,
+                            onChange: (e)=>{
+                                setConfirmpassword(e.target.value);
+                            },
+                            type: "password",
+                            className: "block border border-grey-light w-full p-3 rounded mb-4",
+                            name: "confirm_password",
+                            placeholder: "Confirm Password"
+                        }, void 0, false, {
+                            fileName: "src/component/SignUpPage.js",
+                            lineNumber: 154,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            onClick: (e)=>validateData(e),
+                            type: "submit",
+                            className: "w-full text-center py-3 rounded bg-blue-400 text-white hover:bg-green-dark focus:outline-none my-1",
+                            children: "Create Account"
+                        }, void 0, false, {
+                            fileName: "src/component/SignUpPage.js",
+                            lineNumber: 162,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "text-center text-sm text-grey-dark mt-4",
+                            children: [
+                                "By signing up, you agree to the",
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                    className: "no-underline border-b border-grey-dark text-grey-dark",
+                                    href: "#",
+                                    children: "Terms of Service"
+                                }, void 0, false, {
+                                    fileName: "src/component/SignUpPage.js",
+                                    lineNumber: 170,
+                                    columnNumber: 25
+                                }, this),
+                                " and",
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                    className: "no-underline border-b border-grey-dark text-grey-dark",
+                                    href: "#",
+                                    children: "Privacy Policy"
+                                }, void 0, false, {
+                                    fileName: "src/component/SignUpPage.js",
+                                    lineNumber: 173,
+                                    columnNumber: 25
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/component/SignUpPage.js",
+                            lineNumber: 168,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/component/SignUpPage.js",
+                    lineNumber: 84,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "text-grey-dark mt-6",
+                    children: [
+                        "Already have an account?",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                            className: "no-underline border-b border-blue text-blue",
+                            to: "/login",
+                            children: "Log in"
+                        }, void 0, false, {
+                            fileName: "src/component/SignUpPage.js",
+                            lineNumber: 181,
+                            columnNumber: 21
+                        }, this),
+                        "."
+                    ]
+                }, void 0, true, {
+                    fileName: "src/component/SignUpPage.js",
+                    lineNumber: 179,
+                    columnNumber: 17
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/component/SignUpPage.js",
+            lineNumber: 83,
+            columnNumber: 13
+        }, this)
+    }, void 0, false, {
         fileName: "src/component/SignUpPage.js",
-        lineNumber: 118,
+        lineNumber: 82,
         columnNumber: 9
     }, this);
 }
-_s(SignUpPage, "nd6s1K1s5ywRgji1DgTrDJ1SDCg=", false, function() {
+_s(SignUpPage, "doKZRDF8IH6Boy13LFPKyQXh9S4=", false, function() {
     return [
         (0, _reactRouterDom.useNavigate),
         (0, _reactRedux.useDispatch)
@@ -42312,28 +42219,10 @@ function LoginPage() {
         if (json.success) {
             dispatch((0, _loginSlice.setLoginStatus)(true));
             navigate("/");
-            (0, _reactToastify.toast)("" + json.message, {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark"
-            });
+            (0, _reactToastify.toast).success("" + json.message);
         } else {
             dispatch((0, _loginSlice.setLoginStatus)(false));
-            (0, _reactToastify.toast)(json.message, {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark"
-            });
+            (0, _reactToastify.toast).error(json.message);
         }
     }
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42341,7 +42230,7 @@ function LoginPage() {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactToastify.ToastContainer), {}, void 0, false, {
                 fileName: "src/component/LoginPage.js",
-                lineNumber: 81,
+                lineNumber: 63,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42352,7 +42241,7 @@ function LoginPage() {
                         children: "Login"
                     }, void 0, false, {
                         fileName: "src/component/LoginPage.js",
-                        lineNumber: 83,
+                        lineNumber: 65,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -42366,7 +42255,7 @@ function LoginPage() {
                                         children: "Email address"
                                     }, void 0, false, {
                                         fileName: "src/component/LoginPage.js",
-                                        lineNumber: 87,
+                                        lineNumber: 69,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42382,18 +42271,18 @@ function LoginPage() {
                                             className: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         }, void 0, false, {
                                             fileName: "src/component/LoginPage.js",
-                                            lineNumber: 89,
+                                            lineNumber: 71,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "src/component/LoginPage.js",
-                                        lineNumber: 88,
+                                        lineNumber: 70,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/LoginPage.js",
-                                lineNumber: 86,
+                                lineNumber: 68,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42407,7 +42296,7 @@ function LoginPage() {
                                                 children: "Password"
                                             }, void 0, false, {
                                                 fileName: "src/component/LoginPage.js",
-                                                lineNumber: 96,
+                                                lineNumber: 78,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42418,18 +42307,18 @@ function LoginPage() {
                                                     children: "Forgot password?"
                                                 }, void 0, false, {
                                                     fileName: "src/component/LoginPage.js",
-                                                    lineNumber: 98,
+                                                    lineNumber: 80,
                                                     columnNumber: 33
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "src/component/LoginPage.js",
-                                                lineNumber: 97,
+                                                lineNumber: 79,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/LoginPage.js",
-                                        lineNumber: 95,
+                                        lineNumber: 77,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42445,18 +42334,18 @@ function LoginPage() {
                                             className: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         }, void 0, false, {
                                             fileName: "src/component/LoginPage.js",
-                                            lineNumber: 102,
+                                            lineNumber: 84,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "src/component/LoginPage.js",
-                                        lineNumber: 101,
+                                        lineNumber: 83,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/LoginPage.js",
-                                lineNumber: 94,
+                                lineNumber: 76,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42467,12 +42356,12 @@ function LoginPage() {
                                     children: "Sign in"
                                 }, void 0, false, {
                                     fileName: "src/component/LoginPage.js",
-                                    lineNumber: 108,
+                                    lineNumber: 90,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/LoginPage.js",
-                                lineNumber: 107,
+                                lineNumber: 89,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42485,32 +42374,32 @@ function LoginPage() {
                                         children: "Create Account Now !"
                                     }, void 0, false, {
                                         fileName: "src/component/LoginPage.js",
-                                        lineNumber: 115,
+                                        lineNumber: 97,
                                         columnNumber: 25
                                     }, this),
                                     "."
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/LoginPage.js",
-                                lineNumber: 113,
+                                lineNumber: 95,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/component/LoginPage.js",
-                        lineNumber: 85,
+                        lineNumber: 67,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/component/LoginPage.js",
-                lineNumber: 82,
+                lineNumber: 64,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/LoginPage.js",
-        lineNumber: 79,
+        lineNumber: 61,
         columnNumber: 9
     }, this);
 }
@@ -42615,221 +42504,222 @@ function UserProfileCom() {
                 ]
             }, void 0, true, {
                 fileName: "src/component/UserProfileCom.js",
-                lineNumber: 76,
+                lineNumber: 78,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                class: " px-5 bg-white ",
+                className: " px-5 bg-white ",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    class: "grid divide-y divide-neutral-200  mt-8",
+                    className: "grid divide-y divide-neutral-200  mt-8",
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            class: "py-5",
+                            className: "py-5",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("details", {
-                                class: "group",
+                                className: "group",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("summary", {
-                                        class: "flex justify-between items-center font-medium cursor-pointer list-none",
+                                        className: "flex justify-between items-center font-medium cursor-pointer list-none",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                 children: " Orders"
                                             }, void 0, false, {
                                                 fileName: "src/component/UserProfileCom.js",
-                                                lineNumber: 88,
+                                                lineNumber: 90,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                class: "transition group-open:rotate-180",
+                                                className: "transition group-open:rotate-180",
                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
                                                     fill: "none",
                                                     height: "24",
-                                                    "shape-rendering": "geometricPrecision",
+                                                    shapeRendering: "geometricPrecision",
                                                     stroke: "currentColor",
-                                                    "stroke-linecap": "round",
-                                                    "stroke-linejoin": "round",
-                                                    "stroke-width": "1.5",
+                                                    strokeLinecap: "round",
+                                                    strokeLinejoin: "round",
+                                                    strokeWidth: "1.5",
                                                     viewBox: "0 0 24 24",
                                                     width: "24",
                                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
                                                         d: "M6 9l6 6 6-6"
                                                     }, void 0, false, {
                                                         fileName: "src/component/UserProfileCom.js",
-                                                        lineNumber: 90,
-                                                        columnNumber: 204
+                                                        lineNumber: 92,
+                                                        columnNumber: 200
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "src/component/UserProfileCom.js",
-                                                    lineNumber: 90,
+                                                    lineNumber: 92,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "src/component/UserProfileCom.js",
-                                                lineNumber: 89,
+                                                lineNumber: 91,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/UserProfileCom.js",
-                                        lineNumber: 87,
+                                        lineNumber: 89,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _ordersComDefault.default), {
-                                        class: "text-neutral-600 mt-3 group-open:animate-fadeIn flex flex-col items-center"
+                                        className: "text-neutral-600 mt-3 group-open:animate-fadeIn flex flex-col items-center",
+                                        getCurrentUserInfo: getCurrentUserInfo
                                     }, void 0, false, {
                                         fileName: "src/component/UserProfileCom.js",
-                                        lineNumber: 94,
+                                        lineNumber: 96,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/UserProfileCom.js",
-                                lineNumber: 86,
+                                lineNumber: 88,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "src/component/UserProfileCom.js",
-                            lineNumber: 85,
+                            lineNumber: 87,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            class: "py-5",
+                            className: "py-5",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("details", {
-                                class: "group",
+                                className: "group",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("summary", {
-                                        class: "flex justify-between items-center font-medium cursor-pointer list-none",
+                                        className: "flex justify-between items-center font-medium cursor-pointer list-none",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                 children: " Edit Profile"
                                             }, void 0, false, {
                                                 fileName: "src/component/UserProfileCom.js",
-                                                lineNumber: 102,
+                                                lineNumber: 104,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                class: "transition group-open:rotate-180",
+                                                className: "transition group-open:rotate-180",
                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
                                                     fill: "none",
                                                     height: "24",
-                                                    "shape-rendering": "geometricPrecision",
+                                                    shapeRendering: "geometricPrecision",
                                                     stroke: "currentColor",
-                                                    "stroke-linecap": "round",
-                                                    "stroke-linejoin": "round",
-                                                    "stroke-width": "1.5",
+                                                    strokeLinecap: "round",
+                                                    strokeLinejoin: "round",
+                                                    strokeWidth: "1.5",
                                                     viewBox: "0 0 24 24",
                                                     width: "24",
                                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
                                                         d: "M6 9l6 6 6-6"
                                                     }, void 0, false, {
                                                         fileName: "src/component/UserProfileCom.js",
-                                                        lineNumber: 104,
-                                                        columnNumber: 204
+                                                        lineNumber: 106,
+                                                        columnNumber: 200
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "src/component/UserProfileCom.js",
-                                                    lineNumber: 104,
+                                                    lineNumber: 106,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "src/component/UserProfileCom.js",
-                                                lineNumber: 103,
+                                                lineNumber: 105,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/UserProfileCom.js",
-                                        lineNumber: 101,
+                                        lineNumber: 103,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _editProfileFormDefault.default), {
-                                        class: "text-neutral-600 mt-3 group-open:animate-fadeIn",
+                                        className: "text-neutral-600 mt-3 group-open:animate-fadeIn",
                                         setUpdateToggle: setUpdateToggle,
                                         updatetoggle: updatetoggle
                                     }, void 0, false, {
                                         fileName: "src/component/UserProfileCom.js",
-                                        lineNumber: 108,
+                                        lineNumber: 110,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/UserProfileCom.js",
-                                lineNumber: 100,
+                                lineNumber: 102,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "src/component/UserProfileCom.js",
-                            lineNumber: 99,
+                            lineNumber: 101,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            class: "py-5",
+                            className: "py-5",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("details", {
-                                class: "group",
+                                className: "group",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("summary", {
-                                        class: "flex justify-between items-center font-medium cursor-pointer list-none",
+                                        className: "flex justify-between items-center font-medium cursor-pointer list-none",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                 children: " Address"
                                             }, void 0, false, {
                                                 fileName: "src/component/UserProfileCom.js",
-                                                lineNumber: 118,
+                                                lineNumber: 120,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                class: "transition group-open:rotate-180",
+                                                className: "transition group-open:rotate-180",
                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
                                                     fill: "none",
                                                     height: "24",
-                                                    "shape-rendering": "geometricPrecision",
+                                                    shapeRendering: "geometricPrecision",
                                                     stroke: "currentColor",
-                                                    "stroke-linecap": "round",
-                                                    "stroke-linejoin": "round",
-                                                    "stroke-width": "1.5",
+                                                    strokeLinecap: "round",
+                                                    strokeLinejoin: "round",
+                                                    strokeWidth: "1.5",
                                                     viewBox: "0 0 24 24",
                                                     width: "24",
                                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
                                                         d: "M6 9l6 6 6-6"
                                                     }, void 0, false, {
                                                         fileName: "src/component/UserProfileCom.js",
-                                                        lineNumber: 120,
-                                                        columnNumber: 204
+                                                        lineNumber: 122,
+                                                        columnNumber: 200
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "src/component/UserProfileCom.js",
-                                                    lineNumber: 120,
+                                                    lineNumber: 122,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "src/component/UserProfileCom.js",
-                                                lineNumber: 119,
+                                                lineNumber: 121,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/UserProfileCom.js",
-                                        lineNumber: 117,
+                                        lineNumber: 119,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _adressComDefault.default), {
-                                        class: "text-neutral-600 mt-3 group-open:animate-fadeIn",
+                                        className: "text-neutral-600 mt-3 group-open:animate-fadeIn",
                                         setUpdateToggle: setUpdateToggle,
                                         updatetoggle: updatetoggle,
                                         cartpage: false
                                     }, void 0, false, {
                                         fileName: "src/component/UserProfileCom.js",
-                                        lineNumber: 124,
+                                        lineNumber: 126,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/UserProfileCom.js",
-                                lineNumber: 116,
+                                lineNumber: 118,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "src/component/UserProfileCom.js",
-                            lineNumber: 115,
+                            lineNumber: 117,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -42838,24 +42728,24 @@ function UserProfileCom() {
                             children: "Log Out"
                         }, void 0, false, {
                             fileName: "src/component/UserProfileCom.js",
-                            lineNumber: 129,
+                            lineNumber: 132,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/component/UserProfileCom.js",
-                    lineNumber: 83,
+                    lineNumber: 85,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/component/UserProfileCom.js",
-                lineNumber: 81,
+                lineNumber: 83,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/UserProfileCom.js",
-        lineNumber: 75,
+        lineNumber: 77,
         columnNumber: 5
     }, this);
 }
@@ -42891,8 +42781,6 @@ var _reactRedux = require("react-redux");
 var _store = require("../utility/store");
 var _storeDefault = parcelHelpers.interopDefault(_store);
 var _reactToastify = require("react-toastify");
-var _emailValidator = require("email-validator");
-var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
 function EditProfileForm(props) {
     _s();
@@ -42901,7 +42789,6 @@ function EditProfileForm(props) {
     const [gender, setGender] = (0, _react.useState)("");
     const [number, setNumber] = (0, _react.useState)("");
     const userStore = (0, _reactRedux.useSelector)((store)=>store.user.userdata);
-    const navigate = (0, _reactRouterDom.useNavigate)();
     function validateData(e) {
         e.preventDefault();
         (0, _reactToastify.toast).loading("Updating....");
@@ -42962,7 +42849,7 @@ function EditProfileForm(props) {
                 placeholder: "First Name"
             }, void 0, false, {
                 fileName: "src/component/EditProfileForm.js",
-                lineNumber: 74,
+                lineNumber: 71,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -42976,7 +42863,7 @@ function EditProfileForm(props) {
                 placeholder: "Last Name"
             }, void 0, false, {
                 fileName: "src/component/EditProfileForm.js",
-                lineNumber: 81,
+                lineNumber: 78,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -42990,7 +42877,7 @@ function EditProfileForm(props) {
                 placeholder: "Mobile Number"
             }, void 0, false, {
                 fileName: "src/component/EditProfileForm.js",
-                lineNumber: 89,
+                lineNumber: 86,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43007,7 +42894,7 @@ function EditProfileForm(props) {
                         }
                     }, void 0, false, {
                         fileName: "src/component/EditProfileForm.js",
-                        lineNumber: 97,
+                        lineNumber: 94,
                         columnNumber: 17
                     }, this),
                     " Male",
@@ -43022,7 +42909,7 @@ function EditProfileForm(props) {
                         }
                     }, void 0, false, {
                         fileName: "src/component/EditProfileForm.js",
-                        lineNumber: 107,
+                        lineNumber: 104,
                         columnNumber: 17
                     }, this),
                     "Female",
@@ -43037,14 +42924,14 @@ function EditProfileForm(props) {
                         }
                     }, void 0, false, {
                         fileName: "src/component/EditProfileForm.js",
-                        lineNumber: 117,
+                        lineNumber: 114,
                         columnNumber: 17
                     }, this),
                     "Others"
                 ]
             }, void 0, true, {
                 fileName: "src/component/EditProfileForm.js",
-                lineNumber: 96,
+                lineNumber: 93,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -43053,20 +42940,19 @@ function EditProfileForm(props) {
                 children: "Save"
             }, void 0, false, {
                 fileName: "src/component/EditProfileForm.js",
-                lineNumber: 128,
+                lineNumber: 125,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/EditProfileForm.js",
-        lineNumber: 73,
+        lineNumber: 70,
         columnNumber: 9
     }, this);
 }
-_s(EditProfileForm, "uawbFJ0oEi9NAlpKtBNqfCGKaJg=", false, function() {
+_s(EditProfileForm, "4H92KCI6qg70A+ZP9ax76h6cMdw=", false, function() {
     return [
-        (0, _reactRedux.useSelector),
-        (0, _reactRouterDom.useNavigate)
+        (0, _reactRedux.useSelector)
     ];
 });
 _c = EditProfileForm;
@@ -43078,7 +42964,7 @@ $RefreshReg$(_c, "EditProfileForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","../utility/store":"7oLTM","react-toastify":"kSvyQ","email-validator":"gi6bx","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iBsfs":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","../utility/store":"7oLTM","react-toastify":"kSvyQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iBsfs":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$041a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -43101,11 +42987,11 @@ var _s = $RefreshSig$();
 function Orders_Com() {
     _s();
     const [orders, setOrder] = (0, _react.useState)([]);
-    const userStore = (0, _reactRedux.useSelector)((store)=>store.user.userdata);
+    const userStore = (0, _reactRedux.useSelector)((store)=>store?.user?.userdata);
     const stored_data = (0, _reactRedux.useSelector)((store)=>store?.products?.items);
     (0, _react.useEffect)(()=>{
         let data = {
-            email: userStore.profile.email
+            email: userStore?.profile?.email
         };
         data = JSON.stringify(data);
         getOrderData(data);
@@ -43124,10 +43010,8 @@ function Orders_Com() {
                 body: data
             });
             const json = await result.json();
-            if (json.success) {
-                setOrder(json.orders);
-                console.log(orders);
-            } else (0, _reactToastify.toast).error("Login With Correct Email ID");
+            if (json.success) setOrder(json.orders);
+            else (0, _reactToastify.toast).error("Login With Correct Email ID");
         } catch (error) {
             (0, _reactToastify.toast).error(error);
         }
@@ -43136,74 +43020,74 @@ function Orders_Com() {
         let s = stored_data?.filter((p, index)=>p?._id == order_id);
         return s[0];
     }
-    return orders.length > 0 ? orders.map((p)=>{
+    return orders.length > 0 ? orders.map((p, index)=>{
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "border rounded-[10px] p-[20px] bg-slate-100  mt-[20px]",
             children: [
                 p?.product_details.map((i)=>{
-                    const product = getProductData(i.product_id);
+                    const product = getProductData(i?.product_id);
                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "flex p-[3px] justify-center items-center max-[800px]:flex-col ",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                src: product.imageUrl,
+                                src: product?.imageUrl,
                                 className: " w-[200px] h-[20%]"
                             }, void 0, false, {
                                 fileName: "src/component/Orders_Com.js",
-                                lineNumber: 64,
-                                columnNumber: 21
+                                lineNumber: 65,
+                                columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 className: "m-[10px]",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                                         className: "text-[20px] font-semibold",
-                                        children: product.title
-                                    }, void 0, false, {
-                                        fileName: "src/component/Orders_Com.js",
-                                        lineNumber: 66,
-                                        columnNumber: 21
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        children: product.description
+                                        children: product?.title
                                     }, void 0, false, {
                                         fileName: "src/component/Orders_Com.js",
                                         lineNumber: 67,
-                                        columnNumber: 21
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        children: product?.description
+                                    }, void 0, false, {
+                                        fileName: "src/component/Orders_Com.js",
+                                        lineNumber: 68,
+                                        columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                                         className: "text-[20px] ",
                                         children: [
                                             "Price:",
-                                            product.price,
+                                            product?.price,
                                             "₹"
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/Orders_Com.js",
-                                        lineNumber: 69,
-                                        columnNumber: 21
+                                        lineNumber: 70,
+                                        columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                         children: [
                                             "Quantity:",
-                                            i.quantity
+                                            i?.quantity
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/Orders_Com.js",
-                                        lineNumber: 70,
-                                        columnNumber: 21
+                                        lineNumber: 71,
+                                        columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Orders_Com.js",
-                                lineNumber: 65,
-                                columnNumber: 21
+                                lineNumber: 66,
+                                columnNumber: 25
                             }, this)
                         ]
-                    }, void 0, true, {
+                    }, i?.product_id, true, {
                         fileName: "src/component/Orders_Com.js",
-                        lineNumber: 63,
-                        columnNumber: 24
+                        lineNumber: 64,
+                        columnNumber: 28
                     }, this);
                 }),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43217,21 +43101,21 @@ function Orders_Com() {
                                     children: "ORDER ID:"
                                 }, void 0, false, {
                                     fileName: "src/component/Orders_Com.js",
-                                    lineNumber: 79,
-                                    columnNumber: 17
+                                    lineNumber: 80,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                    children: p.order_id
+                                    children: p?.order_id
                                 }, void 0, false, {
                                     fileName: "src/component/Orders_Com.js",
-                                    lineNumber: 80,
-                                    columnNumber: 17
+                                    lineNumber: 81,
+                                    columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/component/Orders_Com.js",
-                            lineNumber: 78,
-                            columnNumber: 17
+                            lineNumber: 79,
+                            columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "flex justify-between max-[460px]:flex-col",
@@ -43241,21 +43125,21 @@ function Orders_Com() {
                                     children: "Delevery status:"
                                 }, void 0, false, {
                                     fileName: "src/component/Orders_Com.js",
-                                    lineNumber: 83,
-                                    columnNumber: 17
+                                    lineNumber: 84,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                    children: p.delevery_status
+                                    children: p?.delevery_status
                                 }, void 0, false, {
                                     fileName: "src/component/Orders_Com.js",
-                                    lineNumber: 84,
-                                    columnNumber: 17
+                                    lineNumber: 85,
+                                    columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/component/Orders_Com.js",
-                            lineNumber: 82,
-                            columnNumber: 17
+                            lineNumber: 83,
+                            columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "flex justify-between max-[460px]:flex-col",
@@ -43265,21 +43149,21 @@ function Orders_Com() {
                                     children: "Payment status:"
                                 }, void 0, false, {
                                     fileName: "src/component/Orders_Com.js",
-                                    lineNumber: 87,
-                                    columnNumber: 17
+                                    lineNumber: 88,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                    children: p.payment_status
+                                    children: p?.payment_status
                                 }, void 0, false, {
                                     fileName: "src/component/Orders_Com.js",
-                                    lineNumber: 88,
-                                    columnNumber: 17
+                                    lineNumber: 89,
+                                    columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/component/Orders_Com.js",
-                            lineNumber: 86,
-                            columnNumber: 17
+                            lineNumber: 87,
+                            columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "flex justify-between border-t-2 max-[460px]:flex-col",
@@ -43289,35 +43173,35 @@ function Orders_Com() {
                                     children: "Total Amount:"
                                 }, void 0, false, {
                                     fileName: "src/component/Orders_Com.js",
-                                    lineNumber: 91,
-                                    columnNumber: 17
+                                    lineNumber: 92,
+                                    columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                     children: [
-                                        p.amount,
+                                        p?.amount,
                                         "₹"
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/component/Orders_Com.js",
-                                    lineNumber: 92,
-                                    columnNumber: 17
+                                    lineNumber: 93,
+                                    columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/component/Orders_Com.js",
-                            lineNumber: 90,
-                            columnNumber: 17
+                            lineNumber: 91,
+                            columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/component/Orders_Com.js",
-                    lineNumber: 77,
-                    columnNumber: 13
+                    lineNumber: 78,
+                    columnNumber: 17
                 }, this)
             ]
-        }, void 0, true, {
+        }, index, true, {
             fileName: "src/component/Orders_Com.js",
-            lineNumber: 59,
+            lineNumber: 60,
             columnNumber: 20
         }, this);
     }) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43328,14 +43212,14 @@ function Orders_Com() {
                 width: 300
             }, void 0, false, {
                 fileName: "src/component/Orders_Com.js",
-                lineNumber: 98,
+                lineNumber: 99,
                 columnNumber: 73
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "You Dont Have Any recent orders"
             }, void 0, false, {
                 fileName: "src/component/Orders_Com.js",
-                lineNumber: 99,
+                lineNumber: 100,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -43345,18 +43229,18 @@ function Orders_Com() {
                     children: "Shop Now"
                 }, void 0, false, {
                     fileName: "src/component/Orders_Com.js",
-                    lineNumber: 101,
+                    lineNumber: 102,
                     columnNumber: 27
                 }, this)
             }, void 0, false, {
                 fileName: "src/component/Orders_Com.js",
-                lineNumber: 101,
+                lineNumber: 102,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/Orders_Com.js",
-        lineNumber: 98,
+        lineNumber: 99,
         columnNumber: 14
     }, this);
 }
@@ -43414,7 +43298,7 @@ function Payment_Success_Page() {
             }, void 0, false, {
                 fileName: "src/component/Payment_Success_Page.js",
                 lineNumber: 29,
-                columnNumber: 9
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "flex justify-center flex-col items-center h-[500px]",
@@ -43425,7 +43309,7 @@ function Payment_Success_Page() {
                     }, void 0, false, {
                         fileName: "src/component/Payment_Success_Page.js",
                         lineNumber: 32,
-                        columnNumber: 13
+                        columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         className: "text-gray-400",
@@ -43436,21 +43320,28 @@ function Payment_Success_Page() {
                     }, void 0, true, {
                         fileName: "src/component/Payment_Success_Page.js",
                         lineNumber: 33,
-                        columnNumber: 13
+                        columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        className: "bg-blue-500 mt-[50px] text-white px-[10px] rounded-md py-[5px]",
-                        children: "Go to Orders"
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                        to: "/myProfile",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            className: "bg-blue-500 mt-[50px] text-white px-[10px] rounded-md py-[5px]",
+                            children: "Go to Orders"
+                        }, void 0, false, {
+                            fileName: "src/component/Payment_Success_Page.js",
+                            lineNumber: 34,
+                            columnNumber: 31
+                        }, this)
                     }, void 0, false, {
                         fileName: "src/component/Payment_Success_Page.js",
                         lineNumber: 34,
-                        columnNumber: 13
+                        columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/component/Payment_Success_Page.js",
                 lineNumber: 31,
-                columnNumber: 9
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
@@ -43459,7 +43350,7 @@ function Payment_Success_Page() {
         columnNumber: 5
     }, this);
 }
-_s(Payment_Success_Page, "nI0gNx8AjQCA6EmB5MXwBggPEfc=", false, function() {
+_s(Payment_Success_Page, "AJhWfDd5bZRsHIONPYoK38WbVuk=", false, function() {
     return [
         (0, _reactRouterDom.useParams),
         (0, _reactRedux.useSelector)

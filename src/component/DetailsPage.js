@@ -67,16 +67,7 @@ export default function DetailsPage() {
             add_mongoDb_cart(details[0], userdata)
 
         }
-        toast('Item Added to Cart!', {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-        });
+        toast.success('Item Added to Cart!');
 
     }
 
@@ -119,18 +110,7 @@ export default function DetailsPage() {
                     <a href='#nav' className='scroll-smooth'>  <button onClick={() => setdata_tocart()}
                         className='bg-black px-[10px] py-[5px] text-white mt-4 rounded-xl '>Add to Cart</button>
                     </a>
-                    <ToastContainer
-                        position="bottom-right"
-                        autoClose={5000}
-                        hideProgressBar={false}
-                        newestOnTop={false}
-                        closeOnClick
-                        rtl={false}
-                        pauseOnFocusLoss
-                        draggable
-                        pauseOnHover
-                        theme="light"
-                    />
+                  
 
                 </div>
 

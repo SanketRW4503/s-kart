@@ -40,7 +40,7 @@ export default function LoginPage() {
     async function loginUser(userData) {
         let res = await fetch('https://s-kart-backend.onrender.com/user/login', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },withCredntials: true,
+            headers: { 'Content-Type': 'application/json' }, withCredntials: true,
             credentials: 'include',
             body: userData
         })
@@ -48,28 +48,10 @@ export default function LoginPage() {
         if (json.success) {
             dispatch(setLoginStatus(true));
             navigate('/');
-            toast('' + json.message, {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast.success('' + json.message);
         } else {
             dispatch(setLoginStatus(false));
-            toast(json.message, {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast.error(json.message);
         }
 
     }

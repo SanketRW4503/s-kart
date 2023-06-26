@@ -82,7 +82,7 @@ export default function AdressCom(props) {
 
     useEffect(() => {
 
-        if (userStore.profile.address !== 'undefined') {
+        if (userStore?.profile?.address !== undefined) {
             const add = userStore.profile.address.replace('-', ',')
             let d = add.split(',');
             setAddress_line_1(d[0]);

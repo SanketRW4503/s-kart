@@ -8,7 +8,7 @@ import { add_mongoDb_cart, deleteitem_from_Mongodb, remove_item_mongoDb_cart } f
 import { setUser } from '../utility/userSlice';
 import { setLoginStatus } from '../utility/loginSlice';
 import { useEffect, useState } from 'react';
-import { Await, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import AdressCom from './AdressCom';
 
 
@@ -74,16 +74,7 @@ export default function CartPage() {
             dispatch(deleteItem(item))
 
 
-            toast('removed from Cart!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
+            toast.success('removed from Cart!')
 
         } else {
             // on minus click it will remove one item only
@@ -102,16 +93,7 @@ export default function CartPage() {
             deleteitem_from_Mongodb(item, userdata)
         }
         dispatch(deleteItem(item))
-        toast('removed from Cart!', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
+        toast.success('removed from Cart!');
     }
 
 

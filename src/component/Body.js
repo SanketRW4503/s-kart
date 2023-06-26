@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { All_PRODUCTS, GET_ALL_CATEGORY } from '../utility/constants';
+import { GET_ALL_CATEGORY } from '../utility/constants';
 import ShowCard from './ShowCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeData } from '../utility/dataSlice';
@@ -20,7 +20,6 @@ export default function Body() {
     const [filterStatus, setFilterStatus] = useState(false)
     const [preLi, setPreLi] = useState('');
 
-    let dispatch = useDispatch()
     const stored_data = useSelector(store => store?.products?.items);
 
 
@@ -28,13 +27,12 @@ export default function Body() {
 
 
     useEffect(() => {
-        if (stored_data.length > 0) {
+        if (stored_data?.length > 0) {
             setProducts(stored_data)
             getAllCategory()
 
             setLoading(false)
         } else {
-            getAllProduct()
             getAllCategory()
             setLoading(false)
         }
@@ -62,26 +60,7 @@ export default function Body() {
 
     }
 
-    // fetching data from api
-    async function getAllProduct() {
 
-        try {
-            const res = await fetch(All_PRODUCTS, {
-                method: 'GET', withCredntials: true,
-                credentials: 'include'
-            });
-            const json = await res.json()
-
-            dispatch(storeData(json.items))
-
-            setProducts(json)
-        } catch (error) {
-
-            console.log('s' + error);
-        }
-
-
-    }
 
 
     // set-perticular category (when user selects category)

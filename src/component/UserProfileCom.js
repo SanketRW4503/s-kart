@@ -59,6 +59,8 @@ export default function UserProfileCom() {
 
   }
 
+ 
+
   useEffect(() => {
     getCurrentUserInfo();
   }, [updatetoggle])
@@ -78,50 +80,51 @@ export default function UserProfileCom() {
 
 
 
-      <div class=" px-5 bg-white ">
+      <div className=" px-5 bg-white ">
 
-        <div class="grid divide-y divide-neutral-200  mt-8">
+        <div className="grid divide-y divide-neutral-200  mt-8">
           {/* orders */}
-          <div class="py-5">
-            <details class="group">
-              <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+          <div className="py-5">
+            <details className="group">
+              <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                 <span> Orders</span>
-                <span class="transition group-open:rotate-180">
-                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+                <span className="transition group-open:rotate-180">
+                  <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
                   </svg>
                 </span>
               </summary>
-              <Orders_Com class="text-neutral-600 mt-3 group-open:animate-fadeIn flex flex-col items-center"/>
+              <Orders_Com className="text-neutral-600 mt-3 group-open:animate-fadeIn flex flex-col items-center" getCurrentUserInfo={getCurrentUserInfo}/>
              
             </details>
           </div>
           {/* edit profile */}
-          <div class="py-5">
-            <details class="group">
-              <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+          <div className="py-5">
+            <details className="group">
+              <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                 <span> Edit Profile</span>
-                <span class="transition group-open:rotate-180">
-                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+                <span className="transition group-open:rotate-180">
+                  <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
                   </svg>
                 </span>
               </summary>
-              <EditProfileForm class="text-neutral-600 mt-3 group-open:animate-fadeIn" setUpdateToggle={setUpdateToggle} updatetoggle={updatetoggle} />
+              <EditProfileForm className="text-neutral-600 mt-3 group-open:animate-fadeIn" setUpdateToggle={setUpdateToggle} updatetoggle={updatetoggle} />
 
 
 
 
             </details>
           </div>
-          <div class="py-5">
-            <details class="group">
-              <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+          <div className="py-5">
+            <details className="group">
+              <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                 <span> Address</span>
-                <span class="transition group-open:rotate-180">
-                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+                <span className="transition group-open:rotate-180">
+                  <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
                   </svg>
                 </span>
               </summary>
-              <AdressCom class="text-neutral-600 mt-3 group-open:animate-fadeIn" setUpdateToggle={setUpdateToggle} updatetoggle={updatetoggle}  cartpage={false} />
+              <AdressCom className="text-neutral-600 mt-3 group-open:animate-fadeIn" 
+              setUpdateToggle={setUpdateToggle} updatetoggle={updatetoggle}  cartpage={false} />
             </details>
           </div>
 

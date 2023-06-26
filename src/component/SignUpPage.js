@@ -11,7 +11,7 @@ export default function SignUpPage() {
     const [gender, setGender] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [number,setNumber]= useState('')
+    const [number, setNumber] = useState('')
     const [confirmpassword, setConfirmpassword] = useState('')
 
     let navigate = useNavigate()
@@ -19,19 +19,10 @@ export default function SignUpPage() {
 
     async function validateData(e) {
         e.preventDefault()
-        let userData = { confirmpassword: confirmpassword, firstname: fname, lastname: lname, gender: gender,contact_no:number ,email: email, password: password }
+        let userData = { confirmpassword: confirmpassword, firstname: fname, lastname: lname, gender: gender, contact_no: number, email: email, password: password }
 
         if (confirmpassword !== password) {
-            toast('Confirm Password & password Mismatch !', {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast.error('Confirm Password & password Mismatch !');
 
         } else if (fname.length == 0) {
             toast.error('Enter Your First Name !')
@@ -42,36 +33,18 @@ export default function SignUpPage() {
         } else if (gender.length == 0) {
             toast.error('Select Your Gender')
 
-        }else if (number.length == 0) {
+        } else if (number.length == 0) {
             toast.error('Enter Your Mobile Number')
 
-        }else if (number.length >10) {
+        } else if (number.length > 10) {
             toast.error('Enter Valid Mobile Number')
 
         }
         else if (password.length < 8) {
-            toast('Password Length Should be greater than 8', {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast.error('Password Length Should be greater than 8');
 
         } else if (!validate(email)) {
-            toast('INVALID EMAIL', {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast.error('INVALID EMAIL');
         } else {
             userData = JSON.stringify(userData);
             createAC(userData);
@@ -98,16 +71,7 @@ export default function SignUpPage() {
             dispatch(setLoginStatus(true));
 
             navigate('/');
-            toast('Login Success !', {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast.success('Login Success !');
         } else {
             dispatch(setLoginStatus(false));
         }
@@ -221,18 +185,7 @@ export default function SignUpPage() {
             </div>
 
 
-            <ToastContainer
-                position="bottom-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
+
         </div>
     )
 }
