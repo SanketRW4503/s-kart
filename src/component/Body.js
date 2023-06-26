@@ -1,26 +1,29 @@
-import  { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { All_PRODUCTS, GET_ALL_CATEGORY } from '../utility/constants';
 import ShowCard from './ShowCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeData } from '../utility/dataSlice';
 import store from '../utility/store';
 import ShimmerCard from './ShimmerCard';
-import { dollertoinr, shuffleArray } from '../utility/utility';
+import { shuffleArray } from '../utility/utility';
 import filtericon from '..//../assets/images/filter.png'
+
 export default function Body() {
 
 
 
     const [product, setProducts] = useState([]);
     const [filtertab, setFilterTab] = useState(false);
-    const [category, setCategory] = useState();
+    const [category, setCategory] = useState([]);
     const [loading, setLoading] = useState(true);
     const [minPrice, setMinPrice] = useState(100000)
     const [filterStatus, setFilterStatus] = useState(false)
     const [preLi, setPreLi] = useState('');
 
-    const dispatch = useDispatch()
+    let dispatch = useDispatch()
     const stored_data = useSelector(store => store?.products?.items);
+
+
 
 
 
@@ -45,9 +48,13 @@ export default function Body() {
     async function getAllCategory() {
 
         try {
-            const res = await fetch(GET_ALL_CATEGORY);
+            const res = await fetch(GET_ALL_CATEGORY,
+                {
+                    method: 'GET', withCredntials: true,
+                    credentials: 'include'
+                });
             const json = await res.json()
-            setCategory(json)
+            setCategory(json.allcollection)
         } catch (error) {
             console.log('s' + error);
         }
@@ -59,11 +66,17 @@ export default function Body() {
     async function getAllProduct() {
 
         try {
-            const res = await fetch(All_PRODUCTS);
+            const res = await fetch(All_PRODUCTS, {
+                method: 'GET', withCredntials: true,
+                credentials: 'include'
+            });
             const json = await res.json()
-            dispatch(storeData(json))
+
+            dispatch(storeData(json.items))
+
             setProducts(json)
         } catch (error) {
+
             console.log('s' + error);
         }
 
@@ -95,7 +108,7 @@ export default function Body() {
     //for filter price range change
     useEffect(() => {
         if (minPrice != 100000) {
-            let data = product.filter((p) => dollertoinr(p.price) < minPrice)
+            let data = product.filter((p) => p.price < minPrice)
             setProducts(data)
             setFilterStatus(true)
         }
@@ -113,10 +126,10 @@ export default function Body() {
 
 
         if (abovefour.checked && abovethree.checked == false) {
-            let data = product.filter((p) => p.rating.rate > 4.5)
+            let data = product.filter((p) => p.rating > 4.5)
             setProducts(data)
         } else if (abovethree.checked && abovefour.checked == false) {
-            let data = product.filter((p) => p.rating.rate > 3.5)
+            let data = product.filter((p) => p.rating > 3.5)
             setProducts(data)
 
         } else if (abovethree.checked && abovefour.checked) {
@@ -137,7 +150,6 @@ export default function Body() {
 
         if (e !== undefined) {
             let IndexItem = document.getElementById('mySelect').selectedIndex;
-            console.log(IndexItem);
             if (IndexItem == 1) {
 
                 let lowtoHigh = product.slice().sort((p1, p2) => (p1.price > p2.price) ? 1 : (p1.price < p2.price) ? -1 : 0);
@@ -169,7 +181,7 @@ export default function Body() {
     }
 
 
-   
+
 
     // it changes filter text color onclick
     function filterColor() {
@@ -200,13 +212,13 @@ export default function Body() {
                         <li onClick={() => setcat('all')} className='px-4 cursor-pointer max-[764px]:text-[12px] font-semibold whitespace-nowrap ml-4'
                             id='all_product'>all products</li>
                         {category?.map((p, index) => {
-                            return <li onClick={() => setcat(p, 'list' + index)} className='px-4 whitespace-nowrap  cursor-pointer max-[764px]:text-[12px]' id={'list' + index} key={index}>{p}</li>
+                            return <li onClick={() => setcat(p.category, 'list' + index)} className='px-4 whitespace-nowrap  cursor-pointer max-[764px]:text-[12px]' id={'list' + index} key={index}>{p.category}</li>
                         })}
                     </ul>
 
 
                     <hr />
-                    
+
                     {/* filter component: */}
                     {
                         filtertab == true ? <section className='flex items-center flex-wrap justify-evenly bg-slate-100 rounded-b-xl 
@@ -246,17 +258,18 @@ export default function Body() {
                         </section> : null
                     }
                 </section>
-                
+
 
                 {/* items card :*/}
 
                 <section className='flex flex-wrap justify-center items-center mb-[60px] transition-all duration-[1s]'>
 
-                    {product.map((p) => {
+                    {
 
-                        return <ShowCard info={p} key={p.id} />
+                        product.length > 0 ? product.map((p) => {
+                            return <ShowCard info={p} key={p._id} />
 
-                    })}
+                        }) : null}
                 </section>
             </section>
         )

@@ -18,7 +18,7 @@ export default function Footer() {
                                 <Link to={'/about'}><li className='mx-[10px]  underline text-[12px] cursor-pointer'>About us</li></Link>
                                 <Link to={'/contact'} ><li className='mx-[10px]  underline text-[12px] cursor-pointer'>Contact us</li></Link>
                                 <li className='mx-[10px]  underline text-[12px] cursor-pointer ' >Privacy Policy</li>
-                         </ul>
+                        </ul>
                         <p className='flex justify-center pt-4 text-[15px] text-gray-400'> &#169; Copyrights Reserved 2023 </p>
 
                 </footer>
