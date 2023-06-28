@@ -119,13 +119,14 @@ export default function DetailsPage() {
 
             {/* similar product Component */}
             {
-                <section >
+                <section  className=' '>
                     <div className='mx-[10%]'>
                         <hr />
                         <h1 className='text-[30px]'>Similar Products</h1>
 
                     </div>
-                    <section className='flex flex-wrap justify-center items-center '>
+                    <section className='flex flex-wrap justify-center items-center mx-[5%] '>
+
 
                         {product ? product?.map((p) => {
 

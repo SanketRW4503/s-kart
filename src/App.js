@@ -16,6 +16,7 @@ import SignUpPage from "./component/SignUpPage";
 import LoginPage from "./component/LoginPage";
 import UserProfileCom from "./component/UserProfileCom";
 import Payment_Success_Page from "./component/Payment_Success_Page";
+import ViewProductPage from "./component/ViewProductPage";
 
 
 
@@ -25,7 +26,6 @@ const App = () => {
         <>
             <Provider store={store}>
                 <Header />
-                <SearchBar />
                 <Outlet />
                 <Footer />
             </Provider>
@@ -73,6 +73,9 @@ const router = createBrowserRouter([
             }, {
                 path: '/payment/success/:id',
                 element: <Payment_Success_Page />
+            }, {
+                path: '/view-all/:id',
+                element: <ViewProductPage />
             }
 
 

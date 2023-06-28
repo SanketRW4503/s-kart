@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import { GET_ALL_CATEGORY } from '../utility/constants';
 import ShowCard from './ShowCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeData } from '../utility/dataSlice';
 import store from '../utility/store';
 import ShimmerCard from './ShimmerCard';
 import { shuffleArray } from '../utility/utility';
-import filtericon from '..//../assets/images/filter.png'
-
+import Slider from './Slider';
+import { Link } from 'react-router-dom';
+import slidebtn from '../../assets/images/next.png'
 export default function Body() {
 
 
@@ -19,69 +19,34 @@ export default function Body() {
     const [minPrice, setMinPrice] = useState(100000)
     const [filterStatus, setFilterStatus] = useState(false)
     const [preLi, setPreLi] = useState('');
-
+    const [slidevalue, setSlideValue] = useState(0)
     const stored_data = useSelector(store => store?.products?.items);
 
-
+    const storedCategory = useSelector(store=>store?.category?.items)
 
 
 
     useEffect(() => {
         if (stored_data?.length > 0) {
+            if(storedCategory?.length>0){
             setProducts(stored_data)
-            getAllCategory()
+            console.log(storedCategory)
+            setCategory(storedCategory)
 
             setLoading(false)
-        } else {
-            getAllCategory()
-            setLoading(false)
-        }
-
-
-    }, [stored_data]);
-
-
-
-    // fetching all category from api
-    async function getAllCategory() {
-
-        try {
-            const res = await fetch(GET_ALL_CATEGORY,
-                {
-                    method: 'GET', withCredntials: true,
-                    credentials: 'include'
-                });
-            const json = await res.json()
-            setCategory(json.allcollection)
-        } catch (error) {
-            console.log('s' + error);
-        }
-
-
-    }
-
-
-
-
-    // set-perticular category (when user selects category)
-    function setcat(category_name, index) {
-        if (category_name === 'all') {
-            if (preLi.length > 1) {
-                document.getElementById(preLi).style.fontWeight = '400';
             }
-            document.getElementById('all_product').style.fontWeight = '600'
-            setProducts(stored_data)
         } else {
-            if (preLi.length > 1) {
-                document.getElementById(preLi).style.fontWeight = '400';
-            }
-            document.getElementById('all_product').style.fontWeight = '400'
-            document.getElementById(index).style.fontWeight = '600';
-            setPreLi(index);
-            let s = stored_data.filter((p) => p.category.includes(category_name))
-            setProducts(s)
+            setLoading(true)
         }
-    }
+
+
+    }, [stored_data,storedCategory]);
+
+
+
+
+
+
 
 
     //for filter price range change
@@ -94,83 +59,47 @@ export default function Body() {
     }, [minPrice])
 
 
-    // filter rating
-    function setRating() {
-        setFilterStatus(true)
-
-        let abovefour = document.getElementById('check1');
-
-        let abovethree = document.getElementById('check2');
-        setProducts(stored_data)
 
 
-        if (abovefour.checked && abovethree.checked == false) {
-            let data = product.filter((p) => p.rating > 4.5)
-            setProducts(data)
-        } else if (abovethree.checked && abovefour.checked == false) {
-            let data = product.filter((p) => p.rating > 3.5)
-            setProducts(data)
 
-        } else if (abovethree.checked && abovefour.checked) {
-            setProducts(stored_data)
+  
+ 
 
 
-        } else {
-            setProducts(stored_data)
 
+
+
+    function handlenextslider(cat_id) {
+        let nextBtn = document.getElementById(cat_id + 'next');
+        let prevBtn = document.getElementById(cat_id + 'prev');
+
+        let comps = document.getElementsByClassName('class' + cat_id)
+
+        for (let i = 0; i < comps.length; i++) {
+            let comp = comps[i];
+            comp.style.transition = 'transform 1s';
+            comp.style.transform = 'translateX(-500px)';
         }
 
+        nextBtn.style.display = 'none';
+        prevBtn.style.display = 'flex';
     }
+    function handleprevslider(cat_id) {
+        let prevBtn = document.getElementById(cat_id + 'prev');
+        let nextBtn = document.getElementById(cat_id + 'next');
 
+        let comps = document.getElementsByClassName('class' + cat_id)
 
-    // filter sortby
-    function ApplySort(e) {
-        setFilterStatus(true)
-
-        if (e !== undefined) {
-            let IndexItem = document.getElementById('mySelect').selectedIndex;
-            if (IndexItem == 1) {
-
-                let lowtoHigh = product.slice().sort((p1, p2) => (p1.price > p2.price) ? 1 : (p1.price < p2.price) ? -1 : 0);
-                setProducts(lowtoHigh)
-            } else if (IndexItem == 2) {
-                let HighToLow = product.slice().sort((p1, p2) => (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0);
-                setProducts(HighToLow)
-            } else if (IndexItem == 0) {
-
-                setProducts(shuffleArray(product))
-            }
+        for (let i = 0; i < comps.length; i++) {
+            let comp = comps[i];
+            comp.style.transition = 'transform 1s';
+            comp.style.transform = 'translateX(0px)';
         }
+
+        nextBtn.style.display = 'flex';
+        prevBtn.style.display = 'none';
     }
 
-    // clear filter changes that are made by user
-    function clearFilter() {
-        setMinPrice(100000)
-
-        setProducts(stored_data)
-        document.getElementById('check1').checked = false;
-        document.getElementById('check2').checked = false;
-
-        document.getElementById('randomly').selected = 'selected'
-        setFilterStatus(false)
-        setFilterTab(false)
-        document.getElementById('filter_tag').style.fontWeight = '400'
-
-
-    }
-
-
-
-
-    // it changes filter text color onclick
-    function filterColor() {
-        if (filtertab) {
-            document.getElementById('filter_tag').style.fontWeight = '400'
-        } else {
-            document.getElementById('filter_tag').style.fontWeight = '600'
-
-        }
-    }
 
     // shows shimmer UI
     if (loading == true) { return <ShimmerCard /> }
@@ -178,78 +107,62 @@ export default function Body() {
         // if not loading shows  this content
         return (
 
-            <section>
-                <section className='px-[10%] mt-6 mb-5 '>
+            <section >
 
-                    <ul className='flex overflow-auto items-center py-[8px]'>
-
-                        <span onClick={() => setFilterTab(!filtertab)} className='cursor-pointer flex items-center   '>
-                            <img src={filtericon} className='w-[18px] h-[18px]' />
-                            <span onClick={() => filterColor()} id='filter_tag'>Filter</span>
-                        </span>
-
-                        <li onClick={() => setcat('all')} className='px-4 cursor-pointer max-[764px]:text-[12px] font-semibold whitespace-nowrap ml-4'
-                            id='all_product'>all products</li>
-                        {category?.map((p, index) => {
-                            return <li onClick={() => setcat(p.category, 'list' + index)} className='px-4 whitespace-nowrap  cursor-pointer max-[764px]:text-[12px]' id={'list' + index} key={index}>{p.category}</li>
-                        })}
-                    </ul>
+                {
+                    category?.map((c, index) => {
 
 
-                    <hr />
 
-                    {/* filter component: */}
-                    {
-                        filtertab == true ? <section className='flex items-center flex-wrap justify-evenly bg-slate-100 rounded-b-xl 
-                          transition-all duration-[2s] p-[20px] '>
-                            <div className='flex flex-col w-[300px]  p-[20px] m-4 relative'>
-                                <p>Price Beetween</p>
-                                <input type="range" min='0' max='100000' step="100" value={minPrice} className='cursor-pointer '
-                                    onChange={(e) => { setMinPrice(e.target.value) }} />
-                                <small>Price Selected 0 ₹ to {minPrice} ₹</small>
+                        return <div className='flex justify-between mx-[18px] items-center max-[800px]:flex-col '>
 
-                            </div>
+      
+                               <Link to={'/view-all/'+c.category}> <div className='bg-slate-100 text-black text-[25px] font-semibold  flex justify-center items-center cursor-pointer hover:shadow-lg
+                                             rounded-md w-[200px] h-[300px] max-[800px]:h-[70px] max-[800px]:w-[95%] '>
+                                    <span className='flex flex-col items-center justify-center max-[800px]:flex-row cursor-pointer max-[800px]:px-[20px] ' >
+                                        <label className='text-[30px] max-[800px]:hidden cursor-pointer'>View All</label>
+                                        <label className='min-[800px]:text-[16px] cursor-pointer whitespace-nowrap' >{c.category.toUpperCase()} </label>
+                                    </span>
+                                </div>
+                                </Link>
+                                <img src={slidebtn} onClick={() => handleprevslider(c.category)} id={c.category + 'prev'}
+                                    className=' h-[40px] rounded-[20px] rotate-[180deg] w-[40px]  justify-center items-center hidden max-[800px]:hidden' /> 
+                                
+                                <section className='flex overflow-hidden  max-[800px]:overflow-auto w-[85%] my-[10px] transition-all duration-[1s] ' id='section'>
+                               
 
-                            <div className='bg-slate-100'>
-                                <label className='font-semibold mr-4'>Sort By</label>
-                                <select onChange={(e) => ApplySort(e)} id="mySelect" className='bg-slate-100 border outline-none'>
-                                    <option value={'random'} id='randomly'>Randomly</option>
-                                    <option value={'low'}>Low to high Price</option>
-                                    <option value={'high'}>High to Low Price</option>
-                                </select>
-                            </div>
-                            <div className='flex flex-col '>
-                                <label className='font-semibold'>Rating</label>
-                                <section>
-                                    <input type='checkbox' name='rating' id='check1' onChange={() => setRating()} />
-                                    <label>4.5 and Above</label>
+                                    {product?.map((p, index) => {
 
+
+                                        return <div className={'class' + c.category}  >
+                                            {p.category == c.category ?
+                                                <ShowCard info={p} key={p.id} detailsPage={true} />
+                                                : null}</div>
+
+                                    })}
+                             
+                               
+                             <Link to={'/view-all/'+c.category}  ><div className='bg-slate-100 flex justify-center items-center min-[800px]:hidden
+                                             rounded-md h-[300px] '>
+                                    <span className='flex flex-col items-center justify-center ' >
+                                        <label className='text-[30px] mx-[50px] whitespace-nowrap '>View All</label>
+                                        <label>{c.category} Products</label>
+                                    </span>
+                                </div>
+                                </Link>
                                 </section>
-                                <section>
-                                    <input type='checkbox' name='rating' id='check2' onChange={() => setRating()} />
-                                    <label>3.5 and Above</label>
+                                
+                                <img src={slidebtn} onClick={() => handlenextslider(c.category)} id={c.category + 'next'} 
+                                    className=' h-[40px] rounded-[20px] w-[40px] flex justify-center items-center max-[800px]:hidden '/> 
+                        </div>
 
-                                </section>
-                            </div>
-                            {filterStatus == true ? <button className='bg-blue-400 px-[10px] py-1 text-white rounded-lg'
-                                onClick={() => clearFilter()}>
-                                Clear Filter</button> : null}
-                        </section> : null
-                    }
-                </section>
+                    })
+                }
 
-
-                {/* items card :*/}
-
-                <section className='flex flex-wrap justify-center items-center mb-[60px] transition-all duration-[1s]'>
-
-                    {
-
-                        product.length > 0 ? product.map((p) => {
-                            return <ShowCard info={p} key={p._id} />
-
-                        }) : null}
-                </section>
+                <Link to={'/view-all/viewAll'}><div className='w-[96%] hover:shadow-md my-6 bg-slate-100 text-black text-[25px] font-semibold  flex justify-center items-center m-[auto] rounded-md p-[20px]' >
+                    View All Products
+                </div>
+                </Link>
             </section>
         )
     }

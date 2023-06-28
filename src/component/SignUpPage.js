@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setLoginStatus } from '../utility/loginSlice'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import { validate } from 'email-validator'
+import { useEffect } from 'react'
 export default function SignUpPage() {
 
     const [fname, setFname] = useState('')
@@ -67,19 +68,23 @@ export default function SignUpPage() {
 
         );
         const json = await res.json()
+        console.log(json)
         if (json.success) {
             dispatch(setLoginStatus(true));
 
             navigate('/');
-            toast.success('Login Success !');
+            toast.success(`Welcome to s-kart ${fname}`);
+        
         } else {
+            toast.error('EMAIL OR PHONE Already exists')
             dispatch(setLoginStatus(false));
         }
     }
+  
 
     return (
 
-        <div className="bg-grey-lighter min-h-screen flex flex-col">
+        <div className="bg-grey-lighter min-h-screen flex flex-col shadow-[2px 2px 2px 2px] ">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div className="bg-slate-100 px-6 py-8 shadow-md text-black w-full rounded-md">
                     <h1 className="mb-8 text-3xl text-center">Sign up</h1>
