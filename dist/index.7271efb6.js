@@ -2979,41 +2979,57 @@ var _paymentSuccessPage = require("./component/Payment_Success_Page");
 var _paymentSuccessPageDefault = parcelHelpers.interopDefault(_paymentSuccessPage);
 var _viewProductPage = require("./component/ViewProductPage");
 var _viewProductPageDefault = parcelHelpers.interopDefault(_viewProductPage);
+var _useOnline = require("./utility/useOnline");
+var _useOnlineDefault = parcelHelpers.interopDefault(_useOnline);
+var _noInternet = require("./component/NoInternet");
+var _noInternetDefault = parcelHelpers.interopDefault(_noInternet);
+var _s = $RefreshSig$();
 const App = ()=>{
+    _s();
+    const online = (0, _useOnlineDefault.default)();
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRedux.Provider), {
             store: (0, _storeDefault.default),
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 28,
+                    lineNumber: 31,
                     columnNumber: 17
                 }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
+                online == false ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _noInternetDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 29,
-                    columnNumber: 17
+                    lineNumber: 33,
+                    columnNumber: 34
+                }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Outlet), {}, void 0, false, {
+                    fileName: "src/App.js",
+                    lineNumber: 33,
+                    columnNumber: 49
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 30,
+                    lineNumber: 35,
                     columnNumber: 17
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/App.js",
-            lineNumber: 27,
+            lineNumber: 30,
             columnNumber: 13
         }, undefined)
     }, void 0, false);
 };
+_s(App, "QVq+tefFQ8/0c/ymnLGkIIvIkns=", false, function() {
+    return [
+        (0, _useOnlineDefault.default)
+    ];
+});
 _c = App;
 const router = (0, _reactRouterDom.createBrowserRouter)([
     {
         path: "/",
         element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
             fileName: "src/App.js",
-            lineNumber: 42,
+            lineNumber: 47,
             columnNumber: 18
         }, undefined),
         children: [
@@ -3021,7 +3037,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bodyDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 46,
+                    lineNumber: 51,
                     columnNumber: 26
                 }, undefined)
             },
@@ -3029,7 +3045,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/details/:id",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _detailsPageDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 50,
+                    lineNumber: 55,
                     columnNumber: 26
                 }, undefined)
             },
@@ -3037,7 +3053,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/search/:text",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _searchResultDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 54,
+                    lineNumber: 59,
                     columnNumber: 26
                 }, undefined)
             },
@@ -3045,7 +3061,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/cart",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cartPageDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 57,
+                    lineNumber: 62,
                     columnNumber: 26
                 }, undefined)
             },
@@ -3053,7 +3069,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/about",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _aboutDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 60,
+                    lineNumber: 65,
                     columnNumber: 26
                 }, undefined)
             },
@@ -3061,7 +3077,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/contact",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _contactDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 63,
+                    lineNumber: 68,
                     columnNumber: 26
                 }, undefined)
             },
@@ -3069,7 +3085,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/signup",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpPageDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 66,
+                    lineNumber: 71,
                     columnNumber: 26
                 }, undefined)
             },
@@ -3077,7 +3093,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/login",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginPageDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 69,
+                    lineNumber: 74,
                     columnNumber: 26
                 }, undefined)
             },
@@ -3085,7 +3101,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/myProfile",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userProfileComDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 72,
+                    lineNumber: 77,
                     columnNumber: 26
                 }, undefined)
             },
@@ -3093,7 +3109,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/payment/success/:id",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _paymentSuccessPageDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 75,
+                    lineNumber: 80,
                     columnNumber: 26
                 }, undefined)
             },
@@ -3101,7 +3117,7 @@ const router = (0, _reactRouterDom.createBrowserRouter)([
                 path: "/view-all/:id",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _viewProductPageDefault.default), {}, void 0, false, {
                     fileName: "src/App.js",
-                    lineNumber: 78,
+                    lineNumber: 83,
                     columnNumber: 26
                 }, undefined)
             }
@@ -3113,7 +3129,7 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.RouterP
     router: router
 }, void 0, false, {
     fileName: "src/App.js",
-    lineNumber: 89,
+    lineNumber: 94,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -3124,7 +3140,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./component/Header":"knXDc","react-router-dom":"9xmpe","./component/Body":"iizf5","./component/SearchBar":"jOrUR","react-redux":"bdVon","./utility/store":"7oLTM","./component/DetailsPage":"1HMeJ","./component/SearchResult":"3Kqob","./component/Footer":"4ifUV","./component/CartPage":"faNiI","./component/About":"94Koj","./component/Contact":"3He1d","./component/SignUpPage":"81VBq","./component/LoginPage":"bDA2A","./component/UserProfileCom":"3aKVV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./component/Payment_Success_Page":"caBRr","./component/ViewProductPage":"baxXj"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./component/Header":"knXDc","react-router-dom":"9xmpe","./component/Body":"iizf5","./component/SearchBar":"jOrUR","react-redux":"bdVon","./utility/store":"7oLTM","./component/DetailsPage":"1HMeJ","./component/SearchResult":"3Kqob","./component/Footer":"4ifUV","./component/CartPage":"faNiI","./component/About":"94Koj","./component/Contact":"3He1d","./component/SignUpPage":"81VBq","./component/LoginPage":"bDA2A","./component/UserProfileCom":"3aKVV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./component/Payment_Success_Page":"caBRr","./component/ViewProductPage":"baxXj","./utility/useOnline":"6ohYp","./component/NoInternet":"51S3L"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -27362,9 +27378,7 @@ function Header() {
                 credentials: "include"
             });
             const json = await res.json();
-            console.log(json);
             dispatch((0, _categorySlice.storeCategory)(json.allcollection));
-            console.log(storedCategory);
         } catch (error) {
             console.log("s" + error);
         }
@@ -27387,10 +27401,7 @@ function Header() {
         }
     }
     (0, _react.useEffect)(()=>{
-        if (stored_data.length == 0) {
-            getAllProduct();
-            console.log(location);
-        }
+        if (stored_data.length == 0) getAllProduct();
     }, [
         stored_data
     ]);
@@ -27405,7 +27416,6 @@ function Header() {
             credentials: "include"
         });
         const json = await res.json();
-        console.log(json);
         if (json.success == true) {
             dispatch((0, _userSlice.setUser)(json));
             dispatch((0, _loginSlice.setLoginStatus)(true));
@@ -27527,7 +27537,7 @@ function Header() {
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                                 to: "/",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                    className: "px-4 max-[940px]:mt-[50px] text-[20px] hidden max-[940px]:flex ",
+                                    className: "px-4 max-[940px]:mt-[50px] text-[20px]  max-[940px]:flex ",
                                     children: "Home"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
@@ -27770,7 +27780,7 @@ function Header() {
             }, void 0, false, {
                 fileName: "src/component/Header.js",
                 lineNumber: 225,
-                columnNumber: 1
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
@@ -39696,10 +39706,15 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouterDom = require("react-router-dom");
 var _reactToastify = require("react-toastify");
+var _useOnline = require("../utility/useOnline");
+var _useOnlineDefault = parcelHelpers.interopDefault(_useOnline);
+var _shimmerCard = require("./ShimmerCard");
+var _shimmerCardDefault = parcelHelpers.interopDefault(_shimmerCard);
 var _s = $RefreshSig$();
 function Slider() {
     _s();
     const [slidetoshow, setSlidetoShow] = (0, _react.useState)(0);
+    const online = (0, _useOnlineDefault.default)();
     const [banner, setBanner] = (0, _react.useState)([]);
     const navigate = (0, _reactRouterDom.useNavigate)();
     function handlenext() {
@@ -39725,7 +39740,14 @@ function Slider() {
     (0, _react.useEffect)(()=>{
         getAllCarousel();
     }, []);
-    if (banner == []) return null;
+    if (!online) return null;
+    if (banner.length == 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: " h-[550px] max-[700px]:h-[400px] top-4 animate-pulse max-[500px]:h-[250px] bg-slate-200"
+    }, void 0, false, {
+        fileName: "src/component/Slider.js",
+        lineNumber: 55,
+        columnNumber: 34
+    }, this);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "relative",
         children: [
@@ -39736,15 +39758,15 @@ function Slider() {
                 className: " h-[550px] max-[700px]:h-[400px] max-[500px]:h-[250px] z-0 w-full  relative p-[6]  cursor-pointer",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                     src: banner[slidetoshow]?.imageUrl,
-                    className: "w-full h-full  duration-500  cursor-pointer z-4"
+                    className: "w-full h-full  duration-500  cursor-pointer z-4 transition-all"
                 }, void 0, false, {
                     fileName: "src/component/Slider.js",
-                    lineNumber: 59,
+                    lineNumber: 64,
                     columnNumber: 13
                 }, this)
             }, void 0, false, {
                 fileName: "src/component/Slider.js",
-                lineNumber: 53,
+                lineNumber: 58,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39753,7 +39775,7 @@ function Slider() {
                 children: "<"
             }, void 0, false, {
                 fileName: "src/component/Slider.js",
-                lineNumber: 64,
+                lineNumber: 69,
                 columnNumber: 17
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39762,18 +39784,19 @@ function Slider() {
                 children: ">"
             }, void 0, false, {
                 fileName: "src/component/Slider.js",
-                lineNumber: 67,
+                lineNumber: 72,
                 columnNumber: 17
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/Slider.js",
-        lineNumber: 52,
+        lineNumber: 57,
         columnNumber: 9
     }, this);
 }
-_s(Slider, "slh2UGcMtXXboaTVyesFt0bLbi8=", false, function() {
+_s(Slider, "XxPg9fn6Ui1Yzvfu60HRi5pXRaE=", false, function() {
     return [
+        (0, _useOnlineDefault.default),
         (0, _reactRouterDom.useNavigate)
     ];
 });
@@ -39786,7 +39809,85 @@ $RefreshReg$(_c, "Slider");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","react-toastify":"kSvyQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jOrUR":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","react-toastify":"kSvyQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utility/useOnline":"6ohYp","./ShimmerCard":"eZNpp"}],"6ohYp":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$1b62 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$1b62.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>useOnline);
+var _react = require("react");
+var _s = $RefreshSig$();
+function useOnline() {
+    _s();
+    const [onlineStatus, setOnlineStatus] = (0, _react.useState)(true);
+    (0, _react.useEffect)(()=>{
+        window.addEventListener("online", ()=>{
+            setOnlineStatus(true);
+        });
+        window.addEventListener("offline", ()=>{
+            setOnlineStatus(false);
+        });
+    }, []);
+    return onlineStatus;
+}
+_s(useOnline, "MuRHT4nbzkgOPnMMlqOE75+HU4c=");
+
+  $parcel$ReactRefreshHelpers$1b62.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eZNpp":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$2a1f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$2a1f.prelude(module);
+
+try {
+// Shimmer Component
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>ShimmerCard);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+function ShimmerCard() {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "flex flex-wrap justify-evenly",
+        children: Array(20).fill("").map((e, index)=>{
+            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+                className: "w-[300px]  m-[10px] ",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: " bg-slate-300 h-[200px] animate-pulse "
+                }, void 0, false, {
+                    fileName: "src/component/ShimmerCard.js",
+                    lineNumber: 12,
+                    columnNumber: 13
+                }, this)
+            }, index, false, {
+                fileName: "src/component/ShimmerCard.js",
+                lineNumber: 11,
+                columnNumber: 18
+            }, this);
+        })
+    }, void 0, false, {
+        fileName: "src/component/ShimmerCard.js",
+        lineNumber: 8,
+        columnNumber: 5
+    }, this);
+}
+_c = ShimmerCard;
+var _c;
+$RefreshReg$(_c, "ShimmerCard");
+
+  $parcel$ReactRefreshHelpers$2a1f.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jOrUR":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3e88 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39896,14 +39997,10 @@ var _react = require("react");
 var _showCard = require("./ShowCard");
 var _showCardDefault = parcelHelpers.interopDefault(_showCard);
 var _reactRedux = require("react-redux");
-var _dataSlice = require("../utility/dataSlice");
 var _store = require("../utility/store");
 var _storeDefault = parcelHelpers.interopDefault(_store);
 var _shimmerCard = require("./ShimmerCard");
 var _shimmerCardDefault = parcelHelpers.interopDefault(_shimmerCard);
-var _utility = require("../utility/utility");
-var _slider = require("./Slider");
-var _sliderDefault = parcelHelpers.interopDefault(_slider);
 var _reactRouterDom = require("react-router-dom");
 var _nextPng = require("../../assets/images/next.png");
 var _nextPngDefault = parcelHelpers.interopDefault(_nextPng);
@@ -39911,37 +40008,36 @@ var _s = $RefreshSig$();
 function Body() {
     _s();
     const [product, setProducts] = (0, _react.useState)([]);
-    const [filtertab, setFilterTab] = (0, _react.useState)(false);
     const [category, setCategory] = (0, _react.useState)([]);
     const [loading, setLoading] = (0, _react.useState)(true);
-    const [minPrice, setMinPrice] = (0, _react.useState)(100000);
-    const [filterStatus, setFilterStatus] = (0, _react.useState)(false);
-    const [preLi, setPreLi] = (0, _react.useState)("");
-    const [slidevalue, setSlideValue] = (0, _react.useState)(0);
     const stored_data = (0, _reactRedux.useSelector)((store)=>store?.products?.items);
     const storedCategory = (0, _reactRedux.useSelector)((store)=>store?.category?.items);
     (0, _react.useEffect)(()=>{
         if (stored_data?.length > 0) {
             if (storedCategory?.length > 0) {
-                setProducts(stored_data);
-                console.log(storedCategory);
-                setCategory(storedCategory);
-                setLoading(false);
+                if (product?.length == 0) {
+                    setCategory(storedCategory);
+                    // adding only 6 items of each catgory in Product state so we can show only 6 items in homepage
+                    let d = [];
+                    category.map((c)=>{
+                        let items = stored_data.filter((i)=>{
+                            return c.category == i?.category;
+                        });
+                        items = items.slice(0, 6);
+                        for(let k = 0; k != 6; k++)d.push(items[k]);
+                    });
+                    setProducts(d);
+                    setLoading(false);
+                }
             }
-        } else setLoading(true);
-    }, [
-        stored_data,
-        storedCategory
-    ]);
-    //for filter price range change
-    (0, _react.useEffect)(()=>{
-        if (minPrice != 100000) {
-            let data = product.filter((p)=>p.price < minPrice);
-            setProducts(data);
-            setFilterStatus(true);
+        } else {
+            setLoading(true);
+            console.log("data dont have");
         }
     }, [
-        minPrice
+        stored_data,
+        storedCategory,
+        product
     ]);
     function handlenextslider(cat_id) {
         let nextBtn = document.getElementById(cat_id + "next");
@@ -39950,7 +40046,7 @@ function Body() {
         for(let i = 0; i < comps.length; i++){
             let comp = comps[i];
             comp.style.transition = "transform 1s";
-            comp.style.transform = "translateX(-500px)";
+            comp.style.transform = "translateX(-250px)";
         }
         nextBtn.style.display = "none";
         prevBtn.style.display = "flex";
@@ -39970,7 +40066,7 @@ function Body() {
     // shows shimmer UI
     if (loading == true) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerCardDefault.default), {}, void 0, false, {
         fileName: "src/component/Body.js",
-        lineNumber: 105,
+        lineNumber: 94,
         columnNumber: 35
     }, this);
     else // if not loading shows  this content
@@ -39994,8 +40090,8 @@ function Body() {
                                                 children: "View All"
                                             }, void 0, false, {
                                                 fileName: "src/component/Body.js",
-                                                lineNumber: 123,
-                                                columnNumber: 41
+                                                lineNumber: 113,
+                                                columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                                 className: "min-[800px]:text-[16px] cursor-pointer whitespace-nowrap",
@@ -40005,38 +40101,38 @@ function Body() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/component/Body.js",
-                                                lineNumber: 124,
-                                                columnNumber: 41
+                                                lineNumber: 114,
+                                                columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 122,
-                                        columnNumber: 37
+                                        lineNumber: 112,
+                                        columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/component/Body.js",
-                                    lineNumber: 120,
-                                    columnNumber: 68
+                                    lineNumber: 109,
+                                    columnNumber: 67
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/component/Body.js",
-                            lineNumber: 120,
-                            columnNumber: 32
+                            lineNumber: 109,
+                            columnNumber: 29
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                             src: (0, _nextPngDefault.default),
                             onClick: ()=>handleprevslider(c.category),
                             id: c.category + "prev",
-                            className: " h-[40px] rounded-[20px] rotate-[180deg] w-[40px]  justify-center items-center hidden max-[800px]:hidden"
+                            className: " h-[40px] rounded-[20px] rotate-[180deg] w-[40px] cursor-pointer  justify-center items-center hidden max-[800px]:hidden"
                         }, void 0, false, {
                             fileName: "src/component/Body.js",
-                            lineNumber: 128,
-                            columnNumber: 33
+                            lineNumber: 118,
+                            columnNumber: 29
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
-                            className: "flex overflow-hidden  max-[800px]:overflow-auto w-[85%] my-[10px] transition-all duration-[1s] ",
+                            className: "flex overflow-hidden items-center  max-[800px]:overflow-auto w-[85%] my-[10px] transition-all duration-[1s] ",
                             id: "section",
                             children: [
                                 product?.map((p, index)=>{
@@ -40047,13 +40143,13 @@ function Body() {
                                             detailsPage: true
                                         }, p.id, false, {
                                             fileName: "src/component/Body.js",
-                                            lineNumber: 139,
-                                            columnNumber: 49
+                                            lineNumber: 128,
+                                            columnNumber: 45
                                         }, this) : null
-                                    }, void 0, false, {
+                                    }, index, false, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 137,
-                                        columnNumber: 48
+                                        lineNumber: 126,
+                                        columnNumber: 44
                                     }, this);
                                 }),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -40068,7 +40164,7 @@ function Body() {
                                                     children: "View All"
                                                 }, void 0, false, {
                                                     fileName: "src/component/Body.js",
-                                                    lineNumber: 148,
+                                                    lineNumber: 137,
                                                     columnNumber: 41
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -40078,45 +40174,45 @@ function Body() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/component/Body.js",
-                                                    lineNumber: 149,
+                                                    lineNumber: 138,
                                                     columnNumber: 41
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/component/Body.js",
-                                            lineNumber: 147,
+                                            lineNumber: 136,
                                             columnNumber: 37
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "src/component/Body.js",
-                                        lineNumber: 145,
-                                        columnNumber: 67
+                                        lineNumber: 134,
+                                        columnNumber: 72
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/component/Body.js",
-                                    lineNumber: 145,
-                                    columnNumber: 30
+                                    lineNumber: 134,
+                                    columnNumber: 33
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/component/Body.js",
-                            lineNumber: 131,
-                            columnNumber: 33
+                            lineNumber: 121,
+                            columnNumber: 29
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                             src: (0, _nextPngDefault.default),
                             onClick: ()=>handlenextslider(c.category),
                             id: c.category + "next",
-                            className: " h-[40px] rounded-[20px] w-[40px] flex justify-center items-center max-[800px]:hidden "
+                            className: " h-[40px] rounded-[20px] w-[40px] flex justify-center items-center cursor-pointer max-[800px]:hidden "
                         }, void 0, false, {
                             fileName: "src/component/Body.js",
-                            lineNumber: 155,
-                            columnNumber: 33
+                            lineNumber: 144,
+                            columnNumber: 29
                         }, this)
                     ]
-                }, void 0, true, {
+                }, index, true, {
                     fileName: "src/component/Body.js",
-                    lineNumber: 117,
+                    lineNumber: 106,
                     columnNumber: 32
                 }, this);
             }),
@@ -40127,22 +40223,22 @@ function Body() {
                     children: "View All Products"
                 }, void 0, false, {
                     fileName: "src/component/Body.js",
-                    lineNumber: 162,
+                    lineNumber: 151,
                     columnNumber: 48
                 }, this)
             }, void 0, false, {
                 fileName: "src/component/Body.js",
-                lineNumber: 162,
+                lineNumber: 151,
                 columnNumber: 17
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/Body.js",
-        lineNumber: 110,
+        lineNumber: 99,
         columnNumber: 13
     }, this);
 }
-_s(Body, "OaKCkqljgnoy4cr4tlkJTGCm6Lo=", false, function() {
+_s(Body, "77/ZEuMziXXFYCAN820R7iY1BPM=", false, function() {
     return [
         (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector)
@@ -40157,7 +40253,7 @@ $RefreshReg$(_c, "Body");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./ShowCard":"6nUG5","react-redux":"bdVon","../utility/dataSlice":"fcCWu","../utility/store":"7oLTM","./ShimmerCard":"eZNpp","../utility/utility":"gTarV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Slider":"84nvn","react-router-dom":"9xmpe","../../assets/images/next.png":"9zvoC"}],"6nUG5":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./ShowCard":"6nUG5","react-redux":"bdVon","../utility/store":"7oLTM","./ShimmerCard":"eZNpp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-router-dom":"9xmpe","../../assets/images/next.png":"9zvoC"}],"6nUG5":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$ce3e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40190,12 +40286,12 @@ function ShowCard(props) {
                         className: "w-[180px] h-[200px]"
                     }, void 0, false, {
                         fileName: "src/component/ShowCard.js",
-                        lineNumber: 23,
+                        lineNumber: 24,
                         columnNumber: 9
                     }, this)
                 }, void 0, false, {
                     fileName: "src/component/ShowCard.js",
-                    lineNumber: 22,
+                    lineNumber: 23,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -40203,7 +40299,7 @@ function ShowCard(props) {
                     children: props.info.title.slice(0, 30)
                 }, void 0, false, {
                     fileName: "src/component/ShowCard.js",
-                    lineNumber: 25,
+                    lineNumber: 26,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -40213,18 +40309,18 @@ function ShowCard(props) {
                     ]
                 }, void 0, true, {
                     fileName: "src/component/ShowCard.js",
-                    lineNumber: 26,
+                    lineNumber: 27,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/component/ShowCard.js",
-            lineNumber: 20,
+            lineNumber: 21,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/component/ShowCard.js",
-        lineNumber: 19,
+        lineNumber: 20,
         columnNumber: 5
     }, this);
 }
@@ -40242,163 +40338,7 @@ $RefreshReg$(_c, "ShowCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"eZNpp":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$2a1f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$2a1f.prelude(module);
-
-try {
-// Shimmer Component
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>ShimmerCard);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-function ShimmerCard() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "flex flex-wrap justify-center",
-        children: Array(10).fill("").map((e, index)=>{
-            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
-                className: "w-[300px]  m-[20px] ",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: " bg-slate-300 h-[200px]"
-                    }, void 0, false, {
-                        fileName: "src/component/ShimmerCard.js",
-                        lineNumber: 12,
-                        columnNumber: 13
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "bg-slate-200 w-[300px] h-4 mt-3"
-                    }, void 0, false, {
-                        fileName: "src/component/ShimmerCard.js",
-                        lineNumber: 13,
-                        columnNumber: 13
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "bg-slate-200 w-[300px] h-4 mt-3"
-                    }, void 0, false, {
-                        fileName: "src/component/ShimmerCard.js",
-                        lineNumber: 14,
-                        columnNumber: 13
-                    }, this)
-                ]
-            }, index, true, {
-                fileName: "src/component/ShimmerCard.js",
-                lineNumber: 11,
-                columnNumber: 18
-            }, this);
-        })
-    }, void 0, false, {
-        fileName: "src/component/ShimmerCard.js",
-        lineNumber: 8,
-        columnNumber: 5
-    }, this);
-}
-_c = ShimmerCard;
-var _c;
-$RefreshReg$(_c, "ShimmerCard");
-
-  $parcel$ReactRefreshHelpers$2a1f.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gTarV":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "shuffleArray", ()=>shuffleArray);
-parcelHelpers.export(exports, "deleteitem_from_Mongodb", ()=>deleteitem_from_Mongodb);
-parcelHelpers.export(exports, "remove_item_mongoDb_cart", ()=>remove_item_mongoDb_cart);
-parcelHelpers.export(exports, "add_mongoDb_cart", ()=>add_mongoDb_cart);
-var _constants = require("./constants");
-const shuffleArray = (array)=>{
-    let shuffledArray = [];
-    let usedIndex = [];
-    let i = 0;
-    while(i !== array.length){
-        let randomNumber = Math.floor(Math.random() * array.length);
-        if (!usedIndex.includes(randomNumber)) {
-            shuffledArray.push(array[randomNumber]);
-            usedIndex.push(randomNumber);
-            i++;
-        }
-    }
-    return shuffledArray;
-};
-const deleteitem_from_Mongodb = async (item, userdata)=>{
-    let dataset = {
-        userid: userdata.profile._id,
-        _id: item._id
-    };
-    dataset = JSON.stringify(dataset);
-    try {
-        const res = await fetch((0, _constants.delete_item_from_mongodb_cart), {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: "include",
-            body: dataset
-        });
-        const json = await res.json();
-    } catch (error) {
-        console.log(error);
-    }
-};
-const remove_item_mongoDb_cart = async (item, userdata)=>{
-    let dataset = {
-        userid: userdata.profile._id,
-        _id: item._id
-    };
-    dataset = JSON.stringify(dataset);
-    try {
-        const res = await fetch((0, _constants.remove_item_from_Mongodb_cart), {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: "include",
-            body: dataset
-        });
-        const json = await res.json();
-    } catch (error) {
-        console.log(error);
-    }
-};
-const add_mongoDb_cart = async (productdata, userdata)=>{
-    let dataset = {
-        userid: userdata.profile._id,
-        products: [
-            {
-                title: productdata.title,
-                quantity: 1,
-                price: productdata.price,
-                rating: productdata.rating,
-                imageUrl: productdata.imageUrl,
-                category: productdata.category,
-                description: productdata.description,
-                _id: productdata._id
-            }
-        ]
-    };
-    dataset = JSON.stringify(dataset);
-    try {
-        const res = await fetch((0, _constants.ADD_CARTITEM_TOCART), {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: "include",
-            body: dataset
-        });
-        const json = await res.json();
-    } catch (error) {
-        console.log(error);
-    }
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./constants":"aPfSC"}],"9zvoC":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"9zvoC":[function(require,module,exports) {
 module.exports = require("f9eb521dac219da8").getBundleURL("aXMci") + "next.9e1cc1a2.png" + "?" + Date.now();
 
 },{"f9eb521dac219da8":"lgJ39"}],"1HMeJ":[function(require,module,exports) {
@@ -40483,7 +40423,7 @@ function DetailsPage() {
                         className: "flex items-center justify-center ",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                             src: details[0]?.imageUrl,
-                            className: "w-[450px]  h-[500] max-[800px]:w-[300px] "
+                            className: "w-[490px]  h-[500] max-[800px]:w-[300px] "
                         }, void 0, false, {
                             fileName: "src/component/DetailsPage.js",
                             lineNumber: 99,
@@ -40540,7 +40480,7 @@ function DetailsPage() {
                                 className: "text-[15px] max-[800px]:p-0 mt-4",
                                 children: [
                                     "Hurry ",
-                                    details[0]?.rating,
+                                    details[0]?.quantity,
                                     " left only...!"
                                 ]
                             }, void 0, true, {
@@ -40660,7 +40600,101 @@ $RefreshReg$(_c, "DetailsPage");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","react-router-dom":"9xmpe","../utility/store":"7oLTM","../utility/cartSlice":"3gn92","../utility/constants":"aPfSC","../utility/dataSlice":"fcCWu","react-toastify":"kSvyQ","react-toastify/dist/ReactToastify.css":"gJP2Y","./ShowCard":"6nUG5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utility/utility":"gTarV"}],"gJP2Y":[function() {},{}],"3Kqob":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","react-router-dom":"9xmpe","../utility/store":"7oLTM","../utility/cartSlice":"3gn92","../utility/constants":"aPfSC","../utility/dataSlice":"fcCWu","react-toastify":"kSvyQ","react-toastify/dist/ReactToastify.css":"gJP2Y","./ShowCard":"6nUG5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utility/utility":"gTarV"}],"gJP2Y":[function() {},{}],"gTarV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "shuffleArray", ()=>shuffleArray);
+parcelHelpers.export(exports, "deleteitem_from_Mongodb", ()=>deleteitem_from_Mongodb);
+parcelHelpers.export(exports, "remove_item_mongoDb_cart", ()=>remove_item_mongoDb_cart);
+parcelHelpers.export(exports, "add_mongoDb_cart", ()=>add_mongoDb_cart);
+var _constants = require("./constants");
+const shuffleArray = (array)=>{
+    let shuffledArray = [];
+    let usedIndex = [];
+    let i = 0;
+    while(i !== array.length){
+        let randomNumber = Math.floor(Math.random() * array.length);
+        if (!usedIndex.includes(randomNumber)) {
+            shuffledArray.push(array[randomNumber]);
+            usedIndex.push(randomNumber);
+            i++;
+        }
+    }
+    return shuffledArray;
+};
+const deleteitem_from_Mongodb = async (item, userdata)=>{
+    let dataset = {
+        userid: userdata.profile._id,
+        _id: item._id
+    };
+    dataset = JSON.stringify(dataset);
+    try {
+        const res = await fetch((0, _constants.delete_item_from_mongodb_cart), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+            body: dataset
+        });
+        const json = await res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};
+const remove_item_mongoDb_cart = async (item, userdata)=>{
+    let dataset = {
+        userid: userdata.profile._id,
+        _id: item._id
+    };
+    dataset = JSON.stringify(dataset);
+    try {
+        const res = await fetch((0, _constants.remove_item_from_Mongodb_cart), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+            body: dataset
+        });
+        const json = await res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};
+const add_mongoDb_cart = async (productdata, userdata)=>{
+    let dataset = {
+        userid: userdata.profile._id,
+        products: [
+            {
+                title: productdata.title,
+                quantity: 1,
+                price: productdata.price,
+                rating: productdata.rating,
+                imageUrl: productdata.imageUrl,
+                category: productdata.category,
+                description: productdata.description,
+                _id: productdata._id
+            }
+        ]
+    };
+    dataset = JSON.stringify(dataset);
+    try {
+        const res = await fetch((0, _constants.ADD_CARTITEM_TOCART), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include",
+            body: dataset
+        });
+        const json = await res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./constants":"aPfSC"}],"3Kqob":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$7ce9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -44135,10 +44169,7 @@ function ViewProductPage() {
     });
     const storedCategory = (0, _reactRedux.useSelector)((store)=>store?.category?.items);
     (0, _react.useEffect)(()=>{
-        if (stored_data?.length > 0) {
-            setProducts(stored_data);
-            console.log(products);
-        }
+        if (stored_data?.length > 0) setProducts(stored_data);
     }, [
         stored_data
     ]);
@@ -44219,7 +44250,7 @@ function ViewProductPage() {
                                         className: "w-[18px] h-[18px] "
                                     }, void 0, false, {
                                         fileName: "src/component/ViewProductPage.js",
-                                        lineNumber: 109,
+                                        lineNumber: 108,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -44227,13 +44258,13 @@ function ViewProductPage() {
                                         children: "Filter"
                                     }, void 0, false, {
                                         fileName: "src/component/ViewProductPage.js",
-                                        lineNumber: 110,
+                                        lineNumber: 109,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/ViewProductPage.js",
-                                lineNumber: 108,
+                                lineNumber: 107,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44244,7 +44275,7 @@ function ViewProductPage() {
                                         children: "Price Range"
                                     }, void 0, false, {
                                         fileName: "src/component/ViewProductPage.js",
-                                        lineNumber: 113,
+                                        lineNumber: 112,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -44259,7 +44290,7 @@ function ViewProductPage() {
                                         }
                                     }, void 0, false, {
                                         fileName: "src/component/ViewProductPage.js",
-                                        lineNumber: 114,
+                                        lineNumber: 113,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("small", {
@@ -44271,13 +44302,13 @@ function ViewProductPage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/ViewProductPage.js",
-                                        lineNumber: 116,
+                                        lineNumber: 115,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/ViewProductPage.js",
-                                lineNumber: 112,
+                                lineNumber: 111,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44288,7 +44319,7 @@ function ViewProductPage() {
                                         children: "Sort By"
                                     }, void 0, false, {
                                         fileName: "src/component/ViewProductPage.js",
-                                        lineNumber: 121,
+                                        lineNumber: 120,
                                         columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
@@ -44302,7 +44333,7 @@ function ViewProductPage() {
                                                 children: "Randomly"
                                             }, void 0, false, {
                                                 fileName: "src/component/ViewProductPage.js",
-                                                lineNumber: 123,
+                                                lineNumber: 122,
                                                 columnNumber: 25
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -44310,7 +44341,7 @@ function ViewProductPage() {
                                                 children: "Low to high Price"
                                             }, void 0, false, {
                                                 fileName: "src/component/ViewProductPage.js",
-                                                lineNumber: 124,
+                                                lineNumber: 123,
                                                 columnNumber: 25
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -44318,19 +44349,19 @@ function ViewProductPage() {
                                                 children: "High to Low Price"
                                             }, void 0, false, {
                                                 fileName: "src/component/ViewProductPage.js",
-                                                lineNumber: 125,
+                                                lineNumber: 124,
                                                 columnNumber: 25
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/ViewProductPage.js",
-                                        lineNumber: 122,
+                                        lineNumber: 121,
                                         columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/ViewProductPage.js",
-                                lineNumber: 120,
+                                lineNumber: 119,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44341,10 +44372,10 @@ function ViewProductPage() {
                                         children: "Selected Category"
                                     }, void 0, false, {
                                         fileName: "src/component/ViewProductPage.js",
-                                        lineNumber: 130,
+                                        lineNumber: 129,
                                         columnNumber: 21
                                     }, this),
-                                    storedCategory ? storedCategory.map((c)=>{
+                                    storedCategory ? storedCategory.map((c, index)=>{
                                         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                             className: "flex",
                                             children: [
@@ -44353,16 +44384,16 @@ function ViewProductPage() {
                                                     id: c.category,
                                                     name: "la",
                                                     onChange: ()=>setcat(c.category)
-                                                }, void 0, false, {
+                                                }, index, false, {
                                                     fileName: "src/component/ViewProductPage.js",
-                                                    lineNumber: 134,
+                                                    lineNumber: 133,
                                                     columnNumber: 29
                                                 }, this),
                                                 c.category
                                             ]
-                                        }, void 0, true, {
+                                        }, index, true, {
                                             fileName: "src/component/ViewProductPage.js",
-                                            lineNumber: 133,
+                                            lineNumber: 132,
                                             columnNumber: 32
                                         }, this);
                                     }) : null,
@@ -44373,14 +44404,14 @@ function ViewProductPage() {
                                         onChange: ()=>setcat("viewAll")
                                     }, void 0, false, {
                                         fileName: "src/component/ViewProductPage.js",
-                                        lineNumber: 141,
+                                        lineNumber: 140,
                                         columnNumber: 21
                                     }, this),
                                     "View All Products"
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/ViewProductPage.js",
-                                lineNumber: 129,
+                                lineNumber: 128,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -44389,13 +44420,13 @@ function ViewProductPage() {
                                 children: "Clear Filter"
                             }, void 0, false, {
                                 fileName: "src/component/ViewProductPage.js",
-                                lineNumber: 145,
+                                lineNumber: 144,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/component/ViewProductPage.js",
-                        lineNumber: 106,
+                        lineNumber: 105,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -44407,13 +44438,13 @@ function ViewProductPage() {
                         ]
                     }, void 0, true, {
                         fileName: "src/component/ViewProductPage.js",
-                        lineNumber: 148,
+                        lineNumber: 147,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/component/ViewProductPage.js",
-                lineNumber: 104,
+                lineNumber: 103,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44424,19 +44455,19 @@ function ViewProductPage() {
                         detailsPage: true
                     }, p.id, false, {
                         fileName: "src/component/ViewProductPage.js",
-                        lineNumber: 158,
+                        lineNumber: 157,
                         columnNumber: 24
                     }, this);
                 }) : null
             }, void 0, false, {
                 fileName: "src/component/ViewProductPage.js",
-                lineNumber: 153,
+                lineNumber: 152,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/ViewProductPage.js",
-        lineNumber: 102,
+        lineNumber: 101,
         columnNumber: 13
     }, this);
 }
@@ -44459,6 +44490,52 @@ $RefreshReg$(_c, "ViewProductPage");
 },{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-redux":"bdVon","../utility/store":"7oLTM","./ShowCard":"6nUG5","react-router-dom":"9xmpe","../utility/utility":"gTarV","..//../assets/images/filter.png":"4vmLz"}],"4vmLz":[function(require,module,exports) {
 module.exports = require("2e326e1686d99391").getBundleURL("aXMci") + "filter.1233d628.png" + "?" + Date.now();
 
-},{"2e326e1686d99391":"lgJ39"}]},["hcwwj","1xC6H","2kQhy"], "2kQhy", "parcelRequirea51f")
+},{"2e326e1686d99391":"lgJ39"}],"51S3L":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$ebd1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$ebd1.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>NoInternet);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+function NoInternet() {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "m-[auto] w-[250px] my-[50px]",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                className: "font-semibold text-[30px] ",
+                children: "There is no internet connection..."
+            }, void 0, false, {
+                fileName: "src/component/NoInternet.js",
+                lineNumber: 5,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: "Please check your intenet connection."
+            }, void 0, false, {
+                fileName: "src/component/NoInternet.js",
+                lineNumber: 6,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/component/NoInternet.js",
+        lineNumber: 4,
+        columnNumber: 5
+    }, this);
+}
+_c = NoInternet;
+var _c;
+$RefreshReg$(_c, "NoInternet");
+
+  $parcel$ReactRefreshHelpers$ebd1.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["hcwwj","1xC6H","2kQhy"], "2kQhy", "parcelRequirea51f")
 
 //# sourceMappingURL=index.7271efb6.js.map

@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react'
 import ShowCard from './ShowCard';
-import { useDispatch, useSelector } from 'react-redux';
-import { storeData } from '../utility/dataSlice';
+import { useSelector } from 'react-redux';
 import store from '../utility/store';
 import ShimmerCard from './ShimmerCard';
-import { shuffleArray } from '../utility/utility';
-import Slider from './Slider';
 import { Link } from 'react-router-dom';
 import slidebtn from '../../assets/images/next.png'
 export default function Body() {
@@ -13,58 +10,50 @@ export default function Body() {
 
 
     const [product, setProducts] = useState([]);
-    const [filtertab, setFilterTab] = useState(false);
     const [category, setCategory] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [minPrice, setMinPrice] = useState(100000)
-    const [filterStatus, setFilterStatus] = useState(false)
-    const [preLi, setPreLi] = useState('');
-    const [slidevalue, setSlideValue] = useState(0)
     const stored_data = useSelector(store => store?.products?.items);
 
-    const storedCategory = useSelector(store=>store?.category?.items)
+    const storedCategory = useSelector(store => store?.category?.items)
 
 
 
     useEffect(() => {
         if (stored_data?.length > 0) {
-            if(storedCategory?.length>0){
-            setProducts(stored_data)
-            console.log(storedCategory)
-            setCategory(storedCategory)
+            if (storedCategory?.length > 0) {
 
-            setLoading(false)
+                if(product?.length==0){
+                setCategory(storedCategory)
+                // adding only 6 items of each catgory in Product state so we can show only 6 items in homepage
+                let d = []
+                category.map((c) => {
+
+                    let items = stored_data.filter((i) => {
+
+
+                        return c.category == i?.category
+
+                    })
+                    items = items.slice(0, 6)
+                    for (let k = 0; k != 6; k++) {
+
+                        d.push(items[k])
+                    }
+                })
+                setProducts(d)
+
+
+
+                setLoading(false)
+            }
             }
         } else {
             setLoading(true)
+            console.log('data dont have')
         }
 
 
-    }, [stored_data,storedCategory]);
-
-
-
-
-
-
-
-
-    //for filter price range change
-    useEffect(() => {
-        if (minPrice != 100000) {
-            let data = product.filter((p) => p.price < minPrice)
-            setProducts(data)
-            setFilterStatus(true)
-        }
-    }, [minPrice])
-
-
-
-
-
-  
- 
-
+    }, [stored_data, storedCategory,product]);
 
 
 
@@ -78,7 +67,7 @@ export default function Body() {
         for (let i = 0; i < comps.length; i++) {
             let comp = comps[i];
             comp.style.transition = 'transform 1s';
-            comp.style.transform = 'translateX(-500px)';
+            comp.style.transform = 'translateX(-250px)';
         }
 
         nextBtn.style.display = 'none';
@@ -114,35 +103,35 @@ export default function Body() {
 
 
 
-                        return <div className='flex justify-between mx-[18px] items-center max-[800px]:flex-col '>
+                        return <div key={index} className='flex justify-between mx-[18px] items-center max-[800px]:flex-col '>
 
-      
-                               <Link to={'/view-all/'+c.category}> <div className='bg-slate-100 text-black text-[25px] font-semibold  flex justify-center items-center cursor-pointer hover:shadow-lg
+
+                            <Link to={'/view-all/' + c.category}> <div
+                                className='bg-slate-100 text-black text-[25px] font-semibold  flex justify-center items-center cursor-pointer hover:shadow-lg
                                              rounded-md w-[200px] h-[300px] max-[800px]:h-[70px] max-[800px]:w-[95%] '>
-                                    <span className='flex flex-col items-center justify-center max-[800px]:flex-row cursor-pointer max-[800px]:px-[20px] ' >
-                                        <label className='text-[30px] max-[800px]:hidden cursor-pointer'>View All</label>
-                                        <label className='min-[800px]:text-[16px] cursor-pointer whitespace-nowrap' >{c.category.toUpperCase()} </label>
-                                    </span>
-                                </div>
-                                </Link>
-                                <img src={slidebtn} onClick={() => handleprevslider(c.category)} id={c.category + 'prev'}
-                                    className=' h-[40px] rounded-[20px] rotate-[180deg] w-[40px]  justify-center items-center hidden max-[800px]:hidden' /> 
-                                
-                                <section className='flex overflow-hidden  max-[800px]:overflow-auto w-[85%] my-[10px] transition-all duration-[1s] ' id='section'>
-                               
+                                <span className='flex flex-col items-center justify-center max-[800px]:flex-row cursor-pointer max-[800px]:px-[20px] ' >
+                                    <label className='text-[30px] max-[800px]:hidden cursor-pointer'>View All</label>
+                                    <label className='min-[800px]:text-[16px] cursor-pointer whitespace-nowrap' >{c.category.toUpperCase()} </label>
+                                </span>
+                            </div>
+                            </Link>
+                            <img src={slidebtn} onClick={() => handleprevslider(c.category)} id={c.category + 'prev'}
+                                className=' h-[40px] rounded-[20px] rotate-[180deg] w-[40px] cursor-pointer  justify-center items-center hidden max-[800px]:hidden' />
 
-                                    {product?.map((p, index) => {
+                            <section className='flex overflow-hidden items-center  max-[800px]:overflow-auto w-[85%] my-[10px] transition-all duration-[1s] ' id='section'>
 
 
-                                        return <div className={'class' + c.category}  >
-                                            {p.category == c.category ?
-                                                <ShowCard info={p} key={p.id} detailsPage={true} />
-                                                : null}</div>
+                                {product?.map((p,index) => {
 
-                                    })}
-                             
-                               
-                             <Link to={'/view-all/'+c.category}  ><div className='bg-slate-100 flex justify-center items-center min-[800px]:hidden
+                                    return <div key={index} className={'class' + c.category}  >
+                                        {p.category == c.category ?
+                                            <ShowCard info={p} key={p.id} detailsPage={true} /> : null}
+                                    </div>
+
+                                })}
+
+
+                                <Link to={'/view-all/' + c.category}  ><div className='bg-slate-100 flex justify-center items-center min-[800px]:hidden
                                              rounded-md h-[300px] '>
                                     <span className='flex flex-col items-center justify-center ' >
                                         <label className='text-[30px] mx-[50px] whitespace-nowrap '>View All</label>
@@ -150,10 +139,10 @@ export default function Body() {
                                     </span>
                                 </div>
                                 </Link>
-                                </section>
-                                
-                                <img src={slidebtn} onClick={() => handlenextslider(c.category)} id={c.category + 'next'} 
-                                    className=' h-[40px] rounded-[20px] w-[40px] flex justify-center items-center max-[800px]:hidden '/> 
+                            </section>
+
+                            <img src={slidebtn} onClick={() => handlenextslider(c.category)} id={c.category + 'next'}
+                                className=' h-[40px] rounded-[20px] w-[40px] flex justify-center items-center cursor-pointer max-[800px]:hidden ' />
                         </div>
 
                     })

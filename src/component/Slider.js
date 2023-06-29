@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useOnline from '../utility/useOnline';
+import ShimmerCard from './ShimmerCard';
 
 export default function Slider() {
 
     const [slidetoshow, setSlidetoShow] = useState(0)
+    const online = useOnline()
+
     const [banner, setBanner] = useState([])
     const navigate = useNavigate()
 
@@ -46,8 +50,9 @@ export default function Slider() {
         getAllCarousel()
     }, [])
 
-
-    if (banner == []) return null
+    
+    if (!online) return null
+    if (banner.length==0) {return<div  className=' h-[550px] max-[700px]:h-[400px] top-4 animate-pulse max-[500px]:h-[250px] bg-slate-200'></div>}
     return (
         <div className='relative'>
         <div onClick={() => {
@@ -57,7 +62,7 @@ export default function Slider() {
         className=' h-[550px] max-[700px]:h-[400px] max-[500px]:h-[250px] z-0 w-full  relative p-[6]  cursor-pointer'>
         
             <img src={banner[slidetoshow]?.imageUrl}   
-                className='w-full h-full  duration-500  cursor-pointer z-4'/>
+                className='w-full h-full  duration-500  cursor-pointer z-4 transition-all'/>
 
         </div>
       

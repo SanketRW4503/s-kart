@@ -17,16 +17,21 @@ import LoginPage from "./component/LoginPage";
 import UserProfileCom from "./component/UserProfileCom";
 import Payment_Success_Page from "./component/Payment_Success_Page";
 import ViewProductPage from "./component/ViewProductPage";
+import useOnline from "./utility/useOnline";
+import NoInternet from "./component/NoInternet";
 
 
 
 const App = () => {
+    const online = useOnline()
 
     return (
         <>
             <Provider store={store}>
                 <Header />
-                <Outlet />
+                {
+                   online==false?<NoInternet />:<Outlet />
+                }
                 <Footer />
             </Provider>
         </>

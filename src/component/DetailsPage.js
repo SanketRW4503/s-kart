@@ -96,7 +96,7 @@ export default function DetailsPage() {
         <section>
             <div className='flex  m-[auto] mt-[50px]  w-[85%] p-2 mb-8 max-[800px]:flex-col max-[800px]:p-0 '>
                 <div className='flex items-center justify-center '>
-                    <img src={details[0]?.imageUrl} className='w-[450px]  h-[500] max-[800px]:w-[300px] ' />
+                    <img src={details[0]?.imageUrl} className='w-[490px]  h-[500] max-[800px]:w-[300px] ' />
                 </div>
                 <div className='ml-12 max-[800px]:ml-0'>
                     <h1 className='inline font-semibold text-[25px]'>{details[0]?.title}</h1>
@@ -105,7 +105,7 @@ export default function DetailsPage() {
                         <li className='text-[15px] mt-4 max-[800px]:p-0'>Price: {details[0]?.price}</li>
                         <li className='text-[15px] max-[800px]:p-0 mt-4 list-disc ml-8 marker:text-gray-500'>{details[0]?.rating}&#9733;</li>
                     </ul>
-                    <p className='text-[15px] max-[800px]:p-0 mt-4'>Hurry {details[0]?.rating} left only...!</p>
+                    <p className='text-[15px] max-[800px]:p-0 mt-4'>Hurry {details[0]?.quantity} left only...!</p>
                     <p className='mt-8 max-[800px]:p-0 text-justify '>{details[0]?.description}</p>
                     <a href='#nav' className='scroll-smooth'>  <button onClick={() => setdata_tocart()}
                         className='bg-black px-[10px] py-[5px] text-white mt-4 rounded-xl '>Add to Cart</button>

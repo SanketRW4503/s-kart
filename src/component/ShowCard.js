@@ -1,11 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function ShowCard(props) {
 
   let navigate = useNavigate()
-
-
   function setpathh() {
 
     if (props.detailsPage == true) {
@@ -14,8 +12,11 @@ export default function ShowCard(props) {
 
   }
 
+
+
   return (
 
+  
     <Link to={'details/' + props.info._id} onClick={setpathh}  >
       <section
       className='flex p-[5px]  rounded-lg z-10 m-[5px] w-[240px] h-[300px]  flex-col mx-[10px]  cursor-pointer hover:scale-[1.02]'>

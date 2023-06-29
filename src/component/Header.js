@@ -23,6 +23,7 @@ export default function Header() {
   const [menustatus, setMenuStatus] = useState(false);
   const cartData = useSelector(store => store.cart.totalItems);
   const loginStatus = useSelector(store => store.login.status);
+
   const location = useLocation()
   const dispatch = useDispatch()
 
@@ -41,10 +42,8 @@ export default function Header() {
                   credentials: 'include'
               });
           const json = await res.json()
-          console.log(json)
 
           dispatch(storeCategory(json.allcollection))
-          console.log(storedCategory)
       } catch (error) {
           console.log('s' + error);
       }
@@ -80,7 +79,6 @@ useEffect(()=>{
   useEffect(() => {
     if (stored_data.length == 0) {
       getAllProduct()
-      console.log(location);
     }
 
 
@@ -98,7 +96,6 @@ useEffect(()=>{
     })
 
     const json = await res.json()
-    console.log(json);
 
     if (json.success == true) {
       dispatch(setUser(json))
@@ -160,6 +157,9 @@ useEffect(()=>{
     }
   }
 
+
+
+
   return (
     <div className='mb-[30px]'>
       <nav className='px-4 py-4 flex justify-between items-center bg-slate-100  shadow scroll-smooth' id='nav'>
@@ -177,7 +177,7 @@ useEffect(()=>{
               max-[940px]:top-[0px] max-[940px]:bottom-[0px] z-[100] max-[940px]:left-[55%] max-[940px]:justify-center  max-[940px]:p-[20px] max-[940px]:bg-slate-200 max-[940px]:transition-all duration-1000
               ' style={menucss} >
           <span className='text-[20px] font-semibold min-[940px]:hidden' onClick={() => menuFunction()}>&#10005;</span>
-          <Link to='/'><li className='px-4 max-[940px]:mt-[50px] text-[20px] hidden max-[940px]:flex '>Home</li></Link>
+          <Link to='/'><li className='px-4 max-[940px]:mt-[50px] text-[20px]  max-[940px]:flex '>Home</li></Link>
 
           {
             loginStatus == false ?
@@ -222,7 +222,7 @@ useEffect(()=>{
         location.pathname=='/'?<Slider/>:null
       }
 
-<div className='hidden max-[940px]:flex items-center justify-center'>
+      <div className='hidden max-[940px]:flex items-center justify-center'>
       <SearchBar className='' />
       </div>
     </div>

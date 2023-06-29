@@ -22,7 +22,6 @@ export default function ViewProductPage() {
     useEffect(() => {
         if (stored_data?.length > 0) {
             setProducts(stored_data)
-            console.log(products);
         }
 
     }, [stored_data]);
@@ -128,10 +127,10 @@ export default function ViewProductPage() {
 
                 <div className='bg-slate-100 mt-[20px]  '>
                     <label className='font-semibold mr-4'>Selected Category</label>
-                    {storedCategory ? storedCategory.map((c) => {
+                    {storedCategory ? storedCategory.map((c,index) => {
 
-                        return <span className='flex'>
-                            <input type='radio' id={c.category} name='la' onChange={() => setcat(c.category)} />{c.category}
+                        return <span className='flex' key={index}>
+                            <input type='radio' id={c.category} key={index} name='la' onChange={() => setcat(c.category)} />{c.category}
 
                         </span>
 
