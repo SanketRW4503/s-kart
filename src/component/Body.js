@@ -107,7 +107,7 @@ export default function Body() {
 
 
                             <Link to={'/view-all/' + c.category}> <div
-                                className='bg-slate-100 text-black text-[25px] font-semibold  flex justify-center items-center cursor-pointer hover:shadow-lg
+                                className='bg-theme hover:bg-darktheme  max-[800px]:bg-white  max-[800px]:text-black text-white text-[25px] font-semibold  flex justify-center items-center cursor-pointer hover:shadow-lg
                                              rounded-md w-[200px] h-[300px] max-[800px]:h-[70px] max-[800px]:w-[95%] '>
                                 <span className='flex flex-col items-center justify-center max-[800px]:flex-row cursor-pointer max-[800px]:px-[20px] ' >
                                     <label className='text-[30px] max-[800px]:hidden cursor-pointer'>View All</label>
@@ -131,7 +131,7 @@ export default function Body() {
                                 })}
 
 
-                                <Link to={'/view-all/' + c.category}  ><div className='bg-slate-100 flex justify-center items-center min-[800px]:hidden
+                                <Link to={'/view-all/' + c.category}  ><div className='bg-slate flex justify-center items-center min-[800px]:hidden
                                              rounded-md h-[300px] '>
                                     <span className='flex flex-col items-center justify-center ' >
                                         <label className='text-[30px] mx-[50px] whitespace-nowrap '>View All</label>
@@ -148,7 +148,7 @@ export default function Body() {
                     })
                 }
 
-                <Link to={'/view-all/viewAll'}><div className='w-[96%] hover:shadow-md my-6 bg-slate-100 text-black text-[25px] font-semibold  flex justify-center items-center m-[auto] rounded-md p-[20px]' >
+                <Link to={'/view-all/viewAll'}><div className='w-[96%]  my-6 bg-slate hover:shadow-md text-black text-[25px] font-semibold  flex justify-center items-center m-[auto] rounded-md p-[20px]' >
                     View All Products
                 </div>
                 </Link>

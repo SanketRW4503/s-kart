@@ -61,7 +61,7 @@ export default function LoginPage() {
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8  ">
 
             <ToastContainer />
-            <div className=" sm:mx-auto sm:w-full sm:max-w-sm bg-slate-100 p-8 rounded-md">
+            <div className=" sm:mx-auto sm:w-full sm:max-w-sm bg-lightslate p-8 rounded-md">
                 <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Login</h2>
 
                 <form className="space-y-6" >
@@ -89,7 +89,7 @@ export default function LoginPage() {
                     <div>
                         <button
                             onClick={(e) => ValidateData(e)}
-                            type="submit" className="flex w-full justify-center rounded-md bg-blue-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Log in</button>
+                            type="submit" className="flex w-full justify-center rounded-md bg-theme px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Log in</button>
                     </div>
 
                     <div className="text-grey-dark mt-6">

@@ -198,23 +198,23 @@ export default function CartPage() {
 
                                         product_array.push({product_id:e._id,quantity:e.quantity});
 
-                                        return <div className='flex border p-[30px] m-4 max-[1000px]:flex-col items-center' key={index}>
+                                        return <div className='flex border rounded-md p-[30px] m-4 max-[1000px]:flex-col items-center' key={index}>
                                             <div>
                                                 <img src={e.imageUrl} className='w-[200px] h-[200px]' />
 
                                             </div>
-                                            <div className='ml-[30px]'>
+                                            <div className='ml-[30px] '>
                                                 <h1 className='text-[20px] font-semibold'>{e.title}</h1>
                                                 <p>{e.description}</p>
                                                 <p>Price:{e.price}</p>
                                                 <div className=' mt-8 flex max-[567px]:flex-wrap'>
-                                                    <div className='flex items-center border w-[max-content]'>
-                                                        <button className='bg-slate-200 px-4 py-2' onClick={() => removeOne(e)}>-</button>
-                                                        <div className='bg-white px-4 py-2'>{e.quantity}</div>
-                                                        <button onClick={() => setdata_tocart(e)} className='bg-slate-200 px-4 py-2'
+                                                    <div className='flex items-center border rounded-sm  w-[max-content]'>
+                                                        <button className='bg-slate px-4 py-2 ' onClick={() => removeOne(e)}>-</button>
+                                                        <div className='bg-white px-4 py-2 '>{e.quantity}</div>
+                                                        <button onClick={() => setdata_tocart(e)} className='bg-slate px-4 py-2 '
                                                         >+</button>
                                                     </div>
-                                                    <button className='ml-[50px] max-[567px]:ml-[5px] max-[567px]:py-[8px]  max-[567px]:mt-[20px] bg-blue-300  px-4 rounded-lg' onClick={() => remove_item(e)}>Remove From Cart</button>
+                                                    <button className='ml-[50px] max-[567px]:ml-[5px] max-[567px]:py-[8px] hover:bg-theme max-[567px]:mt-[20px] bg-theme text-white px-4 rounded-lg' onClick={() => remove_item(e)}>Remove From Cart</button>
 
                                                 </div>
                                             </div>
@@ -237,7 +237,7 @@ export default function CartPage() {
                                         <div className='flex flex-col w-[350px] max-[500px]:w-[max-content] mt-4 mb-8 '>
 
                                             <input type='text' className='border outline-none my-2 py-2 px-2 rounded-lg' placeholder='Enter Here' />
-                                            <button className='bg-green-500 rounded-xl text-white py-[5px]'> Apply Coupan Code</button>
+                                            <button className='bg-[#22c55e] rounded-xl text-white py-[5px]'> Apply Coupan Code</button>
 
                                         </div>
                                         <table >

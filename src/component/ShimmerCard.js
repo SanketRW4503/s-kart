@@ -9,7 +9,7 @@ export default function ShimmerCard() {
       {
         Array(20).fill('').map((e, index) => {
           return <section className='w-[300px]  m-[10px] ' key={index}>
-            <div className=' bg-slate-300 h-[200px] animate-pulse '></div>
+            <div className=' bg-slate h-[200px] animate-pulse '></div>
            
       
           </section>

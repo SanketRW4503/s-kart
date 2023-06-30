@@ -130,7 +130,7 @@ export default function UserProfileCom() {
 
 
           <button onClick={() => logoutUser()}
-            className='my-[20px] bg-blue-400 text-center text-white rounded-lg px-10 py-2 hover:bg-blue-600'
+            className='my-[20px] bg-theme hover:bg-darktheme text-center text-white rounded-lg px-10 py-2 '
           >Log Out</button>
         </div>
       </div>

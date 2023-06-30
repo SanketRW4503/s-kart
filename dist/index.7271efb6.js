@@ -27460,10 +27460,10 @@ function Header() {
         });
     }
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "mb-[30px]",
+        className: "mb-[30px]  ",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
-                className: "px-4 py-4 flex justify-between items-center bg-slate-100  shadow scroll-smooth",
+                className: "px-4 py-4 flex justify-between items-center  bg-theme text-white shadow scroll-smooth",
                 id: "nav",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27475,7 +27475,7 @@ function Header() {
                                     src: (0, _shopIconPngDefault.default),
                                     width: 50,
                                     height: 50,
-                                    className: "w-[50px] h-[50px] transition-all duration-500"
+                                    className: "w-[50px] h-[50px] transition-all duration-500 invert"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
                                     lineNumber: 168,
@@ -27484,8 +27484,8 @@ function Header() {
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                                     to: "/",
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                                        className: "font-semibold text-[40px] max-[1100px]:text-[30px] italic",
-                                        children: "S-Kart.IN"
+                                        className: "font-semibold text-[40px] max-[1100px]:text-[30px] italic ",
+                                        children: "S-KART"
                                     }, void 0, false, {
                                         fileName: "src/component/Header.js",
                                         lineNumber: 169,
@@ -27522,7 +27522,7 @@ function Header() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                        className: "flex max-[940px]:flex-col items-center max-[940px]:hidden max-[940px]:fixed max-[940px]:right-[0px]    max-[940px]:top-[0px] max-[940px]:bottom-[0px] z-[100] max-[940px]:left-[55%] max-[940px]:justify-center  max-[940px]:p-[20px] max-[940px]:bg-slate-200 max-[940px]:transition-all duration-1000   ",
+                        className: "flex max-[940px]:flex-col items-center max-[940px]:hidden max-[940px]:fixed max-[940px]:right-[0px]    max-[940px]:top-[0px] max-[940px]:bottom-[0px] z-[100] max-[940px]:left-[55%] max-[940px]:justify-center  max-[940px]:p-[20px] max-[940px]:bg-darktheme max-[940px]:transition-all duration-1000   ",
                         style: menucss,
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -27647,7 +27647,7 @@ function Header() {
                                 to: "/cart",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                                     src: (0, _cartBagPngDefault.default),
-                                    className: "w-[40px] mr-[10px] z-4 max-[940px]:hidden"
+                                    className: "w-[40px] mr-[10px] z-4 max-[940px]:hidden invert"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
                                     lineNumber: 197,
@@ -27682,7 +27682,7 @@ function Header() {
                                     " ",
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                                         src: (0, _profileIconPngDefault.default),
-                                        className: "w-[30px] mr-[10px] z-4 max-[940px]:hidden"
+                                        className: "w-[30px] mr-[10px] invert z-4 max-[940px]:hidden"
                                     }, void 0, false, {
                                         fileName: "src/component/Header.js",
                                         lineNumber: 202,
@@ -27708,7 +27708,7 @@ function Header() {
                                 to: "/cart",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                                     src: (0, _cartBagPngDefault.default),
-                                    className: "w-[40px] mr-[10px] z-4"
+                                    className: "w-[40px] mr-[10px] z-4 invert"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
                                     lineNumber: 210,
@@ -27758,14 +27758,16 @@ function Header() {
                 lineNumber: 165,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactToastify.ToastContainer), {}, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactToastify.ToastContainer), {
+                theme: "dark"
+            }, void 0, false, {
                 fileName: "src/component/Header.js",
                 lineNumber: 220,
                 columnNumber: 7
             }, this),
             location.pathname == "/" ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sliderDefault.default), {}, void 0, false, {
                 fileName: "src/component/Header.js",
-                lineNumber: 222,
+                lineNumber: 224,
                 columnNumber: 32
             }, this) : null,
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27774,12 +27776,12 @@ function Header() {
                     className: ""
                 }, void 0, false, {
                     fileName: "src/component/Header.js",
-                    lineNumber: 226,
+                    lineNumber: 228,
                     columnNumber: 7
                 }, this)
             }, void 0, false, {
                 fileName: "src/component/Header.js",
-                lineNumber: 225,
+                lineNumber: 227,
                 columnNumber: 7
             }, this)
         ]
@@ -39710,20 +39712,25 @@ var _useOnline = require("../utility/useOnline");
 var _useOnlineDefault = parcelHelpers.interopDefault(_useOnline);
 var _shimmerCard = require("./ShimmerCard");
 var _shimmerCardDefault = parcelHelpers.interopDefault(_shimmerCard);
+var _nextPng = require("../../assets/images/next.png");
+var _nextPngDefault = parcelHelpers.interopDefault(_nextPng);
 var _s = $RefreshSig$();
 function Slider() {
     _s();
-    const [slidetoshow, setSlidetoShow] = (0, _react.useState)(0);
     const online = (0, _useOnlineDefault.default)();
+    const [slide, setSlide] = (0, _react.useState)(0);
     const [banner, setBanner] = (0, _react.useState)([]);
+    const [slideStyle, setSlideStyle] = (0, _react.useState)({
+        transform: "translate(0px)"
+    });
     const navigate = (0, _reactRouterDom.useNavigate)();
     function handlenext() {
-        if (slidetoshow !== banner.length - 1) setSlidetoShow(slidetoshow + 1);
-        else setSlidetoShow(0);
+        if (banner.length - 1 > slide) setSlide(slide + 1);
+        else setSlide(0);
     }
     function handleprev() {
-        if (slidetoshow !== 0) setSlidetoShow(slidetoshow - 1);
-        else setSlidetoShow(banner?.length - 1);
+        if (slide == 0) setSlide(banner.length - 1);
+        else setSlide(slide - 1);
     }
     async function getAllCarousel() {
         try {
@@ -39742,59 +39749,51 @@ function Slider() {
     }, []);
     if (!online) return null;
     if (banner.length == 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: " h-[550px] max-[700px]:h-[400px] top-4 animate-pulse max-[500px]:h-[250px] bg-slate-200"
+        className: " h-[550px] max-[700px]:h-[400px] top-4 animate-pulse max-[500px]:h-[250px] bg-slate"
     }, void 0, false, {
         fileName: "src/component/Slider.js",
-        lineNumber: 55,
-        columnNumber: 34
+        lineNumber: 69,
+        columnNumber: 38
     }, this);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "relative",
+        id: "slider-div",
+        className: "overflow-hidden h-[550px]  max-[700px]:h-[400px] max-[500px]:h-[250px]        duration-500   z-4 transition-all z-0 w-full flex justify-between items-center relative cursor-pointer  ",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                onClick: ()=>{
-                    navigate("/details/" + banner[slidetoshow]?.product_id);
-                },
-                className: " h-[550px] max-[700px]:h-[400px] max-[500px]:h-[250px] z-0 w-full  relative p-[6]  cursor-pointer",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: banner[slidetoshow]?.imageUrl,
-                    className: "w-full h-full  duration-500  cursor-pointer z-4 transition-all"
-                }, void 0, false, {
-                    fileName: "src/component/Slider.js",
-                    lineNumber: 64,
-                    columnNumber: 13
-                }, this)
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                src: banner[slide].imageUrl,
+                onClick: ()=>navigate("/details/" + banner[slide].product_id),
+                className: " w-full h-full"
             }, void 0, false, {
                 fileName: "src/component/Slider.js",
-                lineNumber: 58,
-                columnNumber: 9
+                lineNumber: 76,
+                columnNumber: 20
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 onClick: handleprev,
-                className: "bg-white rounded-[50%] w-[35px] h-[35px] text-[20px] flex justify-center items-center absolute left-2 top-[45%]",
-                children: "<"
+                src: (0, _nextPngDefault.default),
+                className: "rotate-[180deg] mix-blend-multiply shadow-2xl rounded-[50%] w-[35px] h-[35px] text-[20px] flex justify-center items-center absolute left-2 top-[45%]"
             }, void 0, false, {
                 fileName: "src/component/Slider.js",
-                lineNumber: 69,
-                columnNumber: 17
+                lineNumber: 89,
+                columnNumber: 13
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 onClick: handlenext,
-                className: "bg-white rounded-[50%] w-[35px] h-[35px] text-[20px] flex justify-center items-center absolute right-2 top-[45%] ",
-                children: ">"
+                src: (0, _nextPngDefault.default),
+                className: " rounded-[50%]  mix-blend-multiply w-[35px] h-[35px] text-[20px] flex justify-center items-center absolute right-2 top-[45%]  "
             }, void 0, false, {
                 fileName: "src/component/Slider.js",
-                lineNumber: 72,
-                columnNumber: 17
+                lineNumber: 92,
+                columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/Slider.js",
-        lineNumber: 57,
+        lineNumber: 71,
         columnNumber: 9
     }, this);
 }
-_s(Slider, "XxPg9fn6Ui1Yzvfu60HRi5pXRaE=", false, function() {
+_s(Slider, "kiHoiHTA0Ia8SaKijFoWbMZbav4=", false, function() {
     return [
         (0, _useOnlineDefault.default),
         (0, _reactRouterDom.useNavigate)
@@ -39809,7 +39808,7 @@ $RefreshReg$(_c, "Slider");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","react-toastify":"kSvyQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utility/useOnline":"6ohYp","./ShimmerCard":"eZNpp"}],"6ohYp":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","react-toastify":"kSvyQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utility/useOnline":"6ohYp","./ShimmerCard":"eZNpp","../../assets/images/next.png":"9zvoC"}],"6ohYp":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1b62 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39860,7 +39859,7 @@ function ShimmerCard() {
             return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
                 className: "w-[300px]  m-[10px] ",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: " bg-slate-300 h-[200px] animate-pulse "
+                    className: " bg-slate h-[200px] animate-pulse "
                 }, void 0, false, {
                     fileName: "src/component/ShimmerCard.js",
                     lineNumber: 12,
@@ -39887,7 +39886,10 @@ $RefreshReg$(_c, "ShimmerCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jOrUR":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9zvoC":[function(require,module,exports) {
+module.exports = require("f9eb521dac219da8").getBundleURL("aXMci") + "next.9e1cc1a2.png" + "?" + Date.now();
+
+},{"f9eb521dac219da8":"lgJ39"}],"jOrUR":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3e88 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39921,7 +39923,7 @@ function SearchBar() {
                 onChange: (e)=>{
                     setSearchText(e.target.value);
                 },
-                className: " border-[1px] outline-none border-slate-600 w-[500px] max-[1100px]:w-[300px]  rounded-[20px] px-2 py-1",
+                className: " border-[1px] border-white outline-none max-[940px]:border-black w-[500px] text-black  max-[1100px]:w-[300px]  rounded-[20px] px-2 py-1",
                 placeholder: "Search"
             }, void 0, false, {
                 fileName: "src/component/SearchBar.js",
@@ -39942,7 +39944,7 @@ function SearchBar() {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                         src: (0, _searchiconPngDefault.default),
-                        className: searchtext.length > 0 ? "left-[-25px] ml-2 w-[30px] h-[25px] cursor-pointer relative " : "left-[0px] ml-2 w-[28px] h-[24px] cursor-pointer relative "
+                        className: searchtext.length > 0 ? "left-[-25px] ml-2 w-[30px] h-[25px]  max-[940px]:invert-0 cursor-pointer relative invert" : "left-[0px] ml-2 w-[28px] h-[24px] cursor-pointer relative invert max-[940px]:invert-0"
                     }, void 0, false, {
                         fileName: "src/component/SearchBar.js",
                         lineNumber: 33,
@@ -40081,7 +40083,7 @@ function Body() {
                             children: [
                                 " ",
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "bg-slate-100 text-black text-[25px] font-semibold  flex justify-center items-center cursor-pointer hover:shadow-lg   rounded-md w-[200px] h-[300px] max-[800px]:h-[70px] max-[800px]:w-[95%] ",
+                                    className: "bg-theme hover:bg-darktheme  max-[800px]:bg-white  max-[800px]:text-black text-white text-[25px] font-semibold  flex justify-center items-center cursor-pointer hover:shadow-lg   rounded-md w-[200px] h-[300px] max-[800px]:h-[70px] max-[800px]:w-[95%] ",
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                         className: "flex flex-col items-center justify-center max-[800px]:flex-row cursor-pointer max-[800px]:px-[20px] ",
                                         children: [
@@ -40155,7 +40157,7 @@ function Body() {
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                                     to: "/view-all/" + c.category,
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "bg-slate-100 flex justify-center items-center min-[800px]:hidden   rounded-md h-[300px] ",
+                                        className: "bg-slate flex justify-center items-center min-[800px]:hidden   rounded-md h-[300px] ",
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                             className: "flex flex-col items-center justify-center ",
                                             children: [
@@ -40219,7 +40221,7 @@ function Body() {
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                 to: "/view-all/viewAll",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "w-[96%] hover:shadow-md my-6 bg-slate-100 text-black text-[25px] font-semibold  flex justify-center items-center m-[auto] rounded-md p-[20px]",
+                    className: "w-[96%]  my-6 bg-slate hover:shadow-md text-black text-[25px] font-semibold  flex justify-center items-center m-[auto] rounded-md p-[20px]",
                     children: "View All Products"
                 }, void 0, false, {
                     fileName: "src/component/Body.js",
@@ -40283,7 +40285,7 @@ function ShowCard(props) {
                     className: "flex justify-center items-center",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                         src: props.info.imageUrl,
-                        className: "w-[180px] h-[200px]"
+                        className: "w-[180px] h-[200px] mix-blend-multiply"
                     }, void 0, false, {
                         fileName: "src/component/ShowCard.js",
                         lineNumber: 24,
@@ -40338,10 +40340,7 @@ $RefreshReg$(_c, "ShowCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"9zvoC":[function(require,module,exports) {
-module.exports = require("f9eb521dac219da8").getBundleURL("aXMci") + "next.9e1cc1a2.png" + "?" + Date.now();
-
-},{"f9eb521dac219da8":"lgJ39"}],"1HMeJ":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"1HMeJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$796b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40423,7 +40422,7 @@ function DetailsPage() {
                         className: "flex items-center justify-center ",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                             src: details[0]?.imageUrl,
-                            className: "w-[490px]  h-[500] max-[800px]:w-[300px] "
+                            className: "w-[490px]  h-[500] max-[800px]:w-[360px] "
                         }, void 0, false, {
                             fileName: "src/component/DetailsPage.js",
                             lineNumber: 99,
@@ -40503,7 +40502,7 @@ function DetailsPage() {
                                     "  ",
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                         onClick: ()=>setdata_tocart(),
-                                        className: "bg-black px-[10px] py-[5px] text-white mt-4 rounded-xl ",
+                                        className: "bg-theme px-[10px] py-[5px] text-white mt-4 rounded-xl ",
                                         children: "Add to Cart"
                                     }, void 0, false, {
                                         fileName: "src/component/DetailsPage.js",
@@ -41155,7 +41154,7 @@ function CartPage() {
                                     quantity: e.quantity
                                 });
                                 return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "flex border p-[30px] m-4 max-[1000px]:flex-col items-center",
+                                    className: "flex border rounded-md p-[30px] m-4 max-[1000px]:flex-col items-center",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -41172,7 +41171,7 @@ function CartPage() {
                                             columnNumber: 45
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "ml-[30px]",
+                                            className: "ml-[30px] ",
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                                                     className: "text-[20px] font-semibold",
@@ -41203,10 +41202,10 @@ function CartPage() {
                                                     className: " mt-8 flex max-[567px]:flex-wrap",
                                                     children: [
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                            className: "flex items-center border w-[max-content]",
+                                                            className: "flex items-center border rounded-sm  w-[max-content]",
                                                             children: [
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                                    className: "bg-slate-200 px-4 py-2",
+                                                                    className: "bg-slate px-4 py-2 ",
                                                                     onClick: ()=>removeOne(e),
                                                                     children: "-"
                                                                 }, void 0, false, {
@@ -41215,7 +41214,7 @@ function CartPage() {
                                                                     columnNumber: 57
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                                    className: "bg-white px-4 py-2",
+                                                                    className: "bg-white px-4 py-2 ",
                                                                     children: e.quantity
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
@@ -41224,7 +41223,7 @@ function CartPage() {
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                                                     onClick: ()=>setdata_tocart(e),
-                                                                    className: "bg-slate-200 px-4 py-2",
+                                                                    className: "bg-slate px-4 py-2 ",
                                                                     children: "+"
                                                                 }, void 0, false, {
                                                                     fileName: "src/component/CartPage.js",
@@ -41238,7 +41237,7 @@ function CartPage() {
                                                             columnNumber: 53
                                                         }, this),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                            className: "ml-[50px] max-[567px]:ml-[5px] max-[567px]:py-[8px]  max-[567px]:mt-[20px] bg-blue-300  px-4 rounded-lg",
+                                                            className: "ml-[50px] max-[567px]:ml-[5px] max-[567px]:py-[8px] hover:bg-theme max-[567px]:mt-[20px] bg-theme text-white px-4 rounded-lg",
                                                             onClick: ()=>remove_item(e),
                                                             children: "Remove From Cart"
                                                         }, void 0, false, {
@@ -41297,7 +41296,7 @@ function CartPage() {
                                                     columnNumber: 45
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                    className: "bg-green-500 rounded-xl text-white py-[5px]",
+                                                    className: "bg-[#22c55e] rounded-xl text-white py-[5px]",
                                                     children: " Apply Coupan Code"
                                                 }, void 0, false, {
                                                     fileName: "src/component/CartPage.js",
@@ -41649,7 +41648,7 @@ function AdressCom(props) {
         userStore
     ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "relative w-[400px] m-[auto] p-[20px] bg-slate-100 h-[auto] rounded-md ",
+        className: "relative w-[400px] m-[auto] p-[20px] bg-lightslate h-[auto] rounded-md ",
         children: addformstatus !== true ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
             className: "flex justify-center",
             children: userStore?.profile?.address == "undefined" ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -41664,7 +41663,7 @@ function AdressCom(props) {
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         onClick: ()=>setAddFormStatus(!addformstatus),
-                        className: "bg-blue-400 m-[auto] hover:bg-blue-500 text-white rounded-md px-[10px]",
+                        className: "bg-theme m-[auto] hover:bg-darktheme text-white rounded-md px-[10px]",
                         children: "Add Address"
                     }, void 0, false, {
                         fileName: "src/component/AdressCom.js",
@@ -41688,7 +41687,7 @@ function AdressCom(props) {
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         onClick: ()=>setAddFormStatus(!addformstatus),
-                        className: "bg-blue-400 m-[auto]] hover:bg-blue-500 text-white rounded-md px-[10px]",
+                        className: "bg-theme m-[auto]] hover:bg-darktheme text-white rounded-md px-[10px]",
                         children: "Update Address"
                     }, void 0, false, {
                         fileName: "src/component/AdressCom.js",
@@ -41817,7 +41816,7 @@ function AdressCom(props) {
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     onClick: (e)=>vadlidate_Address(e),
-                    className: "bg-blue-400 mx-[auto] hover:bg-blue-500 text-white rounded-md px-[10px] absolute right-[10px] bottom-1",
+                    className: "bg-theme mx-[auto] hover:bg-darktheme text-white rounded-md px-[10px] absolute right-[10px] bottom-1",
                     children: userStore?.profile?.address == "undefined" ? "Add Address" : "Update Address"
                 }, void 0, false, {
                     fileName: "src/component/AdressCom.js",
@@ -42070,7 +42069,7 @@ function SignUpPage() {
             className: "container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "bg-slate-100 px-6 py-8 shadow-md text-black w-full rounded-md",
+                    className: "bg-lightslate px-6 py-8 shadow-md text-black w-full rounded-md",
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                             className: "mb-8 text-3xl text-center",
@@ -42218,7 +42217,7 @@ function SignUpPage() {
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                             onClick: (e)=>validateData(e),
                             type: "submit",
-                            className: "w-full text-center py-3 rounded bg-blue-400 text-white hover:bg-green-dark focus:outline-none my-1",
+                            className: "w-full text-center py-3 rounded bg-theme  text-white hover:bg-darktheme focus:outline-none my-1",
                             children: "Create Account"
                         }, void 0, false, {
                             fileName: "src/component/SignUpPage.js",
@@ -42397,7 +42396,7 @@ function LoginPage() {
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: " sm:mx-auto sm:w-full sm:max-w-sm bg-slate-100 p-8 rounded-md",
+                className: " sm:mx-auto sm:w-full sm:max-w-sm bg-lightslate p-8 rounded-md",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                         className: "text-center text-2xl font-bold leading-9 tracking-tight text-gray-900",
@@ -42515,7 +42514,7 @@ function LoginPage() {
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                     onClick: (e)=>ValidateData(e),
                                     type: "submit",
-                                    className: "flex w-full justify-center rounded-md bg-blue-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
+                                    className: "flex w-full justify-center rounded-md bg-theme px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
                                     children: "Log in"
                                 }, void 0, false, {
                                     fileName: "src/component/LoginPage.js",
@@ -42887,7 +42886,7 @@ function UserProfileCom() {
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                             onClick: ()=>logoutUser(),
-                            className: "my-[20px] bg-blue-400 text-center text-white rounded-lg px-10 py-2 hover:bg-blue-600",
+                            className: "my-[20px] bg-theme hover:bg-darktheme text-center text-white rounded-lg px-10 py-2 ",
                             children: "Log Out"
                         }, void 0, false, {
                             fileName: "src/component/UserProfileCom.js",
@@ -42999,7 +42998,7 @@ function EditProfileForm(props) {
         userStore
     ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-        className: "mt-[30px]",
+        className: "mt-[30px] bg-lightslate h-full p-[10px] rounded-lg ",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                 value: fname,
@@ -43007,7 +43006,7 @@ function EditProfileForm(props) {
                     setFname(e.target.value);
                 },
                 type: "text",
-                className: "block border border-grey-light w-full p-3 rounded mb-4",
+                className: "block border  border-grey-light w-full p-3 rounded mb-4",
                 name: "fname",
                 placeholder: "First Name"
             }, void 0, false, {
@@ -43099,7 +43098,7 @@ function EditProfileForm(props) {
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 onClick: (e)=>validateData(e),
-                className: "bg-blue-400 hover:bg-blue-500 text-white px-[30px] rounded-md py-1",
+                className: "bg-theme hover:bg-darktheme text-white px-[30px] rounded-md py-1",
                 children: "Save"
             }, void 0, false, {
                 fileName: "src/component/EditProfileForm.js",
@@ -43488,7 +43487,7 @@ function Payment_Success_Page() {
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                         to: "/myProfile",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                            className: "bg-blue-500 mt-[50px] text-white px-[10px] rounded-md py-[5px]",
+                            className: "bg-theme hover:bg-darktheme mt-[50px] text-white px-[10px] rounded-md py-[5px]",
                             children: "Go to Orders"
                         }, void 0, false, {
                             fileName: "src/component/Payment_Success_Page.js",
@@ -44240,7 +44239,7 @@ function ViewProductPage() {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         style: filterStyle,
-                        className: " flex flex-col justify-left bg-slate-100 border  p-[20px] transition-all duration-1000",
+                        className: " flex flex-col justify-left bg-slate border  p-[20px] transition-all duration-1000 rounded-r-2xl",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 className: "flex items-center ",
@@ -44312,7 +44311,7 @@ function ViewProductPage() {
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "bg-slate-100  mt-[20px] ",
+                                className: "bg-slate  mt-[20px] ",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                         className: "font-semibold ",
@@ -44325,7 +44324,7 @@ function ViewProductPage() {
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
                                         onChange: (e)=>ApplySort(e),
                                         id: "mySelect",
-                                        className: "bg-slate-100 border outline-none ",
+                                        className: "bg-slate border outline-none ",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
                                                 value: "random",
@@ -44365,7 +44364,7 @@ function ViewProductPage() {
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "bg-slate-100 mt-[20px]  ",
+                                className: "bg-slate mt-[20px]  ",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                         className: "font-semibold mr-4",
@@ -44416,7 +44415,7 @@ function ViewProductPage() {
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                 onClick: ()=>setClear(),
-                                className: "bg-blue-400 text-white rounded-md ",
+                                className: "bg-blue-400 text-white bg-theme rounded-md ",
                                 children: "Clear Filter"
                             }, void 0, false, {
                                 fileName: "src/component/ViewProductPage.js",
@@ -44431,7 +44430,7 @@ function ViewProductPage() {
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         onClick: ()=>setFilterStatus(!filterstatus),
-                        className: "bg-slate-200 cursor-pointer ml-[-28px] z-10 font-semibold whitespace-nowrap   px-[20px] rounded-md  h-[30px] rotate-90 border",
+                        className: "bg-slate-200 cursor-pointer ml-[-28px] z-10 font-semibold whitespace-nowrap   px-[20px] rounded-md  h-[30px] rotate-90 border bg-theme text-white",
                         children: [
                             "Filter Tab ",
                             filterstatus == true ? "Open" : "Close"

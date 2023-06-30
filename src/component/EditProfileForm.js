@@ -67,12 +67,12 @@ export default function EditProfileForm(props) {
     }, [userStore])
     return (
 
-        <form className="mt-[30px]">
+        <form className="mt-[30px] bg-lightslate h-full p-[10px] rounded-lg ">
             <input
                 value={fname}
                 onChange={(e) => { setFname(e.target.value) }}
                 type="text"
-                className="block border border-grey-light w-full p-3 rounded mb-4"
+                className="block border  border-grey-light w-full p-3 rounded mb-4"
                 name="fname"
                 placeholder="First Name" />
             <input
@@ -123,7 +123,7 @@ export default function EditProfileForm(props) {
                 />Others
             </div>
             <button onClick={(e) => validateData(e)}
-                className="bg-blue-400 hover:bg-blue-500 text-white px-[30px] rounded-md py-1">Save</button>
+                className="bg-theme hover:bg-darktheme text-white px-[30px] rounded-md py-1">Save</button>
         </form>
 
     )

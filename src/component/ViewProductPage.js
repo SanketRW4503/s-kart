@@ -103,7 +103,7 @@ export default function ViewProductPage() {
         <div className=' flex items-center justify-center fixed z-10 '>
 
             <div style={filterStyle}
-                className=' flex flex-col justify-left bg-slate-100 border  p-[20px] transition-all duration-1000'>
+                className=' flex flex-col justify-left bg-slate border  p-[20px] transition-all duration-1000 rounded-r-2xl'>
                 <span className='flex items-center '>
                     <img src={filtericon} className='w-[18px] h-[18px] ' />
                     <label className='text-[22px] font-semibold '>Filter</label>
@@ -116,16 +116,16 @@ export default function ViewProductPage() {
 
                 </div>
 
-                <div className='bg-slate-100  mt-[20px] '>
+                <div className='bg-slate  mt-[20px] '>
                     <label className='font-semibold '>Sort By</label>
-                    <select onChange={(e) => ApplySort(e)} id="mySelect" className='bg-slate-100 border outline-none '>
+                    <select onChange={(e) => ApplySort(e)} id="mySelect" className='bg-slate border outline-none '>
                         <option value={'random'} id='randomly'>Randomly</option>
                         <option value={'low'}>Low to high Price</option>
                         <option value={'high'}>High to Low Price</option>
                     </select>
                 </div>
 
-                <div className='bg-slate-100 mt-[20px]  '>
+                <div className='bg-slate mt-[20px]  '>
                     <label className='font-semibold mr-4'>Selected Category</label>
                     {storedCategory ? storedCategory.map((c,index) => {
 
@@ -142,11 +142,11 @@ export default function ViewProductPage() {
                 </div>
 
                 <button onClick={() => setClear()}
-                    className='bg-blue-400 text-white rounded-md '>Clear Filter</button>
+                    className='bg-blue-400 text-white bg-theme rounded-md '>Clear Filter</button>
             </div>
             <button onClick={() => setFilterStatus(!filterstatus)}
                 className='bg-slate-200 cursor-pointer ml-[-28px] z-10 font-semibold whitespace-nowrap
-            px-[20px] rounded-md  h-[30px] rotate-90 border'>Filter Tab {filterstatus == true ? 'Open' : 'Close'}</button>
+            px-[20px] rounded-md  h-[30px] rotate-90 border bg-theme text-white'>Filter Tab {filterstatus == true ? 'Open' : 'Close'}</button>
         </div>
 
         <div 

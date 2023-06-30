@@ -86,7 +86,7 @@ export default function SignUpPage() {
 
         <div className="bg-grey-lighter min-h-screen flex flex-col shadow-[2px 2px 2px 2px] ">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                <div className="bg-slate-100 px-6 py-8 shadow-md text-black w-full rounded-md">
+                <div className="bg-lightslate px-6 py-8 shadow-md text-black w-full rounded-md">
                     <h1 className="mb-8 text-3xl text-center">Sign up</h1>
                     <input
                         value={fname}
@@ -167,7 +167,7 @@ export default function SignUpPage() {
                     <button
                         onClick={(e) => validateData(e)}
                         type="submit"
-                        className="w-full text-center py-3 rounded bg-blue-400 text-white hover:bg-green-dark focus:outline-none my-1"
+                        className="w-full text-center py-3 rounded bg-theme  text-white hover:bg-darktheme focus:outline-none my-1"
                     >Create Account</button>
 
                     <div className="text-center text-sm text-grey-dark mt-4">

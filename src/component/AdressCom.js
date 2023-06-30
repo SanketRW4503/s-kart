@@ -97,7 +97,7 @@ export default function AdressCom(props) {
 
     }, [userStore])
     return (
-        <div className='relative w-[400px] m-[auto] p-[20px] bg-slate-100 h-[auto] rounded-md '>
+        <div className='relative w-[400px] m-[auto] p-[20px] bg-lightslate h-[auto] rounded-md '>
             {
                 addformstatus !== true ? <section className='flex justify-center'>
                     {
@@ -105,12 +105,12 @@ export default function AdressCom(props) {
                             < span className='w-[200px] whitespace-none whitespace-wrap flex flex-col items-center justify-center '>
                                 <p>No Adress Found ! Please Add Your Address</p>
                                 <button onClick={() => setAddFormStatus(!addformstatus)}
-                                    className='bg-blue-400 m-[auto] hover:bg-blue-500 text-white rounded-md px-[10px]'>Add Address</button>
+                                    className='bg-theme m-[auto] hover:bg-darktheme text-white rounded-md px-[10px]'>Add Address</button>
                             </span> :
                             < span className='w-[200px] whitespace-none whitespace-wrap flex flex-col items-center justify-center '>
                                 <p>{userStore?.profile?.address}</p>
                                 <button onClick={() => setAddFormStatus(!addformstatus)}
-                                    className='bg-blue-400 m-[auto]] hover:bg-blue-500 text-white rounded-md px-[10px]'>Update Address</button>
+                                    className='bg-theme m-[auto]] hover:bg-darktheme text-white rounded-md px-[10px]'>Update Address</button>
                             </span>
 
                     }
@@ -170,7 +170,7 @@ export default function AdressCom(props) {
                         placeholder="Country" />
 
                     <button onClick={(e) => vadlidate_Address(e)}
-                        className='bg-blue-400 mx-[auto] hover:bg-blue-500 text-white rounded-md px-[10px] absolute right-[10px] bottom-1'>
+                        className='bg-theme mx-[auto] hover:bg-darktheme text-white rounded-md px-[10px] absolute right-[10px] bottom-1'>
                         {
                             userStore?.profile?.address == 'undefined' ? 'Add Address' : 'Update Address'
                         }
