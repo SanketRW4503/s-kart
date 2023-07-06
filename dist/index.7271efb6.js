@@ -27452,7 +27452,7 @@ function Header() {
             });
             console.log("this run");
             // remove duplicate
-            keywords_unique = [
+            let keywords_unique = [
                 ...new Set(keywords)
             ];
             // add search keywords to redux search slice

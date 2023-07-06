@@ -89,7 +89,7 @@ useEffect(()=>{
       })  
       console.log('this run')
       // remove duplicate
-      keywords_unique=[...new Set(keywords)]
+      let keywords_unique=[...new Set(keywords)]
       
       // add search keywords to redux search slice
       dispatch(add_keywords(keywords_unique))
