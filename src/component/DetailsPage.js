@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import store from '../utility/store'
 import { addItem } from '../utility/cartSlice'
-import { All_PRODUCTS } from '../utility/constants'
 import { storeData } from '../utility/dataSlice'
-import { ToastContainer, toast } from 'react-toastify'
+import {  toast } from 'react-toastify'
 import { add_mongoDb_cart } from '../utility/utility'
 import 'react-toastify/dist/ReactToastify.css';
 
 
 import ShowCard from './ShowCard'
+import StarRating from './StarRating'
 
 export default function DetailsPage() {
 
@@ -18,8 +18,7 @@ export default function DetailsPage() {
 
     const [details, setDetails] = useState([])
     const [product, setProduct] = useState([])
-
-
+ 
 
     let stored_data = useSelector(store => store?.products?.items);
     const userdata = useSelector(store => store.user.userdata);
@@ -43,7 +42,7 @@ export default function DetailsPage() {
     async function getAllProduct() {
 
         try {
-            const res = await fetch(All_PRODUCTS, {
+            const res = await fetch(process.env.All_PRODUCTS, {
                 method: 'GET', withCredntials: true,
                 credentials: 'include'
             });
@@ -86,8 +85,8 @@ export default function DetailsPage() {
         setCategory();
     }, [details])
 
-
-
+   
+    
     return (
 
 
@@ -95,25 +94,31 @@ export default function DetailsPage() {
 
         <section>
             <div className='flex  m-[auto] mt-[50px]  w-[85%] p-2 mb-8 max-[800px]:flex-col max-[800px]:p-0 '>
-                <div className='flex items-center justify-center '>
-                    <img src={details[0]?.imageUrl} className='w-[490px]  h-[500] max-[800px]:w-[360px] ' />
+                <div className='w-[500px] h-[600px]  max-[800px]:w-[300px] max-[800px]:h-[400px]' >
+                    <img src={details[0]?.image.url} 
+                     className='w-[500px] h-[600px]  max-[800px]:w-[300px] max-[800px]:h-[400px]' />
                 </div>
-                <div className='ml-12 max-[800px]:ml-0'>
+                <div className='ml-2 w-[70%] max-[800px]:w-full max-[800px]:ml-0'>
                     <h1 className='inline font-semibold text-[25px]'>{details[0]?.title}</h1>
 
-                    <ul className='flex '>
-                        <li className='text-[15px] mt-4 max-[800px]:p-0'>Price: {details[0]?.price}</li>
-                        <li className='text-[15px] max-[800px]:p-0 mt-4 list-disc ml-8 marker:text-gray-500'>{details[0]?.rating}&#9733;</li>
+                    <ul className='flex flex-col '>
+                    
+                        <li className='text-[15px] max-[800px]:p-0'>Price: {details[0]?.price}</li>
+                      
                     </ul>
                     <p className='text-[15px] max-[800px]:p-0 mt-4'>Hurry {details[0]?.quantity} left only...!</p>
                     <p className='mt-8 max-[800px]:p-0 text-justify '>{details[0]?.description}</p>
+                    <div className=' max-[800px]:p-0  '>
+                            <StarRating stars={ parseInt( details[0]?.rating)}/>
+</div>
                     <a href='#nav' className='scroll-smooth'>  <button onClick={() => setdata_tocart()}
-                        className='bg-theme px-[10px] py-[5px] text-white mt-4 rounded-xl '>Add to Cart</button>
+                        className='bg-theme px-[10px] py-[5px] font-semibold text-t-theme mt-4 rounded-xl '>Add to Cart</button>
                     </a>
                   
+              
 
                 </div>
-
+  
 
             </div>
 

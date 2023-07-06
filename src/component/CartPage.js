@@ -8,7 +8,7 @@ import { add_mongoDb_cart, deleteitem_from_Mongodb, remove_item_mongoDb_cart } f
 import { setUser } from '../utility/userSlice';
 import { setLoginStatus } from '../utility/loginSlice';
 import { useEffect, useState } from 'react';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AdressCom from './AdressCom';
 
 
@@ -23,7 +23,7 @@ export default function CartPage() {
     const loginStatus = useSelector(store => store.login.status);
     const [address_component, setAddress_Component] = useState(false);
     const [updatetoggle, setUpdateToggle] = useState(false)
-    let product_array=[];
+    let product_array = [];
     const navigate = useNavigate()
 
     const dispatch = useDispatch()
@@ -32,7 +32,7 @@ export default function CartPage() {
     const userdata = useSelector(store => store.user.userdata)
     async function getCurrentUserInfo() {
 
-        const res = await fetch('https://s-kart-backend.onrender.com/user/myProfile', {
+        const res = await fetch(process.env.REACT_APP_USER_PROFILE, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -104,8 +104,8 @@ export default function CartPage() {
 
 
         if (loginStatus == true) {
-            
-            let data = { amount: totalPrice ,order_data:product_array,email:userdata?.profile?.email};
+
+            let data = { amount: totalPrice, order_data: product_array, email: userdata?.profile?.email, address: userdata?.profile?.address };
             data = JSON.stringify(data)
 
             // here we are checking address is present or not 
@@ -113,7 +113,7 @@ export default function CartPage() {
                 try {
                     // create order
 
-                    const res = await fetch('https://s-kart-backend.onrender.com/payment/checkout', {
+                    const res = await fetch(process.env.PAYMENT_CHECKOUT, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         withCredntials: true,
@@ -123,7 +123,7 @@ export default function CartPage() {
                     const json = await res.json()
                     console.log(json);
                     // fetch key from backend
-                    const key_res = await fetch('https://s-kart-backend.onrender.com/payment/getkey', {
+                    const key_res = await fetch(process.env.PAYMENT_KEY, {
                         method: 'GET',
                         headers: { 'Content-Type': 'application/json' },
                         withCredntials: true,
@@ -140,7 +140,7 @@ export default function CartPage() {
                         name: "S-Kart PVT LTD",
                         order_id: json.order.id,
                         show_coupons: true,
-                        callback_url: "https://s-kart-backend.onrender.com/payment/verification",
+                        callback_url: process.env.PAYMENT_VERIFICATION,
                         prefill: {
                             name: userdata.profile.name,
                             email: userdata.profile.email,
@@ -176,10 +176,10 @@ export default function CartPage() {
 
     }
 
-    
+
     useEffect(() => {
         getCurrentUserInfo();
-      }, [updatetoggle])
+    }, [updatetoggle])
 
     return (
         <section>
@@ -196,11 +196,11 @@ export default function CartPage() {
                                 cart_data.length > 0 ?
                                     cart_data.map((e, index) => {
 
-                                        product_array.push({product_id:e._id,quantity:e.quantity});
+                                        product_array.push({ product_id: e._id, quantity: e.quantity });
 
                                         return <div className='flex border rounded-md p-[30px] m-4 max-[1000px]:flex-col items-center' key={index}>
                                             <div>
-                                                <img src={e.imageUrl} className='w-[200px] h-[200px]' />
+                                                <img src={e.image.url} className='w-[400px] h-[200px]' />
 
                                             </div>
                                             <div className='ml-[30px] '>
@@ -214,7 +214,7 @@ export default function CartPage() {
                                                         <button onClick={() => setdata_tocart(e)} className='bg-slate px-4 py-2 '
                                                         >+</button>
                                                     </div>
-                                                    <button className='ml-[50px] max-[567px]:ml-[5px] max-[567px]:py-[8px] hover:bg-theme max-[567px]:mt-[20px] bg-theme text-white px-4 rounded-lg' onClick={() => remove_item(e)}>Remove From Cart</button>
+                                                    <button className='ml-[50px] max-[567px]:ml-[5px] max-[567px]:py-[8px] hover:bg-theme max-[567px]:mt-[20px] bg-theme text-t-theme px-4 rounded-lg' onClick={() => remove_item(e)}>Remove From Cart</button>
 
                                                 </div>
                                             </div>
@@ -237,7 +237,7 @@ export default function CartPage() {
                                         <div className='flex flex-col w-[350px] max-[500px]:w-[max-content] mt-4 mb-8 '>
 
                                             <input type='text' className='border outline-none my-2 py-2 px-2 rounded-lg' placeholder='Enter Here' />
-                                            <button className='bg-[#22c55e] rounded-xl text-white py-[5px]'> Apply Coupan Code</button>
+                                            <button className='bg-[#22c55e] rounded-xl text-t-theme py-[5px]'> Apply Coupan Code</button>
 
                                         </div>
                                         <table >
@@ -270,7 +270,7 @@ export default function CartPage() {
                                         </table>
 
                                         <button onClick={() => handleLogin()}
-                                            className='bg-black max-[500px]:w-[200px]  text-white px-4 w-[350px] mt-2 py-[5px]'
+                                            className='bg-black max-[500px]:w-[200px]  text-t-theme px-4 w-[350px] mt-2 py-[5px]'
                                         >{loginStatus == true ? 'Place Order' : 'Login To Place Order'}</button>
                                     </div>
                                 </div> : null
@@ -296,8 +296,8 @@ export default function CartPage() {
 
 
                 </div> : <div className='m-[20px]'>
-               
-                    <AdressCom  setUpdateToggle={setUpdateToggle} updatetoggle={updatetoggle} setAddress_Component={setAddress_Component}  />
+
+                    <AdressCom setUpdateToggle={setUpdateToggle} updatetoggle={updatetoggle} setAddress_Component={setAddress_Component} />
                 </div>
             }
         </section>

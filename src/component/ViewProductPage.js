@@ -142,11 +142,11 @@ export default function ViewProductPage() {
                 </div>
 
                 <button onClick={() => setClear()}
-                    className='bg-blue-400 text-white bg-theme rounded-md '>Clear Filter</button>
+                    className='bg-blue-400 text-t-theme bg-theme rounded-md '>Clear Filter</button>
             </div>
             <button onClick={() => setFilterStatus(!filterstatus)}
-                className='bg-slate-200 cursor-pointer ml-[-28px] z-10 font-semibold whitespace-nowrap
-            px-[20px] rounded-md  h-[30px] rotate-90 border bg-theme text-white'>Filter Tab {filterstatus == true ? 'Open' : 'Close'}</button>
+                className='bg-slate-200 cursor-pointer ml-[-18px] z-10 font-semibold whitespace-nowrap
+            px-[20px] rounded-md  h-[30px] rotate-90 border bg-theme text-t-theme'>Filter {filterstatus == true ? 'Open' : 'Close'}</button>
         </div>
 
         <div 

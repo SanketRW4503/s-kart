@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux'
-import edit_icon from '../../assets/images/edit.png'
 import store from '../utility/store'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
@@ -95,6 +94,10 @@ export default function AdressCom(props) {
 
         }
 
+        if(adress_line_1=='undefined'){
+            setAddress_line_1('')
+        }
+
     }, [userStore])
     return (
         <div className='relative w-[400px] m-[auto] p-[20px] bg-lightslate h-[auto] rounded-md '>
@@ -105,12 +108,12 @@ export default function AdressCom(props) {
                             < span className='w-[200px] whitespace-none whitespace-wrap flex flex-col items-center justify-center '>
                                 <p>No Adress Found ! Please Add Your Address</p>
                                 <button onClick={() => setAddFormStatus(!addformstatus)}
-                                    className='bg-theme m-[auto] hover:bg-darktheme text-white rounded-md px-[10px]'>Add Address</button>
+                                    className='bg-theme m-[auto] hover:bg-darktheme text-t-theme rounded-md px-[10px]'>Add Address</button>
                             </span> :
                             < span className='w-[200px] whitespace-none whitespace-wrap flex flex-col items-center justify-center '>
                                 <p>{userStore?.profile?.address}</p>
                                 <button onClick={() => setAddFormStatus(!addformstatus)}
-                                    className='bg-theme m-[auto]] hover:bg-darktheme text-white rounded-md px-[10px]'>Update Address</button>
+                                    className='bg-theme m-[auto]] hover:bg-darktheme text-t-theme rounded-md px-[10px]'>Update Address</button>
                             </span>
 
                     }
@@ -170,7 +173,7 @@ export default function AdressCom(props) {
                         placeholder="Country" />
 
                     <button onClick={(e) => vadlidate_Address(e)}
-                        className='bg-theme mx-[auto] hover:bg-darktheme text-white rounded-md px-[10px] absolute right-[10px] bottom-1'>
+                        className='bg-theme mx-[auto] hover:bg-darktheme text-t-theme rounded-md px-[10px] absolute right-[10px] bottom-1'>
                         {
                             userStore?.profile?.address == 'undefined' ? 'Add Address' : 'Update Address'
                         }

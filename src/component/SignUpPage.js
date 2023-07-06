@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setLoginStatus } from '../utility/loginSlice'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import { validate } from 'email-validator'
-import { useEffect } from 'react'
+import showpass from '../../assets/images/show.png'
+import hidepass from '../../assets/images/hide.png'
+
 export default function SignUpPage() {
 
     const [fname, setFname] = useState('')
@@ -13,10 +13,11 @@ export default function SignUpPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [number, setNumber] = useState('')
+    const [passtype,setPasstype]= useState('password')
+    const [showpassword,setShowpassword]= useState(false)
     const [confirmpassword, setConfirmpassword] = useState('')
-
+    const [imagetoggle,setImagetoggle]= useState(hidepass)
     let navigate = useNavigate()
-    let dispatch = useDispatch()
 
     async function validateData(e) {
         e.preventDefault()
@@ -59,7 +60,10 @@ export default function SignUpPage() {
 
 
     async function createAC(userData) {
-        const res = await fetch('https://s-kart-backend.onrender.com/user/signup', {
+
+        toast.loading('Processing...')
+
+        const res = await fetch(process.env.SIGN_UP_USER, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }, withCredntials: true,
             credentials: 'include',
@@ -70,21 +74,32 @@ export default function SignUpPage() {
         const json = await res.json()
         console.log(json)
         if (json.success) {
-            dispatch(setLoginStatus(true));
-
-            navigate('/');
-            toast.success(`Welcome to s-kart ${fname}`);
+            navigate('/verification');
         
         } else {
-            toast.error('EMAIL OR PHONE Already exists')
-            dispatch(setLoginStatus(false));
+            toast.dismiss()
+            toast.error(json.message)
         }
     }
-  
+
+
+    function handle_showpassword(){
+
+        setShowpassword(!showpassword)
+        if(showpassword==true){
+            setImagetoggle(showpass)
+            setPasstype('text')
+
+        }else{
+            setImagetoggle(hidepass)
+            setPasstype('password');
+
+        }
+    }
 
     return (
 
-        <div className="bg-grey-lighter min-h-screen flex flex-col shadow-[2px 2px 2px 2px] ">
+        <div className="bg-grey-lighter min-h-screen flex flex-col shadow-[2px 2px 2px 2px] mb-8 ">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div className="bg-lightslate px-6 py-8 shadow-md text-black w-full rounded-md">
                     <h1 className="mb-8 text-3xl text-center">Sign up</h1>
@@ -148,26 +163,30 @@ export default function SignUpPage() {
                         className="block border border-grey-light w-full p-3 rounded mb-4"
                         name="email"
                         placeholder="Email" />
+                    <div className='relative border rounded-md p-[35px]  my-4'>
+                    <img src={imagetoggle} className='absolute right-1 top-1' onClick={handle_showpassword} width={25}/>
 
                     <input
                         value={password}
                         onChange={(e) => { setPassword(e.target.value) }}
-                        type="password"
+                        type={passtype}
                         className="block border border-grey-light w-full p-3 rounded mb-4"
                         name="password"
                         placeholder="Password" />
+                  
+                      
                     <input
                         value={confirmpassword}
                         onChange={(e) => { setConfirmpassword(e.target.value) }}
-                        type="password"
+                        type={passtype}
                         className="block border border-grey-light w-full p-3 rounded mb-4"
                         name="confirm_password"
                         placeholder="Confirm Password" />
-
+  </div>
                     <button
                         onClick={(e) => validateData(e)}
                         type="submit"
-                        className="w-full text-center py-3 rounded bg-theme  text-white hover:bg-darktheme focus:outline-none my-1"
+                        className="w-full text-center py-3 rounded bg-theme  text-t-theme hover:bg-darktheme focus:outline-none my-1"
                     >Create Account</button>
 
                     <div className="text-center text-sm text-grey-dark mt-4">
@@ -190,7 +209,7 @@ export default function SignUpPage() {
             </div>
 
 
-
+                        <ToastContainer/>
         </div>
     )
 }

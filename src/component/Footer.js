@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 export default function Footer() {
         return (
 
-                <footer className='bg-black text-white m-[auto] flex flex-col p-[20px] items-center justify-center'>
+                <footer className='bg-black text-t-theme m-[auto] flex flex-col p-[20px] items-center justify-center'>
                         <ul className='flex  justify-center pt-8'>
                                 <li><a href='https://www.linkedin.com/in/sanket-r-waghmare-a07711208/'><img src={twitter} width={50} className='rounded-[10px] mx-4 cursor-pointer ' /></a></li>
                                 <li><a href='https://www.linkedin.com/in/sanket-r-waghmare-a07711208/'><img src={instagram} width={50} className='rounded-[10px]  mx-4 cursor-pointer' /></a></li>

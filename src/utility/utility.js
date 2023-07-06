@@ -1,4 +1,3 @@
-import { ADD_CARTITEM_TOCART, delete_item_from_mongodb_cart, remove_item_from_Mongodb_cart } from "./constants";
 
 
 
@@ -41,7 +40,7 @@ export const deleteitem_from_Mongodb = async (item, userdata) => {
     dataset = JSON.stringify(dataset);
     try {
 
-        const res = await fetch(delete_item_from_mongodb_cart, {
+        const res = await fetch(process.env.DELETE_ITEM_FROM_CART, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -68,7 +67,7 @@ export const remove_item_mongoDb_cart = async (item, userdata) => {
 
     try {
 
-        const res = await fetch(remove_item_from_Mongodb_cart, {
+        const res = await fetch(process.env.REMOVE_ITEM_FROM_CART, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -103,7 +102,7 @@ export const add_mongoDb_cart = async (productdata, userdata) => {
     dataset = JSON.stringify(dataset);
 
     try {
-        const res = await fetch(ADD_CARTITEM_TOCART, {
+        const res = await fetch(process.env.ADD_ITEM_TO_CART, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',

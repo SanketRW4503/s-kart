@@ -23,7 +23,7 @@ export default function Orders_Com() {
     async function getOrderData(data) {
 
         try {
-            const result = await fetch('https://s-kart-backend.onrender.com/order/userorder', {
+            const result = await fetch(process.env.GET_USER_ORDER, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 withCredntials: true,
@@ -57,12 +57,12 @@ export default function Orders_Com() {
 
         orders.length > 0 ? orders.map((p,index) => {
 
-            return <div key={index} className="border rounded-[10px] p-[20px] bg-slate-100  mt-[20px]">
+            return <div key={index} className=" rounded-[10px] p-[20px] bg-lightslate mt-[20px]">
 
                 {p?.product_details.map((i) => {
                     const product = getProductData(i?.product_id)
                     return <div key={i?.product_id} className="flex p-[3px] justify-center items-center max-[800px]:flex-col ">
-                        <img src={product?.imageUrl} className=" w-[200px] h-[20%]" />
+                        <img src={product?.image.url} className=" w-[200px] h-[20%]" />
                         <div className="m-[10px]">
                             <h1 className='text-[20px] font-semibold'>{product?.title}</h1>
                             <span >
@@ -84,11 +84,11 @@ export default function Orders_Com() {
                         <label className="font-semibold">Delevery status:</label>
                         <span>{p?.delevery_status}</span>
                     </div>
-                    <div className="flex justify-between max-[460px]:flex-col">
+                    <div className="flex justify-between mb-[5px] max-[460px]:flex-col">
                         <label className="font-semibold">Payment status:</label>
                         <span>{p?.payment_status}</span>
                     </div>
-                    <div className="flex justify-between border-t-2 max-[460px]:flex-col">
+                    <div className="flex justify-between border-t-2 mt-[5px] border-dotted max-[460px]:flex-col">
                         <label className="font-semibold">Total Amount:</label>
                         <span>{p?.amount}₹</span>
                     </div>
@@ -99,7 +99,7 @@ export default function Orders_Com() {
         }) : <div className="flex flex-col justify-center items-center"><img src={cartbag} width={300} />
             <p>You Dont Have Any recent orders</p>
 
-            <Link to='/' ><button className='bg-blue-500 px-[20px] text-white rounded-md m-4 '>Shop Now</button></Link>
+            <Link to='/' ><button className='bg-theme px-[20px] text-t-theme rounded-md m-4 '>Shop Now</button></Link>
         </div>
 
 

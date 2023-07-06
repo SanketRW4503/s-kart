@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Confetti from 'react-confetti'
 import { useSelector } from 'react-redux'
@@ -31,7 +31,7 @@ export default function Payment_Success_Page() {
       <div className='flex justify-center flex-col items-center h-[500px]'>
         <h1 className=' text-[40px] font-semibold '>Order Confirmed !</h1>
         <p className='text-gray-400'>Order Id:{params.id}</p>
-        <Link to='/myProfile'><button className='bg-theme hover:bg-darktheme mt-[50px] text-white px-[10px] rounded-md py-[5px]'>Go to Orders</button></Link>
+        <Link to='/myProfile'><button className='bg-theme hover:bg-darktheme mt-[50px] text-t-theme px-[10px] rounded-md py-[5px]'>Go to Orders</button></Link>
       </div>
 
     </div>

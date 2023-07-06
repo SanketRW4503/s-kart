@@ -30,7 +30,7 @@ export default function EditProfileForm(props) {
     async function updateData(updateData) {
 
         try {
-            const res = await fetch('https://s-kart-backend.onrender.com/user/edit-profile', {
+            const res = await fetch(process.env.UPDATE_USER_DATA, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' }, withCredntials: true,
                 credentials: 'include',
@@ -123,7 +123,7 @@ export default function EditProfileForm(props) {
                 />Others
             </div>
             <button onClick={(e) => validateData(e)}
-                className="bg-theme hover:bg-darktheme text-white px-[30px] rounded-md py-1">Save</button>
+                className="bg-theme hover:bg-darktheme text-t-theme px-[30px] rounded-md py-1">Save</button>
         </form>
 
     )

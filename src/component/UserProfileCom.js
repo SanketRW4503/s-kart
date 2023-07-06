@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
-import Profile_Icon from '../../assets/images/profile-icon.png'
 import { useDispatch, useSelector } from 'react-redux'
 import store from '../utility/store'
 import { setUser } from '../utility/userSlice'
-import { ToastContainer, toast } from 'react-toastify'
+import {  toast } from 'react-toastify'
 import { setLoginStatus } from '../utility/loginSlice'
 import { useNavigate } from 'react-router-dom'
 import EditProfileForm from './EditProfileForm'
@@ -21,7 +20,7 @@ export default function UserProfileCom() {
 
   async function getCurrentUserInfo() {
 
-    const res = await fetch('https://s-kart-backend.onrender.com/user/myProfile', {
+    const res = await fetch(process.env.REACT_APP_USER_PROFILE, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -37,7 +36,7 @@ export default function UserProfileCom() {
   async function logoutUser() {
     toast.loading('logging out...');
 
-    const res = await fetch('https://s-kart-backend.onrender.com/user/logout', {
+    const res = await fetch(process.env.LOG_OUT_USER, {
       method: 'GET', withCredntials: true,
       credentials: 'include'
     });
@@ -130,7 +129,7 @@ export default function UserProfileCom() {
 
 
           <button onClick={() => logoutUser()}
-            className='my-[20px] bg-theme hover:bg-darktheme text-center text-white rounded-lg px-10 py-2 '
+            className='my-[20px] bg-theme hover:bg-darktheme text-center text-t-theme rounded-lg px-10 py-2 '
           >Log Out</button>
         </div>
       </div>

@@ -19,12 +19,15 @@ import Payment_Success_Page from "./component/Payment_Success_Page";
 import ViewProductPage from "./component/ViewProductPage";
 import useOnline from "./utility/useOnline";
 import NoInternet from "./component/NoInternet";
+import VerificationCom from "./component/VerificationCom";
+import ForgotPassword from "./component/ForgotPassword";
+import dotenv from "dotenv";
 
-
+dotenv.config({path:'../.env'})
 
 const App = () => {
     const online = useOnline()
-
+  
     return (
         <>
             <Provider store={store}>
@@ -48,6 +51,10 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
+                element: <Body />
+            }
+            , {
+                path: '/:id',
                 element: <Body />
             },
             {
@@ -81,6 +88,16 @@ const router = createBrowserRouter([
             }, {
                 path: '/view-all/:id',
                 element: <ViewProductPage />
+            }, {
+                path: '/verification',
+                element: <VerificationCom />
+            }
+            , {
+                path: '/forgotpassword',
+                element: <ForgotPassword />
+            }, {
+                path: '/forgotpassword/:id',
+                element: <ForgotPassword />
             }
 
 

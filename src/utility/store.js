@@ -4,6 +4,7 @@ import cartSlice from "./cartSlice";
 import loginSlice from "./loginSlice";
 import userSlice from "./userSlice";
 import categorySlice from "./categorySlice";
+import searchSlice from "./searchSlice";
 
 
 
@@ -13,7 +14,8 @@ const store = configureStore({
         cart: cartSlice,
         login: loginSlice,
         user: userSlice,
-        category:categorySlice
+        category:categorySlice,
+        search:searchSlice
     }
 
 })

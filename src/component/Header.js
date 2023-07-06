@@ -1,5 +1,5 @@
 import shopicon from '../../assets/images/shop-icon.png'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import store from '../utility/store';
@@ -9,13 +9,11 @@ import Profile_Icon from '../../assets/images/profile-icon.png'
 import { setLoginStatus } from '../utility/loginSlice';
 import { setUser } from '../utility/userSlice';
 import { addItem } from '../utility/cartSlice';
-import { get_data_from_cart } from '../utility/constants';
-import { GET_ALL_CATEGORY } from '../utility/constants';
-import { All_PRODUCTS } from '../utility/constants';
 import { storeData } from '../utility/dataSlice';
 import Slider from './Slider';
 import SearchBar from './SearchBar';
 import { storeCategory } from '../utility/categorySlice';
+import { add_keywords } from '../utility/searchSlice';
 
 export default function Header() {
 
@@ -36,14 +34,14 @@ export default function Header() {
     async function getAllCategory() {
 
       try {
-          const res = await fetch(GET_ALL_CATEGORY,
+          const res = await fetch(process.env.GET_ALL_CATEGORY,
               {
                   method: 'GET', withCredntials: true,
                   credentials: 'include'
               });
           const json = await res.json()
 
-          dispatch(storeCategory(json.allcollection))
+          dispatch(storeCategory(json.categoryset))
       } catch (error) {
           console.log('s' + error);
       }
@@ -59,7 +57,7 @@ useEffect(()=>{
   async function getAllProduct() {
 
     try {
-      const res = await fetch(All_PRODUCTS, {
+      const res = await fetch(process.env.REACT_APP_All_PRODUCTS, {
 
         method: 'GET', withCredntials: true,
         credentials: 'include'
@@ -67,7 +65,6 @@ useEffect(()=>{
       const json = await res.json()
 
       dispatch(storeData(json.items))
-
     } catch (error) {
 
       console.log('s' + error);
@@ -76,9 +73,35 @@ useEffect(()=>{
 
   }
 
+
+  function set_search_keywords(){
+    if(stored_data){
+      let key = stored_data.map((i)=>{
+ 
+        return i.search_keyword
+        
+      });
+      let keywords=[];
+      key.map((k)=>{
+        for(let i=0;k.length-1!==i;i++){
+          keywords.push(k[i])
+        }
+      })  
+      console.log('this run')
+      // remove duplicate
+      keywords_unique=[...new Set(keywords)]
+      
+      // add search keywords to redux search slice
+      dispatch(add_keywords(keywords_unique))
+    }
+  }
+
   useEffect(() => {
     if (stored_data.length == 0) {
       getAllProduct()
+    }else{
+      set_search_keywords()
+
     }
 
 
@@ -89,7 +112,7 @@ useEffect(()=>{
   const userStore = useSelector(store => store.user.userdata)
   async function getCurrentUserInfo() {
 
-    const res = await fetch('https://s-kart-backend.onrender.com/user/myProfile', {
+    const res = await fetch(process.env.REACT_APP_USER_PROFILE, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -111,7 +134,7 @@ useEffect(()=>{
     dataset = JSON.stringify(dataset);
     try {
 
-      const res = await fetch(get_data_from_cart, {
+      const res = await fetch(process.env.GET_DATA_FROM_CART, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -162,10 +185,10 @@ useEffect(()=>{
 
   return (
     <div className='mb-[30px]  '>
-      <nav className='px-4 py-4 flex justify-between items-center  bg-theme text-white shadow scroll-smooth' id='nav'>
+      <nav className='px-4 py-4 flex justify-between items-center  bg-theme text-t-theme shadow scroll-smooth ' id='nav'>
         <div className='flex justify-between  max-[650px]:block '>
           <div className='flex items-center'>
-            <img src={shopicon} width={50} height={50} className='w-[50px] h-[50px] transition-all duration-500 invert'/>
+            <img src={shopicon} width={50} height={50} className='w-[50px] h-[50px] transition-all  duration-500 invert'/>
             <Link to={'/'}><h1 className='font-semibold text-[40px] max-[1100px]:text-[30px] italic '>S-KART</h1></Link>
           </div>
 
@@ -173,7 +196,7 @@ useEffect(()=>{
         <div className='hidden min-[940px]:flex items-center'>
       <SearchBar className='' />
       </div>
-        <ul className='flex max-[940px]:flex-col items-center max-[940px]:hidden max-[940px]:fixed max-[940px]:right-[0px] 
+        <ul className='flex max-[940px]:flex-col items-center font-semibold max-[940px]:hidden max-[940px]:fixed max-[940px]:right-[0px] 
               max-[940px]:top-[0px] max-[940px]:bottom-[0px] z-[100] max-[940px]:left-[55%] max-[940px]:justify-center  max-[940px]:p-[20px] max-[940px]:bg-darktheme max-[940px]:transition-all duration-1000
               ' style={menucss} >
           <span className='text-[20px] font-semibold min-[940px]:hidden' onClick={() => menuFunction()}>&#10005;</span>

@@ -5,7 +5,7 @@ export default function About() {
 
       <h1 className='text-[35px] '>About us</h1>
       <p className='text-justify'>S-Kart is an e-commerce SPA site developed by <b>Sanket R. Waghmare</b> for just learning purpose . all products listed on this site are fake
-        means you can not buy those products. this project is build using reactjs . react js is a very popular frontend framework .
+        means you can not buy those products. this project is based on MERN STACK. in mern R stands for react js , react js is a very popular frontend framework .
         this web application uses redux for state/data management redux is popular toolkit for state/data management.  TailwindCSS Framework  is used for styling this site
 
       </p>
