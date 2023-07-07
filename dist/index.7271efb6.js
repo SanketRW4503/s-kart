@@ -39850,7 +39850,7 @@ function Slider() {
                 id: "slider-div",
                 onClick: ()=>navigate("/details/" + banner[slide]?.product_id),
                 style: {
-                    backgroundImage: `url(${banner[slide]?.imageUrl})`
+                    backgroundImage: `url(${banner[slide]?.image.url})`
                 },
                 className: "h-[550px] overflow-hidden  max-[700px]:h-[400px] max-[500px]:h-[250px]  transition-all z-0 w-full  bg-no-repeat "
             }, void 0, false, {
