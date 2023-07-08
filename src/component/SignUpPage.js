@@ -164,7 +164,7 @@ export default function SignUpPage() {
                         name="email"
                         placeholder="Email" />
                     <div className='relative border rounded-md p-[35px]  my-4'>
-                    <img src={imagetoggle} className='absolute right-1 top-1' onClick={handle_showpassword} width={25}/>
+                    <img src={imagetoggle} className='absolute right-1 top-1  cursor-pointer' onClick={handle_showpassword} width={25}/>
 
                     <input
                         value={password}
