@@ -7,7 +7,6 @@ import store from '../utility/store'
 
 export default function ShowCard(props) {
 
-  const [load, setLoad] = useState(false)
   const loginStatus = useSelector(store => store.login.status);
 
   let navigate = useNavigate()
@@ -20,14 +19,7 @@ export default function ShowCard(props) {
   }
 
 
-  useEffect(() => {
 
-    if (loginStatus == true) {
-      setLoad(true)
-    } else {
-      setLoad(false)
-    }
-  }, [loginStatus])
 
 
 
@@ -40,7 +32,7 @@ export default function ShowCard(props) {
 
     <section
       className='flex p-[5px] relative rounded-lg m-[5px] w-[240px] h-[320px]  flex-col mx-[10px]  cursor-pointer hover:scale-[1.02]'>
-      {load == true ? <div className='absolute right-1 top-1'>
+      {loginStatus == true ? <div className='absolute right-1 top-1'>
         <WishListIcon info={props?.info?._id} />
       </div> : null
       }

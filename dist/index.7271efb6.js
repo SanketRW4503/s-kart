@@ -40463,34 +40463,27 @@ var _storeDefault = parcelHelpers.interopDefault(_store);
 var _s = $RefreshSig$();
 function ShowCard(props) {
     _s();
-    const [load, setLoad] = (0, _react.useState)(false);
     const loginStatus = (0, _reactRedux.useSelector)((store)=>store.login.status);
     let navigate = (0, _reactRouterDom.useNavigate)();
     function setpathh() {
         if (props.detailsPage == true) navigate("/");
     }
-    (0, _react.useEffect)(()=>{
-        if (loginStatus == true) setLoad(true);
-        else setLoad(false);
-    }, [
-        loginStatus
-    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
         className: "flex p-[5px] relative rounded-lg m-[5px] w-[240px] h-[320px]  flex-col mx-[10px]  cursor-pointer hover:scale-[1.02]",
         children: [
-            load == true ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            loginStatus == true ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "absolute right-1 top-1",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wishListIconDefault.default), {
                     info: props?.info?._id
                 }, void 0, false, {
                     fileName: "src/component/ShowCard.js",
-                    lineNumber: 44,
+                    lineNumber: 36,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/component/ShowCard.js",
-                lineNumber: 43,
-                columnNumber: 23
+                lineNumber: 35,
+                columnNumber: 30
             }, this) : null,
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                 to: "details/" + props.info._id,
@@ -40503,12 +40496,12 @@ function ShowCard(props) {
                             className: "w-[180px] h-[200px] mix-blend-multiply"
                         }, void 0, false, {
                             fileName: "src/component/ShowCard.js",
-                            lineNumber: 49,
+                            lineNumber: 41,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "src/component/ShowCard.js",
-                        lineNumber: 48,
+                        lineNumber: 40,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -40516,7 +40509,7 @@ function ShowCard(props) {
                         children: props.info.title.slice(0, 30)
                     }, void 0, false, {
                         fileName: "src/component/ShowCard.js",
-                        lineNumber: 51,
+                        lineNumber: 43,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -40524,12 +40517,12 @@ function ShowCard(props) {
                             stars: parseInt(props?.info?.rating)
                         }, void 0, false, {
                             fileName: "src/component/ShowCard.js",
-                            lineNumber: 53,
+                            lineNumber: 45,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "src/component/ShowCard.js",
-                        lineNumber: 52,
+                        lineNumber: 44,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -40539,23 +40532,23 @@ function ShowCard(props) {
                         ]
                     }, void 0, true, {
                         fileName: "src/component/ShowCard.js",
-                        lineNumber: 55,
+                        lineNumber: 47,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/component/ShowCard.js",
-                lineNumber: 47,
+                lineNumber: 39,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/ShowCard.js",
-        lineNumber: 41,
+        lineNumber: 33,
         columnNumber: 5
     }, this);
 }
-_s(ShowCard, "VMZAUbMj9hsXfUCCsHuE0uE4epM=", false, function() {
+_s(ShowCard, "Tnj1DLXMnW83Se5HBp4lV94UW7A=", false, function() {
     return [
         (0, _reactRedux.useSelector),
         (0, _reactRouterDom.useNavigate)
@@ -40807,12 +40800,15 @@ var _showCard = require("./ShowCard");
 var _showCardDefault = parcelHelpers.interopDefault(_showCard);
 var _starRating = require("./StarRating");
 var _starRatingDefault = parcelHelpers.interopDefault(_starRating);
+var _wishListIcon = require("./WishListIcon");
+var _wishListIconDefault = parcelHelpers.interopDefault(_wishListIcon);
 var _s = $RefreshSig$();
 function DetailsPage() {
     _s();
     let param = (0, _reactRouterDom.useParams)();
     const [details, setDetails] = (0, _react.useState)([]);
     const [product, setProduct] = (0, _react.useState)([]);
+    const loginStatus = (0, _reactRedux.useSelector)((store)=>store.login.status);
     let stored_data = (0, _reactRedux.useSelector)((store)=>store?.products?.items);
     const userdata = (0, _reactRedux.useSelector)((store)=>store.user.userdata);
     let dispatch = (0, _reactRedux.useDispatch)();
@@ -40868,25 +40864,39 @@ function DetailsPage() {
                             className: "w-[500px] h-[600px]  max-[800px]:w-[300px] max-[800px]:h-[400px]"
                         }, void 0, false, {
                             fileName: "src/component/DetailsPage.js",
-                            lineNumber: 98,
+                            lineNumber: 101,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "src/component/DetailsPage.js",
-                        lineNumber: 97,
+                        lineNumber: 100,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "ml-2 w-[70%] max-[800px]:w-full max-[800px]:ml-0",
+                        className: "ml-2 w-[70%] relative max-[800px]:w-full max-[800px]:ml-0",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                                 className: "inline font-semibold text-[25px]",
                                 children: details[0]?.title
                             }, void 0, false, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 102,
+                                lineNumber: 107,
                                 columnNumber: 21
                             }, this),
+                            loginStatus == true ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "absolute right-1 top-1 cursor-pointer",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wishListIconDefault.default), {
+                                    info: details[0]?._id
+                                }, void 0, false, {
+                                    fileName: "src/component/DetailsPage.js",
+                                    lineNumber: 109,
+                                    columnNumber: 25
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "src/component/DetailsPage.js",
+                                lineNumber: 108,
+                                columnNumber: 44
+                            }, this) : null,
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
                                 className: "flex flex-col ",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -40897,12 +40907,12 @@ function DetailsPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/component/DetailsPage.js",
-                                    lineNumber: 106,
+                                    lineNumber: 115,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 104,
+                                lineNumber: 113,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -40914,7 +40924,7 @@ function DetailsPage() {
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 109,
+                                lineNumber: 118,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -40922,7 +40932,7 @@ function DetailsPage() {
                                 children: details[0]?.description
                             }, void 0, false, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 110,
+                                lineNumber: 119,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -40931,12 +40941,12 @@ function DetailsPage() {
                                     stars: parseInt(details[0]?.rating)
                                 }, void 0, false, {
                                     fileName: "src/component/DetailsPage.js",
-                                    lineNumber: 112,
-                                    columnNumber: 29
+                                    lineNumber: 121,
+                                    columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 111,
+                                lineNumber: 120,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -40950,25 +40960,25 @@ function DetailsPage() {
                                         children: "Add to Cart"
                                     }, void 0, false, {
                                         fileName: "src/component/DetailsPage.js",
-                                        lineNumber: 114,
+                                        lineNumber: 123,
                                         columnNumber: 64
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 114,
+                                lineNumber: 123,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/component/DetailsPage.js",
-                        lineNumber: 101,
+                        lineNumber: 106,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/component/DetailsPage.js",
-                lineNumber: 96,
+                lineNumber: 98,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -40979,7 +40989,7 @@ function DetailsPage() {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 129,
+                                lineNumber: 138,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -40987,13 +40997,13 @@ function DetailsPage() {
                                 children: "Similar Products"
                             }, void 0, false, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 130,
+                                lineNumber: 139,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/component/DetailsPage.js",
-                        lineNumber: 128,
+                        lineNumber: 137,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
@@ -41004,31 +41014,32 @@ function DetailsPage() {
                                 detailsPage: true
                             }, p.id, false, {
                                 fileName: "src/component/DetailsPage.js",
-                                lineNumber: 138,
+                                lineNumber: 147,
                                 columnNumber: 36
                             }, this);
                         }) : null
                     }, void 0, false, {
                         fileName: "src/component/DetailsPage.js",
-                        lineNumber: 133,
+                        lineNumber: 142,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/component/DetailsPage.js",
-                lineNumber: 127,
+                lineNumber: 136,
                 columnNumber: 17
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/DetailsPage.js",
-        lineNumber: 95,
+        lineNumber: 97,
         columnNumber: 9
     }, this);
 }
-_s(DetailsPage, "5o8P5LAPF2nj0hd0qyvjVNkxko0=", false, function() {
+_s(DetailsPage, "JsVb2EU5Qe2z48oLtM9n1zNieHU=", false, function() {
     return [
         (0, _reactRouterDom.useParams),
+        (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector),
         (0, _reactRedux.useDispatch)
@@ -41043,7 +41054,7 @@ $RefreshReg$(_c, "DetailsPage");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","react-router-dom":"9xmpe","../utility/store":"7oLTM","../utility/cartSlice":"3gn92","../utility/dataSlice":"fcCWu","react-toastify":"kSvyQ","../utility/utility":"gTarV","react-toastify/dist/ReactToastify.css":"gJP2Y","./ShowCard":"6nUG5","./StarRating":"5G9LQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gTarV":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","react-router-dom":"9xmpe","../utility/store":"7oLTM","../utility/cartSlice":"3gn92","../utility/dataSlice":"fcCWu","react-toastify":"kSvyQ","../utility/utility":"gTarV","react-toastify/dist/ReactToastify.css":"gJP2Y","./ShowCard":"6nUG5","./StarRating":"5G9LQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./WishListIcon":"fyQ5i"}],"gTarV":[function(require,module,exports) {
 // Shuffle the array 
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
