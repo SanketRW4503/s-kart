@@ -39,7 +39,7 @@ export default function ShowCard(props) {
 
 
     <section
-      className='flex p-[5px] relative rounded-lg z-10 m-[5px] w-[240px] h-[320px]  flex-col mx-[10px]  cursor-pointer hover:scale-[1.02]'>
+      className='flex p-[5px] relative rounded-lg m-[5px] w-[240px] h-[320px]  flex-col mx-[10px]  cursor-pointer hover:scale-[1.02]'>
       {load == true ? <div className='absolute right-1 top-1'>
         <WishListIcon info={props?.info?._id} />
       </div> : null

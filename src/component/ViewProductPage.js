@@ -100,10 +100,10 @@ export default function ViewProductPage() {
 
     return (<div className='flex justify-between pr-[10px] ' >
 
-        <div className=' flex items-center justify-center fixed z-10 '>
+        <div className=' flex items-center justify-center fixed z-20'>
 
             <div style={filterStyle}
-                className=' flex flex-col justify-left bg-slate border  p-[20px] transition-all duration-1000 rounded-r-2xl'>
+                className=' flex flex-col justify-left bg-slate border  z-20  p-[20px] transition-all duration-1000 rounded-r-2xl'>
                 <span className='flex items-center '>
                     <img src={filtericon} className='w-[18px] h-[18px] ' />
                     <label className='text-[22px] font-semibold '>Filter</label>
@@ -116,7 +116,7 @@ export default function ViewProductPage() {
 
                 </div>
 
-                <div className='bg-slate  mt-[20px] '>
+                <div className='bg-slate  mt-[20px] z-20 '>
                     <label className='font-semibold '>Sort By</label>
                     <select onChange={(e) => ApplySort(e)} id="mySelect" className='bg-slate border outline-none '>
                         <option value={'random'} id='randomly'>Randomly</option>
@@ -125,7 +125,7 @@ export default function ViewProductPage() {
                     </select>
                 </div>
 
-                <div className='bg-slate mt-[20px]  '>
+                <div className='bg-slate mt-[20px] z-20 '>
                     <label className='font-semibold mr-4'>Selected Category</label>
                     {storedCategory ? storedCategory.map((c,index) => {
 
@@ -150,7 +150,7 @@ export default function ViewProductPage() {
         </div>
 
         <div 
-            className=' translate-[300px] w-[85%] m-[auto] transition-all duration-1000 flex flex-wrap justify-center items-center h-[max-700px] overflow-auto'>
+            className=' translate-[300px]  w-[85%] m-[auto] transition-all duration-1000 flex flex-wrap justify-center items-center h-[max-700px] overflow-auto'>
 
 
             {products.length > 0 ? products.map((p) => {
