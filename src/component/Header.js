@@ -169,7 +169,7 @@ export default function Header() {
     dataset = JSON.stringify(dataset)
 
     try {
-      let res = await fetch('http://localhost:3000/wishlist/getwishlist', {
+      let res = await fetch(process.env.GET_USER_WISHLIST_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }, withCredntials: true,
         credentials: 'include',

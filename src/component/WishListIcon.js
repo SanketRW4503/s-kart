@@ -21,7 +21,7 @@ export default function WishListIcon(props) {
     let dataset = { email: userStore?.profile?.email, product_id: info }
     dataset = JSON.stringify(dataset);
     try {
-      let res = await fetch(process.env.WISHLIST_API, {
+      let res = await fetch(process.env.WISHLIST_ADD_DELETE_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }, withCredntials: true,
         credentials: 'include',

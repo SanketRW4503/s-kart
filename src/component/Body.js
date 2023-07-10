@@ -24,7 +24,6 @@ export default function Body() {
         if (userdata?.profile?.firstname !== undefined) {
             if (params?.id == 'welcome') {
                 toast.success('Verification Success !')
-                console.log(userdata)
                 toast.success(`Welcome to s-kart ${userdata?.profile?.firstname} !`)
 
             }
@@ -67,7 +66,6 @@ export default function Body() {
             }
         } else {
             setLoading(true)
-            console.log('data dont have')
         }
 
 
