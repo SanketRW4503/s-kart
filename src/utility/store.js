@@ -5,6 +5,7 @@ import loginSlice from "./loginSlice";
 import userSlice from "./userSlice";
 import categorySlice from "./categorySlice";
 import searchSlice from "./searchSlice";
+import wishlishSlice from "./wishlishSlice";
 
 
 
@@ -15,7 +16,8 @@ const store = configureStore({
         login: loginSlice,
         user: userSlice,
         category:categorySlice,
-        search:searchSlice
+        search:searchSlice,
+        wishlist:wishlishSlice
     }
 
 })

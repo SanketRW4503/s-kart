@@ -357,6 +357,10 @@ img, video {
   z-index: 10;
 }
 
+.z-30 {
+  z-index: 30;
+}
+
 .z-\[100\] {
   z-index: 100;
 }
@@ -676,10 +680,6 @@ img, video {
 
 .h-full {
   height: 100%;
-}
-
-.h-\[400px\] {
-  height: 400px;
 }
 
 .min-h-full {
@@ -1225,7 +1225,17 @@ img, video {
   letter-spacing: -.025em;
 }
 
-.text-\[black\], .text-black {
+.text-\[black\] {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-\[red\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 0 0 / var(--tw-text-opacity));
+}
+
+.text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }

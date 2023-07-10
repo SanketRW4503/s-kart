@@ -2,19 +2,25 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import store from '../utility/store'
 import { setUser } from '../utility/userSlice'
-import {  toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import { setLoginStatus } from '../utility/loginSlice'
 import { useNavigate } from 'react-router-dom'
 import EditProfileForm from './EditProfileForm'
 import { useState } from 'react'
 import AdressCom from './AdressCom'
 import Orders_Com from './Orders_Com'
+import ShowCard from './ShowCard'
 
 export default function UserProfileCom() {
 
 
   let userStore = useSelector(store => store.user.userdata)
   const [updatetoggle, setUpdateToggle] = useState(false)
+  const [wishlistdata, setWishListData] = useState([])
+
+  let wishlist = useSelector(store => store?.wishlist?.list);
+  const stored_data = useSelector(store => store?.products?.items);
+
   let navigate = useNavigate()
   let dispatch = useDispatch()
 
@@ -58,7 +64,7 @@ export default function UserProfileCom() {
 
   }
 
- 
+
 
   useEffect(() => {
     getCurrentUserInfo();
@@ -70,13 +76,31 @@ export default function UserProfileCom() {
     }
   }, [updatetoggle])
 
+
+  useEffect(() => {
+    setWishListData([])
+
+    if (wishlist.length > 0) {
+      wishlist.map((w) => {
+        let data = stored_data.filter((p) => {
+          if (p?._id == w?.product_id) {
+            return p
+          }
+        })
+        if (data) {
+          setWishListData(prevstate => [
+            ...prevstate, data
+          ])
+        }
+      })
+    }
+  }, [wishlist, stored_data])
+
   return (
 
 
     <div className='m-[50px] flex flex-col  '>
       <h1 className=' font-semibold text-[40px]' >{userStore?.profile?.firstname} {userStore?.profile?.lastname}</h1>
-
-
 
 
       <div className=" px-5 bg-white ">
@@ -92,8 +116,27 @@ export default function UserProfileCom() {
                   </svg>
                 </span>
               </summary>
-              <Orders_Com className="text-neutral-600 mt-3 group-open:animate-fadeIn flex flex-col items-center" getCurrentUserInfo={getCurrentUserInfo}/>
-             
+              <Orders_Com className="text-neutral-600 mt-3 group-open:animate-fadeIn flex flex-col items-center" getCurrentUserInfo={getCurrentUserInfo} />
+
+            </details>
+          </div>
+
+          {/* wishlist */}
+          <div className="py-5">
+            <details className="group">
+              <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
+                <span> Wishlist</span>
+                <span className="transition group-open:rotate-180">
+                  <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+                  </svg>
+                </span>
+              </summary>
+              <div className='flex flex-wrap'> {wishlistdata.length > 0 ? wishlistdata.map((p, index) => {
+                return <ShowCard info={p[0]} key={index} detailsPage={false} />
+              }) : <div className='m-[auto] p-[10px]'>Your WishList is Empty !</div>
+
+              }
+              </div>
             </details>
           </div>
           {/* edit profile */}
@@ -109,8 +152,6 @@ export default function UserProfileCom() {
               <EditProfileForm className="text-neutral-600 mt-3 group-open:animate-fadeIn" setUpdateToggle={setUpdateToggle} updatetoggle={updatetoggle} />
 
 
-
-
             </details>
           </div>
           <div className="py-5">
@@ -122,8 +163,8 @@ export default function UserProfileCom() {
                   </svg>
                 </span>
               </summary>
-              <AdressCom className="text-neutral-600 mt-3 group-open:animate-fadeIn" 
-              setUpdateToggle={setUpdateToggle} updatetoggle={updatetoggle}  cartpage={false} />
+              <AdressCom className="text-neutral-600 mt-3 group-open:animate-fadeIn"
+                setUpdateToggle={setUpdateToggle} updatetoggle={updatetoggle} cartpage={false} />
             </details>
           </div>
 

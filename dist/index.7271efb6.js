@@ -3181,7 +3181,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./component/Header":"knXDc","react-router-dom":"9xmpe","./component/Body":"iizf5","./component/SearchBar":"jOrUR","react-redux":"bdVon","./utility/store":"7oLTM","./component/DetailsPage":"1HMeJ","./component/SearchResult":"3Kqob","./component/Footer":"4ifUV","./component/CartPage":"faNiI","./component/About":"94Koj","./component/Contact":"3He1d","./component/SignUpPage":"81VBq","./component/LoginPage":"bDA2A","./component/UserProfileCom":"3aKVV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./component/Payment_Success_Page":"caBRr","./component/ViewProductPage":"baxXj","./utility/useOnline":"6ohYp","./component/NoInternet":"51S3L","./component/VerificationCom":"6Hd2n","./component/ForgotPassword":"jJVNt","dotenv":"lErsX"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./component/Header":"knXDc","react-router-dom":"9xmpe","./component/Body":"iizf5","./component/SearchBar":"jOrUR","react-redux":"bdVon","./utility/store":"7oLTM","./component/DetailsPage":"1HMeJ","./component/SearchResult":"3Kqob","./component/Footer":"4ifUV","./component/CartPage":"faNiI","./component/About":"94Koj","./component/Contact":"3He1d","./component/SignUpPage":"81VBq","./component/LoginPage":"bDA2A","./component/UserProfileCom":"3aKVV","./component/Payment_Success_Page":"caBRr","./component/ViewProductPage":"baxXj","./utility/useOnline":"6ohYp","./component/NoInternet":"51S3L","./component/VerificationCom":"6Hd2n","./component/ForgotPassword":"jJVNt","dotenv":"lErsX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -27399,6 +27399,7 @@ var _searchBar = require("./SearchBar");
 var _searchBarDefault = parcelHelpers.interopDefault(_searchBar);
 var _categorySlice = require("../utility/categorySlice");
 var _searchSlice = require("../utility/searchSlice");
+var _wishlishSlice = require("../utility/wishlishSlice");
 var _s = $RefreshSig$();
 function Header() {
     _s();
@@ -27406,6 +27407,7 @@ function Header() {
     const [menustatus, setMenuStatus] = (0, _react.useState)(false);
     const cartData = (0, _reactRedux.useSelector)((store)=>store.cart.totalItems);
     const loginStatus = (0, _reactRedux.useSelector)((store)=>store.login.status);
+    let userStore = (0, _reactRedux.useSelector)((store)=>store.user.userdata);
     const location = (0, _reactRouterDom.useLocation)();
     const dispatch = (0, _reactRedux.useDispatch)();
     const stored_data = (0, _reactRedux.useSelector)((store)=>store?.products?.items);
@@ -27466,7 +27468,6 @@ function Header() {
         stored_data
     ]);
     // check user login or not if login save his info to store
-    const userStore = (0, _reactRedux.useSelector)((store)=>store.user.userdata);
     async function getCurrentUserInfo() {
         const res = await fetch("https://s-kart-backend.onrender.com/user/myProfile", {
             method: "GET",
@@ -27508,6 +27509,33 @@ function Header() {
     (0, _react.useEffect)(()=>{
         if (userStore.length == 0) getCurrentUserInfo();
     }, []);
+    async function getWishlistData(email) {
+        let dataset = {
+            email: email
+        };
+        dataset = JSON.stringify(dataset);
+        try {
+            let res = await fetch("http://localhost:3000/wishlist/getwishlist", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredntials: true,
+                credentials: "include",
+                body: dataset
+            });
+            let json = await res.json();
+            console.log(json);
+            if (json.success == true) for(let i = 0; json.result.wishlist, length !== i; i++)dispatch((0, _wishlishSlice.add_data)(json.result.wishlist));
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    (0, _react.useEffect)(()=>{
+        if (loginStatus == true) getWishlistData(userStore?.profile?.email);
+    }, [
+        loginStatus
+    ]);
     // end check user function 
     //Hamburger Logic : it helps to hide and show menu 
     function menuFunction() {
@@ -27538,7 +27566,7 @@ function Header() {
                                     className: "w-[50px] h-[50px] transition-all  duration-500 invert"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 191,
+                                    lineNumber: 225,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27548,23 +27576,23 @@ function Header() {
                                         children: "S-KART"
                                     }, void 0, false, {
                                         fileName: "src/component/Header.js",
-                                        lineNumber: 192,
+                                        lineNumber: 226,
                                         columnNumber: 28
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 192,
+                                    lineNumber: 226,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/component/Header.js",
-                            lineNumber: 190,
+                            lineNumber: 224,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "src/component/Header.js",
-                        lineNumber: 189,
+                        lineNumber: 223,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27573,12 +27601,12 @@ function Header() {
                             className: ""
                         }, void 0, false, {
                             fileName: "src/component/Header.js",
-                            lineNumber: 197,
-                            columnNumber: 7
+                            lineNumber: 231,
+                            columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "src/component/Header.js",
-                        lineNumber: 196,
+                        lineNumber: 230,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -27591,7 +27619,7 @@ function Header() {
                                 children: "✕"
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 202,
+                                lineNumber: 236,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27601,12 +27629,12 @@ function Header() {
                                     children: "Home"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 203,
+                                    lineNumber: 237,
                                     columnNumber: 24
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 203,
+                                lineNumber: 237,
                                 columnNumber: 11
                             }, this),
                             loginStatus == false ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27616,12 +27644,12 @@ function Header() {
                                     children: "Login"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 207,
+                                    lineNumber: 241,
                                     columnNumber: 36
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 207,
+                                lineNumber: 241,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                                 to: "/myProfile#openorder",
@@ -27632,14 +27660,14 @@ function Header() {
                                         children: "Orders"
                                     }, void 0, false, {
                                         fileName: "src/component/Header.js",
-                                        lineNumber: 208,
-                                        columnNumber: 51
+                                        lineNumber: 242,
+                                        columnNumber: 52
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 208,
-                                columnNumber: 16
+                                lineNumber: 242,
+                                columnNumber: 17
                             }, this),
                             loginStatus != false ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                                 to: "/myProfile",
@@ -27650,13 +27678,13 @@ function Header() {
                                         children: "My Profile"
                                     }, void 0, false, {
                                         fileName: "src/component/Header.js",
-                                        lineNumber: 214,
+                                        lineNumber: 248,
                                         columnNumber: 40
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 214,
+                                lineNumber: 248,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                                 to: "/signup",
@@ -27665,12 +27693,12 @@ function Header() {
                                     children: "Sign up "
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 215,
+                                    lineNumber: 249,
                                     columnNumber: 38
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 215,
+                                lineNumber: 249,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27680,12 +27708,12 @@ function Header() {
                                     children: "About us"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 217,
+                                    lineNumber: 251,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 217,
+                                lineNumber: 251,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27695,12 +27723,12 @@ function Header() {
                                     children: "Contact us"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 218,
+                                    lineNumber: 252,
                                     columnNumber: 31
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 218,
+                                lineNumber: 252,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27710,12 +27738,12 @@ function Header() {
                                     className: "w-[40px] mr-[10px] z-4 max-[940px]:hidden invert"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 220,
+                                    lineNumber: 254,
                                     columnNumber: 30
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 220,
+                                lineNumber: 254,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27727,13 +27755,13 @@ function Header() {
                                         children: cartData
                                     }, void 0, false, {
                                         fileName: "src/component/Header.js",
-                                        lineNumber: 221,
+                                        lineNumber: 255,
                                         columnNumber: 32
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 221,
+                                lineNumber: 255,
                                 columnNumber: 11
                             }, this),
                             loginStatus != false ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27745,20 +27773,20 @@ function Header() {
                                         className: "w-[30px] mr-[10px] invert z-4 max-[940px]:hidden"
                                     }, void 0, false, {
                                         fileName: "src/component/Header.js",
-                                        lineNumber: 225,
+                                        lineNumber: 259,
                                         columnNumber: 40
                                     }, this),
                                     " "
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 225,
+                                lineNumber: 259,
                                 columnNumber: 15
                             }, this) : null
                         ]
                     }, void 0, true, {
                         fileName: "src/component/Header.js",
-                        lineNumber: 199,
+                        lineNumber: 233,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27771,12 +27799,12 @@ function Header() {
                                     className: "w-[40px] mr-[10px] z-4 invert"
                                 }, void 0, false, {
                                     fileName: "src/component/Header.js",
-                                    lineNumber: 233,
+                                    lineNumber: 267,
                                     columnNumber: 30
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 233,
+                                lineNumber: 267,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -27788,13 +27816,13 @@ function Header() {
                                         children: cartData
                                     }, void 0, false, {
                                         fileName: "src/component/Header.js",
-                                        lineNumber: 235,
+                                        lineNumber: 269,
                                         columnNumber: 32
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 235,
+                                lineNumber: 269,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -27803,32 +27831,32 @@ function Header() {
                                 children: "☰"
                             }, void 0, false, {
                                 fileName: "src/component/Header.js",
-                                lineNumber: 237,
+                                lineNumber: 271,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/component/Header.js",
-                        lineNumber: 232,
+                        lineNumber: 266,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/component/Header.js",
-                lineNumber: 188,
+                lineNumber: 222,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactToastify.ToastContainer), {
                 theme: "dark"
             }, void 0, false, {
                 fileName: "src/component/Header.js",
-                lineNumber: 243,
+                lineNumber: 277,
                 columnNumber: 7
             }, this),
             location.pathname == "/" ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sliderDefault.default), {}, void 0, false, {
                 fileName: "src/component/Header.js",
-                lineNumber: 247,
-                columnNumber: 32
+                lineNumber: 281,
+                columnNumber: 36
             }, this) : null,
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "hidden max-[940px]:flex items-center justify-center",
@@ -27836,28 +27864,28 @@ function Header() {
                     className: ""
                 }, void 0, false, {
                     fileName: "src/component/Header.js",
-                    lineNumber: 251,
-                    columnNumber: 7
+                    lineNumber: 285,
+                    columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/component/Header.js",
-                lineNumber: 250,
+                lineNumber: 284,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/Header.js",
-        lineNumber: 187,
+        lineNumber: 221,
         columnNumber: 5
     }, this);
 }
-_s(Header, "b38e+DVofEjXIUEo5t80uftcXXE=", false, function() {
+_s(Header, "JWjQPVOIOEtK33oMQ69FmkFwYFE=", false, function() {
     return [
+        (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector),
         (0, _reactRouterDom.useLocation),
         (0, _reactRedux.useDispatch),
-        (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector)
     ];
@@ -27871,7 +27899,7 @@ $RefreshReg$(_c, "Header");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","../../assets/images/shop-icon.png":"fJWos","react-router-dom":"9xmpe","react":"21dqq","react-redux":"bdVon","../utility/store":"7oLTM","..//../assets/images/cart-bag.png":"8KtYF","react-toastify":"kSvyQ","../../assets/images/profile-icon.png":"kdSYZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utility/loginSlice":"cVjx3","../utility/userSlice":"8k0fy","../utility/cartSlice":"3gn92","../utility/dataSlice":"fcCWu","./Slider":"84nvn","./SearchBar":"jOrUR","../utility/categorySlice":"hLwfm","../utility/searchSlice":"gwPod"}],"fJWos":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","../../assets/images/shop-icon.png":"fJWos","react-router-dom":"9xmpe","react":"21dqq","react-redux":"bdVon","../utility/store":"7oLTM","..//../assets/images/cart-bag.png":"8KtYF","react-toastify":"kSvyQ","../../assets/images/profile-icon.png":"kdSYZ","../utility/loginSlice":"cVjx3","../utility/userSlice":"8k0fy","../utility/cartSlice":"3gn92","../utility/dataSlice":"fcCWu","./Slider":"84nvn","./SearchBar":"jOrUR","../utility/categorySlice":"hLwfm","../utility/searchSlice":"gwPod","../utility/wishlishSlice":"iaC6x","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fJWos":[function(require,module,exports) {
 module.exports = require("7cf8ba8bc0062ef8").getBundleURL("aXMci") + "shop-icon.97666c27.png" + "?" + Date.now();
 
 },{"7cf8ba8bc0062ef8":"lgJ39"}],"lgJ39":[function(require,module,exports) {
@@ -34950,6 +34978,8 @@ var _categorySlice = require("./categorySlice");
 var _categorySliceDefault = parcelHelpers.interopDefault(_categorySlice);
 var _searchSlice = require("./searchSlice");
 var _searchSliceDefault = parcelHelpers.interopDefault(_searchSlice);
+var _wishlishSlice = require("./wishlishSlice");
+var _wishlishSliceDefault = parcelHelpers.interopDefault(_wishlishSlice);
 const store = (0, _toolkit.configureStore)({
     reducer: {
         products: (0, _dataSliceDefault.default),
@@ -34957,12 +34987,13 @@ const store = (0, _toolkit.configureStore)({
         login: (0, _loginSliceDefault.default),
         user: (0, _userSliceDefault.default),
         category: (0, _categorySliceDefault.default),
-        search: (0, _searchSliceDefault.default)
+        search: (0, _searchSliceDefault.default),
+        wishlist: (0, _wishlishSliceDefault.default)
     }
 });
 exports.default = store;
 
-},{"@reduxjs/toolkit":"lL1Ef","./dataSlice":"fcCWu","./cartSlice":"3gn92","./loginSlice":"cVjx3","./userSlice":"8k0fy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./categorySlice":"hLwfm","./searchSlice":"gwPod"}],"lL1Ef":[function(require,module,exports) {
+},{"@reduxjs/toolkit":"lL1Ef","./dataSlice":"fcCWu","./cartSlice":"3gn92","./loginSlice":"cVjx3","./userSlice":"8k0fy","./categorySlice":"hLwfm","./searchSlice":"gwPod","./wishlishSlice":"iaC6x","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lL1Ef":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "EnhancerArray", ()=>EnhancerArray);
@@ -38982,6 +39013,31 @@ const searchSlice = (0, _toolkit.createSlice)({
 exports.default = searchSlice.reducer;
 const { add_keywords  } = searchSlice.actions;
 
+},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iaC6x":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "add_data", ()=>add_data);
+parcelHelpers.export(exports, "remove_data", ()=>remove_data);
+var _toolkit = require("@reduxjs/toolkit");
+const wishlistSlice = (0, _toolkit.createSlice)({
+    name: "wishlist",
+    initialState: {
+        list: []
+    },
+    reducers: {
+        add_data: (state, actions)=>{
+            for(let i = 0; actions.payload.length !== i; i++)state.list.push(actions.payload[i]);
+        },
+        remove_data: (state, actions)=>{
+            let index = state.list.findIndex((p)=>p.product_id == actions.payload);
+            if (state.list.length == 1) state.list = [];
+            else if (index !== -1) state.list.splice(index, 1);
+        }
+    }
+});
+exports.default = wishlistSlice.reducer;
+const { add_data , remove_data  } = wishlistSlice.actions;
+
 },{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8KtYF":[function(require,module,exports) {
 module.exports = require("19aadb4e989a9316").getBundleURL("aXMci") + "cart-bag.30e692a9.png" + "?" + Date.now();
 
@@ -39621,145 +39677,7 @@ exports.default = clsx;
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kdSYZ":[function(require,module,exports) {
 module.exports = require("b3e6d27f9ea3e8e2").getBundleURL("aXMci") + "profile-icon.353deb8a.png" + "?" + Date.now();
 
-},{"b3e6d27f9ea3e8e2":"lgJ39"}],"km3Ru":[function(require,module,exports) {
-"use strict";
-var Refresh = require("7422ead32dcc1e6b");
-function debounce(func, delay) {
-    {
-        let timeout = undefined;
-        let lastTime = 0;
-        return function(args) {
-            // Call immediately if last call was more than the delay ago.
-            // Otherwise, set a timeout. This means the first call is fast
-            // (for the common case of a single update), and subsequent updates
-            // are batched.
-            let now = Date.now();
-            if (now - lastTime > delay) {
-                lastTime = now;
-                func.call(null, args);
-            } else {
-                clearTimeout(timeout);
-                timeout = setTimeout(function() {
-                    timeout = undefined;
-                    lastTime = Date.now();
-                    func.call(null, args);
-                }, delay);
-            }
-        };
-    }
-}
-var enqueueUpdate = debounce(function() {
-    Refresh.performReactRefresh();
-}, 30);
-// Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function(module1) {
-    window.$RefreshReg$ = function(type, id) {
-        Refresh.register(type, module1.id + " " + id);
-    };
-    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function(module1) {
-    if (isReactRefreshBoundary(module1.exports)) {
-        registerExportsForReactRefresh(module1);
-        if (module1.hot) {
-            module1.hot.dispose(function(data) {
-                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
-                data.prevExports = module1.exports;
-            });
-            module1.hot.accept(function(getParents) {
-                var prevExports = module1.hot.data.prevExports;
-                var nextExports = module1.exports;
-                // Since we just executed the code for it, it's possible
-                // that the new exports make it ineligible for being a boundary.
-                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
-                // It can also become ineligible if its exports are incompatible
-                // with the previous exports.
-                // For example, if you add/remove/change exports, we'll want
-                // to re-execute the importing modules, and force those components
-                // to re-render. Similarly, if you convert a class component
-                // to a function, we want to invalidate the boundary.
-                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-                if (isNoLongerABoundary || didInvalidate) {
-                    // We'll be conservative. The only case in which we won't do a full
-                    // reload is if all parent modules are also refresh boundaries.
-                    // In that case we'll add them to the current queue.
-                    var parents = getParents();
-                    if (parents.length === 0) {
-                        // Looks like we bubbled to the root. Can't recover from that.
-                        window.location.reload();
-                        return;
-                    }
-                    return parents;
-                }
-                enqueueUpdate();
-            });
-        }
-    }
-};
-function isReactRefreshBoundary(exports) {
-    if (Refresh.isLikelyComponentType(exports)) return true;
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    return false;
-    var hasExports = false;
-    var areAllExportsComponents = true;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        hasExports = true;
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
-        return false;
-        var exportValue = exports[key];
-        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
-    }
-    return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-    var prevSignature = getRefreshBoundarySignature(prevExports);
-    var nextSignature = getRefreshBoundarySignature(nextExports);
-    if (prevSignature.length !== nextSignature.length) return true;
-    for(var i = 0; i < nextSignature.length; i++){
-        if (prevSignature[i] !== nextSignature[i]) return true;
-    }
-    return false;
-}
-// When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-    var signature = [];
-    signature.push(Refresh.getFamilyByType(exports));
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        signature.push(key);
-        signature.push(Refresh.getFamilyByType(exportValue));
-    }
-    return signature;
-}
-function registerExportsForReactRefresh(module1) {
-    var exports = module1.exports, id = module1.id;
-    Refresh.register(exports, id + " %exports%");
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        var typeID = id + " %exports% " + key;
-        Refresh.register(exportValue, typeID);
-    }
-}
-
-},{"7422ead32dcc1e6b":"786KC"}],"84nvn":[function(require,module,exports) {
+},{"b3e6d27f9ea3e8e2":"lgJ39"}],"84nvn":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$03f9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39916,7 +39834,7 @@ $RefreshReg$(_c, "Slider");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utility/useOnline":"6ohYp","../../assets/images/next.png":"9zvoC"}],"6ohYp":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","../utility/useOnline":"6ohYp","../../assets/images/next.png":"9zvoC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6ohYp":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1b62 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39948,7 +39866,145 @@ _s(useOnline, "MuRHT4nbzkgOPnMMlqOE75+HU4c=");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"9zvoC":[function(require,module,exports) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"km3Ru":[function(require,module,exports) {
+"use strict";
+var Refresh = require("7422ead32dcc1e6b");
+function debounce(func, delay) {
+    {
+        let timeout = undefined;
+        let lastTime = 0;
+        return function(args) {
+            // Call immediately if last call was more than the delay ago.
+            // Otherwise, set a timeout. This means the first call is fast
+            // (for the common case of a single update), and subsequent updates
+            // are batched.
+            let now = Date.now();
+            if (now - lastTime > delay) {
+                lastTime = now;
+                func.call(null, args);
+            } else {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    timeout = undefined;
+                    lastTime = Date.now();
+                    func.call(null, args);
+                }, delay);
+            }
+        };
+    }
+}
+var enqueueUpdate = debounce(function() {
+    Refresh.performReactRefresh();
+}, 30);
+// Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function(module1) {
+    window.$RefreshReg$ = function(type, id) {
+        Refresh.register(type, module1.id + " " + id);
+    };
+    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function(module1) {
+    if (isReactRefreshBoundary(module1.exports)) {
+        registerExportsForReactRefresh(module1);
+        if (module1.hot) {
+            module1.hot.dispose(function(data) {
+                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
+                data.prevExports = module1.exports;
+            });
+            module1.hot.accept(function(getParents) {
+                var prevExports = module1.hot.data.prevExports;
+                var nextExports = module1.exports;
+                // Since we just executed the code for it, it's possible
+                // that the new exports make it ineligible for being a boundary.
+                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
+                // It can also become ineligible if its exports are incompatible
+                // with the previous exports.
+                // For example, if you add/remove/change exports, we'll want
+                // to re-execute the importing modules, and force those components
+                // to re-render. Similarly, if you convert a class component
+                // to a function, we want to invalidate the boundary.
+                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+                if (isNoLongerABoundary || didInvalidate) {
+                    // We'll be conservative. The only case in which we won't do a full
+                    // reload is if all parent modules are also refresh boundaries.
+                    // In that case we'll add them to the current queue.
+                    var parents = getParents();
+                    if (parents.length === 0) {
+                        // Looks like we bubbled to the root. Can't recover from that.
+                        window.location.reload();
+                        return;
+                    }
+                    return parents;
+                }
+                enqueueUpdate();
+            });
+        }
+    }
+};
+function isReactRefreshBoundary(exports) {
+    if (Refresh.isLikelyComponentType(exports)) return true;
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    return false;
+    var hasExports = false;
+    var areAllExportsComponents = true;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        hasExports = true;
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
+        return false;
+        var exportValue = exports[key];
+        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
+    }
+    return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+    var prevSignature = getRefreshBoundarySignature(prevExports);
+    var nextSignature = getRefreshBoundarySignature(nextExports);
+    if (prevSignature.length !== nextSignature.length) return true;
+    for(var i = 0; i < nextSignature.length; i++){
+        if (prevSignature[i] !== nextSignature[i]) return true;
+    }
+    return false;
+}
+// When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+    var signature = [];
+    signature.push(Refresh.getFamilyByType(exports));
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        signature.push(key);
+        signature.push(Refresh.getFamilyByType(exportValue));
+    }
+    return signature;
+}
+function registerExportsForReactRefresh(module1) {
+    var exports = module1.exports, id = module1.id;
+    Refresh.register(exports, id + " %exports%");
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        var typeID = id + " %exports% " + key;
+        Refresh.register(exportValue, typeID);
+    }
+}
+
+},{"7422ead32dcc1e6b":"786KC"}],"9zvoC":[function(require,module,exports) {
 module.exports = require("f9eb521dac219da8").getBundleURL("aXMci") + "next.9e1cc1a2.png" + "?" + Date.now();
 
 },{"f9eb521dac219da8":"lgJ39"}],"jOrUR":[function(require,module,exports) {
@@ -40100,7 +40156,7 @@ $RefreshReg$(_c, "SearchBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","../../assets/images/searchicon.png":"3cJqo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-redux":"bdVon","../utility/store":"7oLTM"}],"3cJqo":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","../../assets/images/searchicon.png":"3cJqo","react-redux":"bdVon","../utility/store":"7oLTM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3cJqo":[function(require,module,exports) {
 module.exports = require("fbe2137901f25ede").getBundleURL("aXMci") + "searchicon.f655cf57.png" + "?" + Date.now();
 
 },{"fbe2137901f25ede":"lgJ39"}],"iizf5":[function(require,module,exports) {
@@ -40390,7 +40446,7 @@ $RefreshReg$(_c, "Body");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./ShowCard":"6nUG5","react-redux":"bdVon","../utility/store":"7oLTM","./ShimmerCard":"eZNpp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-router-dom":"9xmpe","../../assets/images/next.png":"9zvoC","react-toastify":"kSvyQ"}],"6nUG5":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./ShowCard":"6nUG5","react-redux":"bdVon","../utility/store":"7oLTM","./ShimmerCard":"eZNpp","react-router-dom":"9xmpe","../../assets/images/next.png":"9zvoC","react-toastify":"kSvyQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6nUG5":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$ce3e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40405,79 +40461,109 @@ var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
 var _starRating = require("./StarRating");
 var _starRatingDefault = parcelHelpers.interopDefault(_starRating);
+var _wishListIcon = require("./WishListIcon");
+var _wishListIconDefault = parcelHelpers.interopDefault(_wishListIcon);
+var _reactRedux = require("react-redux");
+var _store = require("../utility/store");
+var _storeDefault = parcelHelpers.interopDefault(_store);
 var _s = $RefreshSig$();
 function ShowCard(props) {
     _s();
+    const [load, setLoad] = (0, _react.useState)(false);
+    const loginStatus = (0, _reactRedux.useSelector)((store)=>store.login.status);
     let navigate = (0, _reactRouterDom.useNavigate)();
     function setpathh() {
         if (props.detailsPage == true) navigate("/");
     }
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-        to: "details/" + props.info._id,
-        onClick: setpathh,
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
-            className: "flex p-[5px]  rounded-lg z-10 m-[5px] w-[240px] h-[320px]  flex-col mx-[10px]  cursor-pointer hover:scale-[1.02]",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "flex justify-center items-center",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                        src: props.info.image.url,
-                        className: "w-[180px] h-[200px] mix-blend-multiply"
-                    }, void 0, false, {
-                        fileName: "src/component/ShowCard.js",
-                        lineNumber: 25,
-                        columnNumber: 9
-                    }, this)
+    (0, _react.useEffect)(()=>{
+        if (loginStatus == true) setLoad(true);
+        else setLoad(false);
+    }, [
+        loginStatus
+    ]);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("section", {
+        className: "flex p-[5px] relative rounded-lg z-10 m-[5px] w-[240px] h-[320px]  flex-col mx-[10px]  cursor-pointer hover:scale-[1.02]",
+        children: [
+            load == true ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "absolute right-1 top-1",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wishListIconDefault.default), {
+                    info: props?.info?._id
                 }, void 0, false, {
                     fileName: "src/component/ShowCard.js",
-                    lineNumber: 24,
-                    columnNumber: 7
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                    className: "inline font-semibold",
-                    children: props.info.title.slice(0, 30)
-                }, void 0, false, {
-                    fileName: "src/component/ShowCard.js",
-                    lineNumber: 27,
-                    columnNumber: 7
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _starRatingDefault.default), {
-                        stars: parseInt(props?.info?.rating)
-                    }, void 0, false, {
-                        fileName: "src/component/ShowCard.js",
-                        lineNumber: 29,
-                        columnNumber: 9
-                    }, this)
-                }, void 0, false, {
-                    fileName: "src/component/ShowCard.js",
-                    lineNumber: 28,
-                    columnNumber: 7
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    children: [
-                        "Price:",
-                        props.info.price
-                    ]
-                }, void 0, true, {
-                    fileName: "src/component/ShowCard.js",
-                    lineNumber: 31,
-                    columnNumber: 7
+                    lineNumber: 44,
+                    columnNumber: 9
                 }, this)
-            ]
-        }, void 0, true, {
-            fileName: "src/component/ShowCard.js",
-            lineNumber: 22,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
+            }, void 0, false, {
+                fileName: "src/component/ShowCard.js",
+                lineNumber: 43,
+                columnNumber: 23
+            }, this) : null,
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                to: "details/" + props.info._id,
+                onClick: setpathh,
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "flex justify-center items-center mt-3",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                            src: props.info.image.url,
+                            className: "w-[180px] h-[200px] mix-blend-multiply"
+                        }, void 0, false, {
+                            fileName: "src/component/ShowCard.js",
+                            lineNumber: 49,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "src/component/ShowCard.js",
+                        lineNumber: 48,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                        className: "inline font-semibold",
+                        children: props.info.title.slice(0, 30)
+                    }, void 0, false, {
+                        fileName: "src/component/ShowCard.js",
+                        lineNumber: 51,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _starRatingDefault.default), {
+                            stars: parseInt(props?.info?.rating)
+                        }, void 0, false, {
+                            fileName: "src/component/ShowCard.js",
+                            lineNumber: 53,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "src/component/ShowCard.js",
+                        lineNumber: 52,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: [
+                            "Price:",
+                            props.info.price
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/component/ShowCard.js",
+                        lineNumber: 55,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/component/ShowCard.js",
+                lineNumber: 47,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "src/component/ShowCard.js",
-        lineNumber: 21,
+        lineNumber: 41,
         columnNumber: 5
     }, this);
 }
-_s(ShowCard, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
+_s(ShowCard, "VMZAUbMj9hsXfUCCsHuE0uE4epM=", false, function() {
     return [
+        (0, _reactRedux.useSelector),
         (0, _reactRouterDom.useNavigate)
     ];
 });
@@ -40490,7 +40576,7 @@ $RefreshReg$(_c, "ShowCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","./StarRating":"5G9LQ"}],"5G9LQ":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","./StarRating":"5G9LQ","./WishListIcon":"fyQ5i","react-redux":"bdVon","../utility/store":"7oLTM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"5G9LQ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1b41 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40552,7 +40638,111 @@ $RefreshReg$(_c, "StarRating");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eZNpp":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fyQ5i":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$90e6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$90e6.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>WishListIcon);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _reactRedux = require("react-redux");
+var _reactToastify = require("react-toastify");
+var _store = require("../utility/store");
+var _storeDefault = parcelHelpers.interopDefault(_store);
+var _react = require("react");
+var _wishlishSlice = require("../utility/wishlishSlice");
+var _s = $RefreshSig$();
+function WishListIcon(props) {
+    _s();
+    let userStore = (0, _reactRedux.useSelector)((store)=>store?.user?.userdata);
+    let wishlist = (0, _reactRedux.useSelector)((store)=>store?.wishlist?.list);
+    const dispatch = (0, _reactRedux.useDispatch)();
+    const [colorstatus, setColorStatus] = (0, _react.useState)(false);
+    async function add_to_wishlist(info) {
+        (0, _reactToastify.toast).loading("Adding to wishlist...");
+        let dataset = {
+            email: userStore?.profile?.email,
+            product_id: info
+        };
+        dataset = JSON.stringify(dataset);
+        try {
+            let res = await fetch("http://localhost:3000/wishlist/add-to-wishlist", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredntials: true,
+                credentials: "include",
+                body: dataset
+            });
+            let json = await res.json();
+            if (json.success == true) {
+                (0, _reactToastify.toast).dismiss();
+                (0, _reactToastify.toast).success(json?.message);
+                if (json?.add == true) dispatch((0, _wishlishSlice.add_data)([
+                    {
+                        product_id: info
+                    }
+                ]));
+                else {
+                    dispatch((0, _wishlishSlice.remove_data)(info));
+                    setColorStatus(false);
+                }
+            } else {
+                (0, _reactToastify.toast).dismiss();
+                (0, _reactToastify.toast).error(json?.message);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    (0, _react.useEffect)(()=>{
+        wishlist.map((w)=>{
+            if (props?.info == w?.product_id) setColorStatus(true);
+        });
+    }, [
+        wishlist,
+        colorstatus
+    ]);
+    return colorstatus == true ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        onClick: ()=>add_to_wishlist(props?.info),
+        className: "text-[30px] z-30 w-full h-full text-[red]",
+        children: "♥"
+    }, void 0, false, {
+        fileName: "src/component/WishListIcon.js",
+        lineNumber: 66,
+        columnNumber: 27
+    }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        onClick: ()=>add_to_wishlist(props?.info),
+        className: "text-[30px] z-30 w-full h-full",
+        children: "♡"
+    }, void 0, false, {
+        fileName: "src/component/WishListIcon.js",
+        lineNumber: 67,
+        columnNumber: 9
+    }, this);
+}
+_s(WishListIcon, "6vCsyIwXVDKx5kHnrvrFaPU3Hew=", false, function() {
+    return [
+        (0, _reactRedux.useSelector),
+        (0, _reactRedux.useSelector),
+        (0, _reactRedux.useDispatch)
+    ];
+});
+_c = WishListIcon;
+var _c;
+$RefreshReg$(_c, "WishListIcon");
+
+  $parcel$ReactRefreshHelpers$90e6.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react-redux":"bdVon","react-toastify":"kSvyQ","../utility/store":"7oLTM","react":"21dqq","../utility/wishlishSlice":"iaC6x","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eZNpp":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2a1f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40859,7 +41049,7 @@ $RefreshReg$(_c, "DetailsPage");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","react-router-dom":"9xmpe","../utility/store":"7oLTM","../utility/cartSlice":"3gn92","../utility/dataSlice":"fcCWu","react-toastify":"kSvyQ","react-toastify/dist/ReactToastify.css":"gJP2Y","./ShowCard":"6nUG5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utility/utility":"gTarV","./StarRating":"5G9LQ"}],"gJP2Y":[function() {},{}],"gTarV":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","react-router-dom":"9xmpe","../utility/store":"7oLTM","../utility/cartSlice":"3gn92","../utility/dataSlice":"fcCWu","react-toastify":"kSvyQ","../utility/utility":"gTarV","react-toastify/dist/ReactToastify.css":"gJP2Y","./ShowCard":"6nUG5","./StarRating":"5G9LQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gTarV":[function(require,module,exports) {
 // Shuffle the array 
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -40953,7 +41143,7 @@ const add_mongoDb_cart = async (productdata, userdata)=>{
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3Kqob":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gJP2Y":[function() {},{}],"3Kqob":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$7ce9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41821,7 +42011,7 @@ $RefreshReg$(_c, "CartPage");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-redux":"bdVon","../utility/store":"7oLTM","../utility/cartSlice":"3gn92","..//../assets/images/empty-cart.jpg":"iNyoI","react-toastify":"kSvyQ","react-toastify/dist/ReactToastify.css":"gJP2Y","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../utility/utility":"gTarV","../utility/userSlice":"8k0fy","../utility/loginSlice":"cVjx3","react":"21dqq","react-router-dom":"9xmpe","./AdressCom":"lz0cg"}],"iNyoI":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-redux":"bdVon","../utility/store":"7oLTM","../utility/cartSlice":"3gn92","..//../assets/images/empty-cart.jpg":"iNyoI","react-toastify":"kSvyQ","react-toastify/dist/ReactToastify.css":"gJP2Y","../utility/utility":"gTarV","../utility/userSlice":"8k0fy","../utility/loginSlice":"cVjx3","react":"21dqq","react-router-dom":"9xmpe","./AdressCom":"lz0cg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iNyoI":[function(require,module,exports) {
 module.exports = require("eef22ec4ac2e4c8d").getBundleURL("aXMci") + "empty-cart.65c3861c.jpg" + "?" + Date.now();
 
 },{"eef22ec4ac2e4c8d":"lgJ39"}],"gJP2Y":[function() {},{}],"lz0cg":[function(require,module,exports) {
@@ -42471,7 +42661,7 @@ function SignUpPage() {
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                                         src: imagetoggle,
-                                        className: "absolute right-1 top-1",
+                                        className: "absolute right-1 top-1  cursor-pointer",
                                         onClick: handle_showpassword,
                                         width: 25
                                     }, void 0, false, {
@@ -42610,7 +42800,7 @@ $RefreshReg$(_c, "SignUpPage");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","react-toastify":"kSvyQ","email-validator":"gi6bx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../assets/images/show.png":"ijMSk","../../assets/images/hide.png":"3VuX1"}],"gi6bx":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","react-toastify":"kSvyQ","email-validator":"gi6bx","../../assets/images/show.png":"ijMSk","../../assets/images/hide.png":"3VuX1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gi6bx":[function(require,module,exports) {
 "use strict";
 var tester = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
 // Thanks to:
@@ -42838,7 +43028,7 @@ function LoginPage() {
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                                                 src: imagetoggle,
-                                                className: "absolute top-2 right-2",
+                                                className: "absolute top-2 right-2 cursor-pointer",
                                                 onClick: handle_showpassword,
                                                 width: 20
                                             }, void 0, false, {
@@ -42935,7 +43125,7 @@ $RefreshReg$(_c, "LoginPage");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","email-validator":"gi6bx","react":"21dqq","react-router-dom":"9xmpe","react-toastify":"kSvyQ","../utility/loginSlice":"cVjx3","react-redux":"bdVon","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../assets/images/show.png":"ijMSk","../../assets/images/hide.png":"3VuX1"}],"3aKVV":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","email-validator":"gi6bx","react":"21dqq","react-router-dom":"9xmpe","react-toastify":"kSvyQ","../utility/loginSlice":"cVjx3","react-redux":"bdVon","../../assets/images/show.png":"ijMSk","../../assets/images/hide.png":"3VuX1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3aKVV":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$a769 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -42960,11 +43150,16 @@ var _adressCom = require("./AdressCom");
 var _adressComDefault = parcelHelpers.interopDefault(_adressCom);
 var _ordersCom = require("./Orders_Com");
 var _ordersComDefault = parcelHelpers.interopDefault(_ordersCom);
+var _showCard = require("./ShowCard");
+var _showCardDefault = parcelHelpers.interopDefault(_showCard);
 var _s = $RefreshSig$();
 function UserProfileCom() {
     _s();
     let userStore = (0, _reactRedux.useSelector)((store)=>store.user.userdata);
     const [updatetoggle, setUpdateToggle] = (0, _react.useState)(false);
+    const [wishlistdata, setWishListData] = (0, _react.useState)([]);
+    let wishlist = (0, _reactRedux.useSelector)((store)=>store?.wishlist?.list);
+    const stored_data = (0, _reactRedux.useSelector)((store)=>store?.products?.items);
     let navigate = (0, _reactRouterDom.useNavigate)();
     let dispatch = (0, _reactRedux.useDispatch)();
     async function getCurrentUserInfo() {
@@ -43007,6 +43202,21 @@ function UserProfileCom() {
     }, [
         updatetoggle
     ]);
+    (0, _react.useEffect)(()=>{
+        setWishListData([]);
+        if (wishlist.length > 0) wishlist.map((w)=>{
+            let data = stored_data.filter((p)=>{
+                if (p?._id == w?.product_id) return p;
+            });
+            if (data) setWishListData((prevstate)=>[
+                    ...prevstate,
+                    data
+                ]);
+        });
+    }, [
+        wishlist,
+        stored_data
+    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "m-[50px] flex flex-col  ",
         children: [
@@ -43019,7 +43229,7 @@ function UserProfileCom() {
                 ]
             }, void 0, true, {
                 fileName: "src/component/UserProfileCom.js",
-                lineNumber: 77,
+                lineNumber: 103,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43039,7 +43249,7 @@ function UserProfileCom() {
                                                 children: " Orders"
                                             }, void 0, false, {
                                                 fileName: "src/component/UserProfileCom.js",
-                                                lineNumber: 89,
+                                                lineNumber: 113,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -43058,23 +43268,23 @@ function UserProfileCom() {
                                                         d: "M6 9l6 6 6-6"
                                                     }, void 0, false, {
                                                         fileName: "src/component/UserProfileCom.js",
-                                                        lineNumber: 91,
+                                                        lineNumber: 115,
                                                         columnNumber: 200
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "src/component/UserProfileCom.js",
-                                                    lineNumber: 91,
+                                                    lineNumber: 115,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "src/component/UserProfileCom.js",
-                                                lineNumber: 90,
+                                                lineNumber: 114,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/UserProfileCom.js",
-                                        lineNumber: 88,
+                                        lineNumber: 112,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _ordersComDefault.default), {
@@ -43082,18 +43292,106 @@ function UserProfileCom() {
                                         getCurrentUserInfo: getCurrentUserInfo
                                     }, void 0, false, {
                                         fileName: "src/component/UserProfileCom.js",
-                                        lineNumber: 95,
+                                        lineNumber: 119,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/UserProfileCom.js",
-                                lineNumber: 87,
+                                lineNumber: 111,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "src/component/UserProfileCom.js",
-                            lineNumber: 86,
+                            lineNumber: 110,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "py-5",
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("details", {
+                                className: "group",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("summary", {
+                                        className: "flex justify-between items-center font-medium cursor-pointer list-none",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                children: " Wishlist"
+                                            }, void 0, false, {
+                                                fileName: "src/component/UserProfileCom.js",
+                                                lineNumber: 128,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                className: "transition group-open:rotate-180",
+                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+                                                    fill: "none",
+                                                    height: "24",
+                                                    shapeRendering: "geometricPrecision",
+                                                    stroke: "currentColor",
+                                                    strokeLinecap: "round",
+                                                    strokeLinejoin: "round",
+                                                    strokeWidth: "1.5",
+                                                    viewBox: "0 0 24 24",
+                                                    width: "24",
+                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                                                        d: "M6 9l6 6 6-6"
+                                                    }, void 0, false, {
+                                                        fileName: "src/component/UserProfileCom.js",
+                                                        lineNumber: 130,
+                                                        columnNumber: 200
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "src/component/UserProfileCom.js",
+                                                    lineNumber: 130,
+                                                    columnNumber: 19
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "src/component/UserProfileCom.js",
+                                                lineNumber: 129,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/component/UserProfileCom.js",
+                                        lineNumber: 127,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "flex flex-wrap",
+                                        children: [
+                                            " ",
+                                            wishlistdata.length > 0 ? wishlistdata.map((p, index)=>{
+                                                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _showCardDefault.default), {
+                                                    info: p[0],
+                                                    detailsPage: false
+                                                }, index, false, {
+                                                    fileName: "src/component/UserProfileCom.js",
+                                                    lineNumber: 135,
+                                                    columnNumber: 24
+                                                }, this);
+                                            }) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                className: "m-[auto] p-[10px]",
+                                                children: "Your WishList is Empty !"
+                                            }, void 0, false, {
+                                                fileName: "src/component/UserProfileCom.js",
+                                                lineNumber: 136,
+                                                columnNumber: 20
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/component/UserProfileCom.js",
+                                        lineNumber: 134,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/component/UserProfileCom.js",
+                                lineNumber: 126,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "src/component/UserProfileCom.js",
+                            lineNumber: 125,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43108,7 +43406,7 @@ function UserProfileCom() {
                                                 children: " Edit Profile"
                                             }, void 0, false, {
                                                 fileName: "src/component/UserProfileCom.js",
-                                                lineNumber: 103,
+                                                lineNumber: 146,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -43127,23 +43425,23 @@ function UserProfileCom() {
                                                         d: "M6 9l6 6 6-6"
                                                     }, void 0, false, {
                                                         fileName: "src/component/UserProfileCom.js",
-                                                        lineNumber: 105,
+                                                        lineNumber: 148,
                                                         columnNumber: 200
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "src/component/UserProfileCom.js",
-                                                    lineNumber: 105,
+                                                    lineNumber: 148,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "src/component/UserProfileCom.js",
-                                                lineNumber: 104,
+                                                lineNumber: 147,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/UserProfileCom.js",
-                                        lineNumber: 102,
+                                        lineNumber: 145,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _editProfileFormDefault.default), {
@@ -43152,18 +43450,18 @@ function UserProfileCom() {
                                         updatetoggle: updatetoggle
                                     }, void 0, false, {
                                         fileName: "src/component/UserProfileCom.js",
-                                        lineNumber: 109,
+                                        lineNumber: 152,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/UserProfileCom.js",
-                                lineNumber: 101,
+                                lineNumber: 144,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "src/component/UserProfileCom.js",
-                            lineNumber: 100,
+                            lineNumber: 143,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43178,7 +43476,7 @@ function UserProfileCom() {
                                                 children: " Address"
                                             }, void 0, false, {
                                                 fileName: "src/component/UserProfileCom.js",
-                                                lineNumber: 119,
+                                                lineNumber: 160,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -43197,23 +43495,23 @@ function UserProfileCom() {
                                                         d: "M6 9l6 6 6-6"
                                                     }, void 0, false, {
                                                         fileName: "src/component/UserProfileCom.js",
-                                                        lineNumber: 121,
+                                                        lineNumber: 162,
                                                         columnNumber: 200
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "src/component/UserProfileCom.js",
-                                                    lineNumber: 121,
+                                                    lineNumber: 162,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "src/component/UserProfileCom.js",
-                                                lineNumber: 120,
+                                                lineNumber: 161,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/component/UserProfileCom.js",
-                                        lineNumber: 118,
+                                        lineNumber: 159,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _adressComDefault.default), {
@@ -43223,18 +43521,18 @@ function UserProfileCom() {
                                         cartpage: false
                                     }, void 0, false, {
                                         fileName: "src/component/UserProfileCom.js",
-                                        lineNumber: 125,
+                                        lineNumber: 166,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/component/UserProfileCom.js",
-                                lineNumber: 117,
+                                lineNumber: 158,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "src/component/UserProfileCom.js",
-                            lineNumber: 116,
+                            lineNumber: 157,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -43243,29 +43541,31 @@ function UserProfileCom() {
                             children: "Log Out"
                         }, void 0, false, {
                             fileName: "src/component/UserProfileCom.js",
-                            lineNumber: 131,
+                            lineNumber: 172,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/component/UserProfileCom.js",
-                    lineNumber: 84,
+                    lineNumber: 108,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/component/UserProfileCom.js",
-                lineNumber: 82,
+                lineNumber: 106,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/component/UserProfileCom.js",
-        lineNumber: 76,
+        lineNumber: 102,
         columnNumber: 5
     }, this);
 }
-_s(UserProfileCom, "8czBAE0L6MNZFQk+0wo57uLg8G0=", false, function() {
+_s(UserProfileCom, "qkZHgHvmEU0m68BQbfAXtDv2PJU=", false, function() {
     return [
+        (0, _reactRedux.useSelector),
+        (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector),
         (0, _reactRouterDom.useNavigate),
         (0, _reactRedux.useDispatch)
@@ -43280,7 +43580,7 @@ $RefreshReg$(_c, "UserProfileCom");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","../utility/store":"7oLTM","../utility/userSlice":"8k0fy","react-toastify":"kSvyQ","../utility/loginSlice":"cVjx3","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./EditProfileForm":"heam2","./AdressCom":"lz0cg","./Orders_Com":"iBsfs"}],"heam2":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","../utility/store":"7oLTM","../utility/userSlice":"8k0fy","react-toastify":"kSvyQ","../utility/loginSlice":"cVjx3","react-router-dom":"9xmpe","./EditProfileForm":"heam2","./AdressCom":"lz0cg","./Orders_Com":"iBsfs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./ShowCard":"6nUG5"}],"heam2":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$7120 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -43879,7 +44179,7 @@ $RefreshReg$(_c, "Payment_Success_Page");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-confetti":"j3zCL","react-redux":"bdVon"}],"j3zCL":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","react-confetti":"j3zCL","react-redux":"bdVon","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"j3zCL":[function(require,module,exports) {
 !function(t, e) {
     module.exports = e(require("34009e003b690bf5"));
 }("undefined" != typeof self ? self : this, function(t) {
@@ -44838,7 +45138,7 @@ $RefreshReg$(_c, "ViewProductPage");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-redux":"bdVon","../utility/store":"7oLTM","./ShowCard":"6nUG5","react-router-dom":"9xmpe","../utility/utility":"gTarV","..//../assets/images/filter.png":"4vmLz"}],"4vmLz":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","../utility/store":"7oLTM","./ShowCard":"6nUG5","react-router-dom":"9xmpe","../utility/utility":"gTarV","..//../assets/images/filter.png":"4vmLz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4vmLz":[function(require,module,exports) {
 module.exports = require("2e326e1686d99391").getBundleURL("aXMci") + "filter.1233d628.png" + "?" + Date.now();
 
 },{"2e326e1686d99391":"lgJ39"}],"51S3L":[function(require,module,exports) {
@@ -44941,7 +45241,7 @@ $RefreshReg$(_c, "VerificationCom");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-toastify":"kSvyQ"}],"jJVNt":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-toastify":"kSvyQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jJVNt":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$70b0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
