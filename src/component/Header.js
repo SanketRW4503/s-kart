@@ -162,7 +162,7 @@ export default function Header() {
       getCurrentUserInfo();
 
     }
-  }, []);
+  }, [loginStatus]);
 
   async function getWishlistData(email) {
     let dataset = { email: email }

@@ -27507,7 +27507,9 @@ function Header() {
     }
     (0, _react.useEffect)(()=>{
         if (userStore.length == 0) getCurrentUserInfo();
-    }, []);
+    }, [
+        loginStatus
+    ]);
     async function getWishlistData(email) {
         let dataset = {
             email: email
